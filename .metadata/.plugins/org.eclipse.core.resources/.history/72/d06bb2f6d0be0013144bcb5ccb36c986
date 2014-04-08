@@ -1,0 +1,27 @@
+package edu.neu.db.jws.lecture;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
+
+@Path("/myservice")
+public class MyWebService {
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	public Developer getDeveloper() {
+		Application app1 = new Application();
+		Application app2 = new Application();
+		app1.setId(321);
+		app2.setId(432);
+		List<Application> apps = new ArrayList<Application>();
+		apps.add(app1);
+		apps.add(app2);
+		Developer developer = new Developer();
+		developer.setApplications(apps);
+		return developer;
+	}
+}

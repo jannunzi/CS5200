@@ -1,0 +1,21 @@
+package edu.neu.db.jws.lecture;
+
+public class Application {
+	int id = 234;
+	String name = "Minecraft";
+	public Application() {
+		super();
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+}

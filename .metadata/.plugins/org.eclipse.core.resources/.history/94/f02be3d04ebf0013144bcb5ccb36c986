@@ -1,0 +1,6 @@
+package edu.neu.db.jws.movies;
+
+public class Movie {
+	int id;
+	String name = "Avatar";
+}

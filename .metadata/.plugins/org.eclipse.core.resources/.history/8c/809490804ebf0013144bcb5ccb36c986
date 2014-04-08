@@ -1,0 +1,6 @@
+package edu.neu.db.jws.movies;
+
+@Path("/movies")
+public class MovieService {
+
+}

@@ -1,0 +1,13 @@
+package edu.neu.db.jws.movies;
+
+import javax.ws.rs.Path;
+
+@Path("/movie")
+public class MovieService {
+	@GET
+	@Path("/123")
+	public Movie getMovie() {
+		Movie movie = new Movie();
+		return movie;
+	}
+}
