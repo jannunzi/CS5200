@@ -1,0 +1,10 @@
+package edu.neu.db.rest.experiments;
+
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+
+@Path("/wam")
+public class WamService {
+	@GET
+	@Produces()
+}

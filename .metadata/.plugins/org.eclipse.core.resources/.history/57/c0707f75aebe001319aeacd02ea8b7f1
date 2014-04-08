@@ -1,0 +1,11 @@
+package edu.neu.db.rest.experiments;
+
+import java.util.List;
+
+public class Developer {
+	private int id;
+	private String firstName;
+	private String lastName;
+	private List<Application> applications;
+	
+}
