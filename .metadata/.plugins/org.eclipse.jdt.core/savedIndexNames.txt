@@ -36,6 +36,7 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 2795814653.index
 551183854.index
 174448813.index
+110830905.index
 4183944717.index
 1201651169.index
 2790317624.index
@@ -61,6 +62,7 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 1210639213.index
 913594023.index
 1909993307.index
+4083552028.index
 3836493937.index
 1410737723.index
 1112069055.index
