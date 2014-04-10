@@ -21,10 +21,13 @@
         </movie>
     </director>
     <director id="3" firstName="Charlie" lastName="Garcia">
-        <movie id="5" name="Movie A" stars="5">
+        <movie id="5" name="Movie A" stars="2">
             <actor id="9" firstName="Actor 7" lastName="asdf" oscars="2"/>
             <actor id="10" firstName="Actor 8" lastName="sdfkgjskdfjg" oscars="4"/>
         </movie>
         <movie id="6" name="Movie B" stars="4"/>
+    </director>
+    <director id="4" firstName="Daniel" lastName="Craig">
+        <movie id="7" name="Movie C" stars="5"/>
     </director>
 </directors>

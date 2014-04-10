@@ -5,6 +5,8 @@
 		<class>edu.neu.db.jws.lecture.Developer</class>
 		<class>edu.neu.db.jws.lecture.Application</class>
 		<class>edu.neu.db.jws.movies.Movie</class>
+		<class>edu.neu.db.jws.example.Page</class>
+		<class>edu.neu.db.jws.example.Widget</class>
 		<properties>
 			<property name="eclipselink.jdbc.password" value=""/>
 			<property name="eclipselink.jdbc.user" value="root"/>

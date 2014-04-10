@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<team>
+	<developer firstName="Alice" lastName="Wonderland" salary="225000">
+		<address street="100 Broadway" state="MA" zip="01234"/>
+		<application name="Keynote" price="0.0"/>
+		<application name="Pages" price="0.0"/>
+	</developer>
+	<developer firstName="Charlie" lastName="Garcia" salary="123456">
+		<address street="100 South St." state="MA" zip="01234"/>
+		<application name="Word" price="99.00"/>
+		<application name="Excel" price="99.00"/>
+	</developer>
+</team>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?><applications>
+<application>
+<name>Keynote</name>
+<developer>Alice</developer>
+</application>
+<application>
+<name>Pages</name>
+<developer>Alice</developer>
+</application>
+<application>
+<name>Word</name>
+<developer>Charlie</developer>
+</application>
+<application>
+<name>Excel</name>
+<developer>Charlie</developer>
+</application>
+</applications>
