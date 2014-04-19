@@ -3,6 +3,28 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
 	<classpathentry kind="lib" path="C:/jdbc/mysql-connector-java-5.1.29-bin.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-xc-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-apache-client-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-atom-abdera-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-client-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-core-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-guice-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-json-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-multipart-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-server-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-servlet-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-simple-server-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-spring-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.29-bin.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-client-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-server-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-signature-1.18.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.0 - Kepler">
 		<attributes>
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
