@@ -1,7 +1,0 @@
-package edu.neu.db.rest.experiments;
-
-public class Application {
-	int id;
-	String name;
-	List<Page> pages;
-}

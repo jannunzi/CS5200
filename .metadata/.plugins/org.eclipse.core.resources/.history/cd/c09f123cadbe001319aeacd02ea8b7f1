@@ -1,9 +1,0 @@
-package edu.neu.db.rest.experiments;
-
-public class Developer {
-	private int id;
-	private String firstName;
-	private String lastName;
-	private List<Application> applications;
-	
-}

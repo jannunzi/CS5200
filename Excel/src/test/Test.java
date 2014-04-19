@@ -20,7 +20,6 @@ public class Test {
 		// http://poi.apache.org/spreadsheet/quick-guide.html
 		
 		Workbook wb = new XSSFWorkbook();
-	    FileOutputStream fileOut = new FileOutputStream("xls/workbook.xlsx");
 	    CreationHelper createHelper = wb.getCreationHelper();
 
 	    
@@ -78,6 +77,7 @@ public class Test {
 
 
 	    
+	    FileOutputStream fileOut = new FileOutputStream("xls/workbook.xlsx");
 	    wb.write(fileOut);
 	    fileOut.close();
 	}

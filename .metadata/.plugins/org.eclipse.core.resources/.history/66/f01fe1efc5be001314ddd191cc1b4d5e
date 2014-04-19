@@ -1,8 +1,0 @@
-package edu.neu.db.jws.lecture;
-
-public class Developer {
-	int id;
-	String firstName;
-	String lastName;
-	
-}

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form method="post" action="rest/page">
+	<input name="name"/>
+	<button>Submit</button>
+</form>
+
+<a href="rest/page?name=page1">Page 1</a>
+<br/>
+
+<a href="rest/page/page1">Page 1</a>
+<br/>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script>
+	$.ajax({
+		url: "rest/page",
+		success: function(response) {
+			console.log(response);
+		}
+	});
+	var page = {
+		id: 123,
+		name: "Page 123",
+		widgets: []
+	};
+	$.ajax({
+		url: "rest/page",
+		type: "post",
+	    contentType: "application/json",
+		data: JSON.stringify(page),
+		dataType: 'json',
+		success: function(response) {
+			console.log(response);
+		},
+		error: function(error) {
+			console.log(error);
+		}
+	});
+</script>
+</body>
+</html>

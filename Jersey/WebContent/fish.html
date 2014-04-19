@@ -1,0 +1,47 @@
+<script src="js/jquery.js"></script>
+
+<script>
+	$(function(){
+		
+		var newFish = {
+			"id":432,
+			"name":"Fish 432",
+			"length":53136.0,
+			"weight":101088.0
+		};
+		
+		deleteFish(345);
+		createFish(newFish);
+		updateFish(123);
+		readOneFish(432);
+	});
+	
+	function readOneFish(id) {
+		$.ajax({
+			url: "rest/fish/"+id
+		});
+	}
+	
+	function updateFish(id) {
+		$.ajax({
+			url: "rest/fish/"+id,
+			type: "PUT"
+		});
+	}
+	
+	function createFish(newFish) {
+		$.ajax({
+			url: "rest/fish",
+			type: "POST",
+			dataType: "application/json",
+			data: JSON.stringify(newFish)
+		});
+	}
+	
+	function deleteFish(id) {
+		$.ajax({
+			url: "rest/fish/"+id,
+			type: "DELETE"
+		});
+	}
+</script>

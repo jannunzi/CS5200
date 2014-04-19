@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="com.atc.siterra.bup.service.*, com.atc.siterra.bup.model.*, java.util.*"%>
+    pageEncoding="ISO-8859-1" import="com.atc.siterra.bup.sharegen.model.*, java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -36,7 +36,8 @@
 		</div>
 		<div class="col-xs-2">
 			&nbsp;
-			<button class="btn btn-success btn-block">Connect</button>
+			<button class="btn btn-success">Connect</button>
+			<button class="btn btn-success" name="command" value="save">Save</button>
 		</div>
 		<a href="#" class="taggle">Toggle</a>
 	</div>
@@ -80,8 +81,6 @@
 		List<Column> columns = tableService.getColumns(tableName);
 %>
 						<th>Fields (<%= columns.size() %>)</th>
-						<th>Type</th>
-						<th>Size</th>
 						<th>Siterra Field</th>
 						<th>Comment</th>
 						<th>Update</th>
@@ -89,13 +88,14 @@
 				</thead>
 				<tbody>
 <%		for(Column col : columns)
-		{%>			<tr>
-						<td><%= col.name %></td>
-						<td><%= col.type %></td>
-						<td><%= col.size %></td>
+		{
+			String pkStyle = "";
+			if(col.isPrimaryKey)
+				pkStyle = "font-weight:bold";
+		%>			<tr style="<%=pkStyle%>">
+						<td><span style="font-weight:bold"><%= col.name %></span><br/><span style="font-size:0.65em"><%= col.getTypeName()%>(<%= col.size %>)</span></td>
 						<td><input class="siterraField form-control" /></td>
 						<td><input class="fieldComment form-control" /></td>
-						<td><a href="#" class="btn btn-success">Update</a></td>
 						<td><a href="#" class="btn btn-primary">Edit</a></td>
 					</tr>
 <%		}
@@ -107,6 +107,7 @@
 		</div>
 	</div>
 </div>
+			<input type="hidden" name=table value="<%=tableName%>"/>
 
 </form>
 

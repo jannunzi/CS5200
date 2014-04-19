@@ -1,3 +1,15 @@
 2014-04-07 23:53:57,032 [Start Help Server] INFO  org.eclipse.jetty.server.Server - jetty-8.1.10.v20130312
 2014-04-07 23:53:57,065 [Start Help Server] INFO  o.e.jetty.server.AbstractConnector - Started SelectChannelConnector@127.0.0.1:64544
 2014-04-08 19:44:27,498 [Stop Help Server] INFO  o.e.j.server.handler.ContextHandler - stopped o.e.j.s.ServletContextHandler{/help,null}
+2014-04-14 11:33:29,996 [Worker-68] ERROR o.e.m.i.l.MavenConsoleLineTracker - Launch configuration Dali EclipseLink Table Generation at file:/C:/Users/jose.annunziato/Documents/Northeastern/GitHub/CS5200/.metadata/.plugins/org.eclipse.debug.core/.launches/Dali%20EclipseLink%20Table%20Generation.launch does not exist.
+org.eclipse.debug.core.DebugException: Launch configuration Dali EclipseLink Table Generation at file:/C:/Users/jose.annunziato/Documents/Northeastern/GitHub/CS5200/.metadata/.plugins/org.eclipse.debug.core/.launches/Dali%20EclipseLink%20Table%20Generation.launch does not exist.
+	at org.eclipse.debug.internal.core.LaunchManager.createDebugException(LaunchManager.java:901) ~[org.eclipse.debug.core_3.8.0.v20130514-0954.jar:na]
+	at org.eclipse.debug.internal.core.LaunchManager.getInfo(LaunchManager.java:1377) ~[org.eclipse.debug.core_3.8.0.v20130514-0954.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfiguration.getInfo(LaunchConfiguration.java:453) ~[org.eclipse.debug.core_3.8.0.v20130514-0954.jar:na]
+	at org.eclipse.debug.internal.core.LaunchConfiguration.getType(LaunchConfiguration.java:617) ~[org.eclipse.debug.core_3.8.0.v20130514-0954.jar:na]
+	at org.eclipse.m2e.internal.launch.MavenConsoleLineTracker.isMavenProcess(MavenConsoleLineTracker.java:142) [org.eclipse.m2e.launching_1.4.0.20130601-0317.jar:na]
+	at org.eclipse.m2e.internal.launch.MavenConsoleLineTracker.lineAppended(MavenConsoleLineTracker.java:85) [org.eclipse.m2e.launching_1.4.0.20130601-0317.jar:na]
+	at org.eclipse.debug.internal.ui.views.console.ConsoleLineNotifier.lineAppended(ConsoleLineNotifier.java:126) [org.eclipse.debug.ui_3.9.0.v20130516-1713.jar:na]
+	at org.eclipse.debug.internal.ui.views.console.ConsoleLineNotifier.matchFound(ConsoleLineNotifier.java:118) [org.eclipse.debug.ui_3.9.0.v20130516-1713.jar:na]
+	at org.eclipse.ui.internal.console.ConsolePatternMatcher$MatchJob.run(ConsolePatternMatcher.java:136) [org.eclipse.ui.console_3.5.200.v20130514-0954.jar:na]
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:53) [org.eclipse.core.jobs_3.5.300.v20130429-1813.jar:na]

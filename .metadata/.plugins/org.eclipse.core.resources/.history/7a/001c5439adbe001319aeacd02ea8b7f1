@@ -1,7 +1,0 @@
-package edu.neu.db.rest.experiments;
-
-public class Page {
-	int id;
-	String name;
-	List<Widget> widgets;
-}

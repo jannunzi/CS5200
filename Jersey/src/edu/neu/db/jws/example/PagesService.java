@@ -47,11 +47,27 @@ public class PagesService {
 
 		return page;
 	}
-	
+	/*
 	@POST
 	@Path("/")
+//	@Consumes(MediaType.APPLICATION_JSON)
+	public String postPageNameFormParam(@FormParam("name") String pageName) {
+		return "Form Response: " + pageName;
+	}
+*/	
+	@POST
+	@Path("/{name}")
+//	@Consumes(MediaType.APPLICATION_JSON)
+	public String postPageNamePathParam(@PathParam("name") String pageName) {
+		return "Path Response: " + pageName;
+	}
+	
+	@GET
+	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createPage(Page page) {
-		System.out.println(page.getName());
+	@Produces(MediaType.APPLICATION_JSON)
+	public Page postPageJson(Page page) {
+		page.setName("POST JSON Response: " + page.getName());
+		return page;
 	}
 }
