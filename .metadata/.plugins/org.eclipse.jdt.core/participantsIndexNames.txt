@@ -1,7 +1,0 @@
-INDEX VERSION 1.126
-C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS5200\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2689399410.index
-\SQLServer\src
-C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS5200\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3216280662.index
-\UiDoc\src
-C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS5200\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1343699004.index
-\Jersey\src

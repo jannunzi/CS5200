@@ -1,3 +1,0 @@
-#Tomcat publish data
-#Sat Apr 19 15:05:36 EDT 2014
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\jose.annunziato\\Documents\\Northeastern\\GitHub\\CS5200\\libraries\\EclipseLink\ 2.5.0\ -\ Kepler\\eclipselink\\jlib\\jpa\\org.eclipse.persistence.jpars_2.5.0.v20130507-3faac2b.jar=WEB-INF/lib/org.eclipse.persistence.jpars_2.5.0.v20130507-3faac2b.jar
