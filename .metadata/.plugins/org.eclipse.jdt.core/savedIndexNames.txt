@@ -6,6 +6,7 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 1023517091.index
 1650372591.index
 2443173002.index
+3768218739.index
 4000748403.index
 2744674319.index
 4250529333.index
@@ -20,11 +21,13 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 1365170513.index
 204316930.index
 2089616655.index
+1703923023.index
 4108727661.index
 573543369.index
 2790317624.index
 524827553.index
 3133528496.index
+1105991084.index
 2249230246.index
 1448168242.index
 3288778408.index
@@ -36,6 +39,7 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 688513089.index
 4183944717.index
 1827966111.index
+1851187508.index
 305854171.index
 3203710554.index
 3588743676.index
@@ -58,6 +62,8 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 3689964743.index
 319786104.index
 2774273280.index
+17987159.index
+928881854.index
 2078315998.index
 4197943380.index
 3520017233.index
@@ -66,6 +72,7 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 1476325618.index
 3786403898.index
 1475614462.index
+150058530.index
 1347774155.index
 30765161.index
 2066299630.index
@@ -86,6 +93,7 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 4002588545.index
 83944772.index
 701496218.index
+198950608.index
 156560366.index
 1697886153.index
 1299022128.index
@@ -115,12 +123,15 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 99330107.index
 156759221.index
 2241820348.index
+2676603522.index
 2274464160.index
 2103503038.index
+2661390615.index
 3479426916.index
 324546260.index
 3129855967.index
 1489969692.index
+772198676.index
 1605076922.index
 1036069526.index
 3121805899.index
@@ -144,8 +155,10 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 3792302477.index
 3075715063.index
 789332107.index
+1293905773.index
 1808933081.index
 1201651169.index
+2143007150.index
 1572762064.index
 1909993307.index
 899343354.index
@@ -159,15 +172,19 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 2632293757.index
 394910380.index
 110830905.index
+3047535195.index
+1578809283.index
 2343280747.index
 1639768006.index
 959808908.index
 3558412811.index
+3671978121.index
 3398859889.index
 3836493937.index
 1786373630.index
 2123513455.index
 3371547753.index
+3836872539.index
 166045448.index
 3289574343.index
 2860360615.index
@@ -175,6 +192,7 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 1210639213.index
 693689357.index
 3561377475.index
+1927424110.index
 3630786253.index
 3814336913.index
 3065916431.index
@@ -186,4 +204,5 @@ INDEX VERSION 1.126+C:\Users\jose.annunziato\Documents\Northeastern\GitHub\CS520
 551183854.index
 3140557924.index
 2007613031.index
+3712102534.index
 3780484834.index
