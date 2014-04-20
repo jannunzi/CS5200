@@ -18,6 +18,9 @@ public class SolutionDao {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("XSLT_JPA");
 	EntityManager em = null;
 	
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Director findDirector(int directorId) {
 		Director director = null;
 		
