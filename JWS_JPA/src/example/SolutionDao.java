@@ -5,6 +5,7 @@ import java.util.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.*;
@@ -19,9 +20,9 @@ public class SolutionDao {
 	EntityManager em = null;
 	
 	@GET
-	@Path("/")
+	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Director findDirector(int directorId) {
+	public Director findDirector(@PathParam("id") int directorId) {
 		Director director = null;
 		
 		em = factory.createEntityManager();
