@@ -60,14 +60,20 @@ public class SolutionDao {
 	@POST
 	@Path("/")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void createDirector(Director director) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Director> createDirector(Director director) {
+		List<Director> directors = new ArrayList<Director>();
+
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
 		em.persist(director);
+		Query query = em.createNamedQuery("findAllDirectors");
+		directors = query.getResultList();
 		
 		em.getTransaction().commit();
 		em.close();
+		return directors;
 	}
 	
 	public void exportDirectorsToXmlFile(Directors directors, String xmlFileName) {
