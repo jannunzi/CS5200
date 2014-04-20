@@ -76,6 +76,27 @@ public class SolutionDao {
 		return directors;
 	}
 	
+	@POST
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Director> updateDirector(@PathParam("id") int directorId, Director director) {
+		List<Director> directors = new ArrayList<Director>();
+
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		director.setId(directorId);
+		em.merge(director);
+		
+		Query query = em.createNamedQuery("findAllDirectors");
+		directors = query.getResultList();
+		
+		em.getTransaction().commit();
+		em.close();
+		return directors;
+	}
+	
 	public void exportDirectorsToXmlFile(Directors directors, String xmlFileName) {
 		File xmlFile = new File(xmlFileName);
 		try {
@@ -118,12 +139,17 @@ public class SolutionDao {
 	public static void main(String[] args) {
 		SolutionDao dao = new SolutionDao();
 		
-		Director spielberg = new Director();
-		spielberg.setFirstName("Steven");
-		spielberg.setLastName("Spielberg");
-		dao.createDirector(spielberg);
+//		Director spielberg = new Director();
+//		spielberg.setFirstName("Steven");
+//		spielberg.setLastName("Spielberg");
+//		dao.createDirector(spielberg);
+		Director s = new Director();
+		s.setFirstName("Stephen");
+		s.setLastName("Spielbergo");
+		dao.updateDirector(5, s);
 		
 		Director director = dao.findDirector(1);
+		
 //		System.out.println(director.getFirstName());
 		
 		List<Director> directors = dao.findAllDirectors();

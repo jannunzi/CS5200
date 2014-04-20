@@ -30,5 +30,10 @@
     <director id="4" firstName="Daniel" lastName="Craig">
         <movie id="7" name="Movie C" stars="5"/>
     </director>
-    <director id="5" firstName="Steven" lastName="Spielberg"/>
+    <director id="5" firstName="Stephen" lastName="Spielbergo"/>
+    <director id="6" firstName="Peter" lastName="Jackson"/>
+    <director id="7" firstName="ewq" lastName="rew"/>
+    <director id="8" firstName="ewq123" lastName="rew234"/>
+    <director id="9" firstName="ewq123" lastName="rew234"/>
+    <director id="10" firstName="Peter" lastName="Jackson"/>
 </directors>
