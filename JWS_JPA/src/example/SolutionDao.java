@@ -3,11 +3,13 @@ package example;
 import java.io.*;
 import java.util.*;
 
+import javax.ws.rs.Path;
 import javax.xml.bind.*;
 import javax.xml.transform.*;
 import javax.xml.transform.stream.*;
 import javax.persistence.*;
 
+@Path("/director")
 public class SolutionDao {
 	
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("XSLT_JPA");
