@@ -98,7 +98,7 @@ public class SolutionDao {
 		
 		dao.exportDirectorsToXmlFile(theDirectors, "xml/directors.xml");
 		
-		dao.convertXmlFileToOutputFile("xml/directors.xml", "xml/directors.html", "xml/directors2html.xslt");
-		dao.convertXmlFileToOutputFile("xml/directors.xml", "xml/movies.html", "xml/directors2movies.xslt");
+//		dao.convertXmlFileToOutputFile("xml/directors.xml", "xml/directors.html", "xml/directors2html.xslt");
+	//	dao.convertXmlFileToOutputFile("xml/directors.xml", "xml/movies.html", "xml/directors2movies.xslt");
 	}
 }
