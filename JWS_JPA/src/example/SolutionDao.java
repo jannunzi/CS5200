@@ -106,6 +106,11 @@ public class SolutionDao {
 	public static void main(String[] args) {
 		SolutionDao dao = new SolutionDao();
 		
+		Director spielberg = new Director();
+		spielberg.setFirstName("Steven");
+		spielberg.setLastName("Spielberg");
+		dao.createDirector(spielberg);
+		
 		Director director = dao.findDirector(1);
 //		System.out.println(director.getFirstName());
 		

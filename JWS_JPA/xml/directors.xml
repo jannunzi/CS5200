@@ -30,4 +30,5 @@
     <director id="4" firstName="Daniel" lastName="Craig">
         <movie id="7" name="Movie C" stars="5"/>
     </director>
+    <director id="5" firstName="Steven" lastName="Spielberg"/>
 </directors>
