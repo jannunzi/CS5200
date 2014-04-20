@@ -15,7 +15,8 @@
 			lastName: "Jack"
 		};
 //		createDirector(director);
-		updateDirector(10, director);
+//		updateDirector(10, director);
+		removeDirector(7);
 	});
 
 	function updateDirector(id, director)
@@ -25,6 +26,23 @@
 			url: "api/director/"+id,
 			data: JSON.stringify(director),
 			type: "put",
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+
+	function removeDirector(id)
+	{
+		$.ajax(
+		{
+			url: "api/director/"+id,
+			type: "delete",
 			dataType: "json",
 			contentType: "application/json",
 			success: function(response) {
