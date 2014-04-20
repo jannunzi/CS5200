@@ -33,7 +33,5 @@
     <director id="5" firstName="Stephen" lastName="Spielbergo"/>
     <director id="6" firstName="Peter" lastName="Jackson"/>
     <director id="7" firstName="ewq" lastName="rew"/>
-    <director id="8" firstName="ewq123" lastName="rew234"/>
-    <director id="9" firstName="ewq123" lastName="rew234"/>
-    <director id="10" firstName="Peter" lastName="Jackson"/>
+    <director id="10" firstName="Pedro" lastName="Jack"/>
 </directors>

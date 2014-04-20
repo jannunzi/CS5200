@@ -40,6 +40,29 @@ public class SolutionDao {
 	}
 	
 	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Director> removeDirector(@PathParam("id") int directorId) {
+		List<Director> directors = new ArrayList<Director>();
+
+		Director director = null;
+		
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+		
+		director = em.find(Director.class, directorId);
+		em.remove(director);
+		
+		Query query = em.createNamedQuery("findAllDirectors");
+		directors = query.getResultList();
+		
+		em.getTransaction().commit();
+		em.close();
+		
+		return directors;
+	}
+	
+	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Director> findAllDirectors() {
@@ -143,10 +166,12 @@ public class SolutionDao {
 //		spielberg.setFirstName("Steven");
 //		spielberg.setLastName("Spielberg");
 //		dao.createDirector(spielberg);
-		Director s = new Director();
-		s.setFirstName("Stephen");
-		s.setLastName("Spielbergo");
-		dao.updateDirector(5, s);
+//		Director s = new Director();
+//		s.setFirstName("Stephen");
+//		s.setLastName("Spielbergo");
+//		dao.updateDirector(5, s);
+	
+		dao.removeDirector(9);
 		
 		Director director = dao.findDirector(1);
 		
