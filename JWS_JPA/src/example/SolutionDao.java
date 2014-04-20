@@ -3,6 +3,7 @@ package example;
 import java.io.*;
 import java.util.*;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -13,6 +14,7 @@ import javax.xml.bind.*;
 import javax.xml.transform.*;
 import javax.xml.transform.stream.*;
 import javax.persistence.*;
+import javax.print.attribute.standard.Media;
 
 @Path("/director")
 public class SolutionDao {
@@ -57,6 +59,7 @@ public class SolutionDao {
 	
 	@POST
 	@Path("/")
+	@Consumes(MediaType.APPLICATION_JSON)
 	public void createDirector(Director director) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
