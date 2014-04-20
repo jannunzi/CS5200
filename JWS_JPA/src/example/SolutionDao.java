@@ -3,6 +3,7 @@ package example;
 import java.io.*;
 import java.util.*;
 
+import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.xml.bind.*;
 import javax.xml.transform.*;
@@ -29,7 +30,8 @@ public class SolutionDao {
 		return director;
 	}
 	
-	
+	@GET
+	@Path("/")
 	public List<Director> findAllDirectors() {
 		List<Director> directors = new ArrayList<Director>();
 		
