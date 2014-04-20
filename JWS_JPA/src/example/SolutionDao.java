@@ -4,6 +4,7 @@ import java.io.*;
 import java.util.*;
 
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -54,6 +55,8 @@ public class SolutionDao {
 		return directors;
 	}
 	
+	@POST
+	@Path("/")
 	public void createDirector(Director director) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
