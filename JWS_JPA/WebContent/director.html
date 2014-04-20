@@ -11,12 +11,31 @@
 	{
 		var director =
 		{
-			firstName: "Peter",
-			lastName: "Jackson"
+			firstName: "Pedro",
+			lastName: "Jack"
 		};
-		createDirector(director);
+//		createDirector(director);
+		updateDirector(10, director);
 	});
-	
+
+	function updateDirector(id, director)
+	{
+		$.ajax(
+		{
+			url: "api/director/"+id,
+			data: JSON.stringify(director),
+			type: "post",
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+
 	function createDirector(director)
 	{
 		$.ajax(
