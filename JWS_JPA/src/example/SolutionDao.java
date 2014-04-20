@@ -54,6 +54,16 @@ public class SolutionDao {
 		return directors;
 	}
 	
+	public void createDirector(Director director) {
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		em.persist(director);
+		
+		em.getTransaction().commit();
+		em.close();
+	}
+	
 	public void exportDirectorsToXmlFile(Directors directors, String xmlFileName) {
 		File xmlFile = new File(xmlFileName);
 		try {
