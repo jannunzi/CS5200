@@ -22,7 +22,7 @@ public class Organizer {
 	private String password;
 	private String email;
 	@Temporal(TemporalType.DATE)
-	private Date joined;
+	private Date joined = new Date();
 	@OneToMany(mappedBy="organizer")
 	private List<Sheet> sheets;
 	public int getId() {
