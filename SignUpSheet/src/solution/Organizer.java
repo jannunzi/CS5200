@@ -19,6 +19,12 @@ public class Organizer {
 	private String email;
 	private Date joined;
 	private List<Sheet> sheets;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
