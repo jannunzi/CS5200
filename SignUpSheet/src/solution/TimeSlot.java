@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class TimeSlot {
@@ -15,6 +17,7 @@ public class TimeSlot {
 	private String who;
 	private String notes;
 	private Sheet sheet;
+	@Temporal(TemporalType.DATE)
 	public Date getWhen() {
 		return when;
 	}

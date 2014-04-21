@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 public class Organizer {
@@ -18,6 +20,7 @@ public class Organizer {
 	private String username;
 	private String password;
 	private String email;
+	@Temporal(TemporalType.DATE)
 	private Date joined;
 	private List<Sheet> sheets;
 	public int getId() {
