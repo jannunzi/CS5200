@@ -14,6 +14,13 @@ import javax.persistence.TemporalType;
 public class Sheet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	private String name;
 	private String description;
 	@Temporal(TemporalType.DATE)

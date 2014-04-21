@@ -9,6 +9,13 @@ import javax.persistence.Id;
 public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	private String street1;
 	private String street2;
 	private String city;
