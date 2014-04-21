@@ -13,11 +13,15 @@ import javax.persistence.TemporalType;
 public class TimeSlot {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
+	@Temporal(TemporalType.DATE)
 	private Date when;
 	private String who;
 	private String notes;
 	private Sheet sheet;
-	@Temporal(TemporalType.DATE)
+	public void setId(int id) {
+		this.id = id;
+	}
 	public Date getWhen() {
 		return when;
 	}
@@ -44,5 +48,8 @@ public class TimeSlot {
 	}
 	public TimeSlot() {
 		super();
+	}
+	public int getId() {
+		return id;
 	}
 }
