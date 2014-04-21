@@ -1,5 +1,6 @@
 package solution;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class Sheet {
 	@JoinColumn(name="organizer_id")
 	private Organizer organizer;
 	@OneToMany(mappedBy="sheet")
-	private List<TimeSlot> timeSlots;
+	private List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
 	public int getId() {
 		return id;
 	}

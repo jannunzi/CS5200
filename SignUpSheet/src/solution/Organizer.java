@@ -1,5 +1,6 @@
 package solution;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -24,7 +25,7 @@ public class Organizer {
 	@Temporal(TemporalType.DATE)
 	private Date joined = new Date();
 	@OneToMany(mappedBy="organizer")
-	private List<Sheet> sheets;
+	private List<Sheet> sheets = new ArrayList<Sheet>();
 	public int getId() {
 		return id;
 	}
