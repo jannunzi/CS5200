@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,19 +17,21 @@ public class Sheet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	private String name;
+	private String description;
+	@Temporal(TemporalType.DATE)
+	private Date when;
+	private Address where;
+	@ManyToOne
+	@JoinColumn(name="organizer_id")
+	private Organizer organizer;
+	private List<TimeSlot> timeSlots;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	private String name;
-	private String description;
-	@Temporal(TemporalType.DATE)
-	private Date when;
-	private Address where;
-	private Organizer organizer;
-	private List<TimeSlot> timeSlots;
 	public String getName() {
 		return name;
 	}

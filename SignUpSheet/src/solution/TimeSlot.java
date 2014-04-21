@@ -14,17 +14,17 @@ public class TimeSlot {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
+	@Temporal(TemporalType.DATE)
+	private Date when;
+	private String who;
+	private String notes;
+	private Sheet sheet;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	@Temporal(TemporalType.DATE)
-	private Date when;
-	private String who;
-	private String notes;
-	private Sheet sheet;
 	public Date getWhen() {
 		return when;
 	}
