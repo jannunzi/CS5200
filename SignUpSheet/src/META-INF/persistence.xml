@@ -3,6 +3,7 @@
 	<persistence-unit name="SignUpSheet">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<class>solution.Organizer</class>
+		<class>solution.Sheet</class>
 		<properties>
 			<property name="eclipselink.jdbc.password" value=""/>
 			<property name="eclipselink.jdbc.user" value="root"/>
