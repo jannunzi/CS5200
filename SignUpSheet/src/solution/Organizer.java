@@ -1,6 +1,7 @@
 package solution;
 
 import java.util.Date;
+import java.util.List;
 
 public class Organizer {
 	private String firstName;
@@ -9,4 +10,5 @@ public class Organizer {
 	private String password;
 	private String email;
 	private Date joined;
+	private List<Sheet> sheets;
 }
