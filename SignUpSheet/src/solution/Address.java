@@ -15,6 +15,7 @@ public class Address {
 	private String city;
 	private String state;
 	private String zip;
+	private Sheet sheet;
 	public String getStreet1() {
 		return street1;
 	}
@@ -53,5 +54,11 @@ public class Address {
 	}
 	public Address() {
 		super();
+	}
+	public Sheet getSheet() {
+		return sheet;
+	}
+	public void setSheet(Sheet sheet) {
+		this.sheet = sheet;
 	}
 }

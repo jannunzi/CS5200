@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,11 +22,13 @@ public class Sheet {
 	private String name;
 	private String description;
 	@Temporal(TemporalType.DATE)
-	private Date when;
+	private Date eventDate;
+	@OneToOne(mappedBy="sheet")
 	private Address where;
 	@ManyToOne
 	@JoinColumn(name="organizer_id")
 	private Organizer organizer;
+	@OneToMany(mappedBy="sheet")
 	private List<TimeSlot> timeSlots;
 	public int getId() {
 		return id;
@@ -43,12 +47,6 @@ public class Sheet {
 	}
 	public void setDescription(String description) {
 		this.description = description;
-	}
-	public Date getWhen() {
-		return when;
-	}
-	public void setWhen(Date when) {
-		this.when = when;
 	}
 	public Address getWhere() {
 		return where;
@@ -70,5 +68,11 @@ public class Sheet {
 	}
 	public Sheet() {
 		super();
+	}
+	public Date getEventDate() {
+		return eventDate;
+	}
+	public void setEventDate(Date eventDate) {
+		this.eventDate = eventDate;
 	}
 }

@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -15,21 +17,17 @@ public class TimeSlot {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	@Temporal(TemporalType.DATE)
-	private Date when;
+	private Date slotDate;
 	private String who;
 	private String notes;
+	@ManyToOne
+	@JoinColumn(name="sheet_id")
 	private Sheet sheet;
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public Date getWhen() {
-		return when;
-	}
-	public void setWhen(Date when) {
-		this.when = when;
 	}
 	public String getWho() {
 		return who;
@@ -51,5 +49,11 @@ public class TimeSlot {
 	}
 	public TimeSlot() {
 		super();
+	}
+	public Date getSlotDate() {
+		return slotDate;
+	}
+	public void setSlotDate(Date slotDate) {
+		this.slotDate = slotDate;
 	}
 }
