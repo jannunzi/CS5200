@@ -75,7 +75,7 @@ public class TableService
 	}
 	
 	@GET
-	@Path("/{name}")
+	@Path("/{name}/column")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Column> getColumns(@PathParam("name") String tableName)
 	{
