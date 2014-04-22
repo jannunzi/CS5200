@@ -1,5 +1,8 @@
 package solution;
 
+import java.util.Date;
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -29,10 +32,26 @@ public class SignUpSheetDao {
 			return false;
 		return true;
 	}
+	public List<Sheet> createSheet(int organizer_id, Sheet sheet) {
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		Organizer organizer = em.find(Organizer.class, organizer_id);
+		organizer.getSheets().add(sheet);
+		sheet.setOrganizer(organizer);
+		em.merge(organizer);
+		List<Sheet> sheets = organizer.getSheets();
+
+		em.getTransaction().commit();
+		em.close();
+		
+		return sheets;
+	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
 		/*
+		// 1) create an organizer
 		Organizer alice = new Organizer();
 		alice.setFirstName("Alice");
 		alice.setLastName("Wonderland");
@@ -40,13 +59,36 @@ public class SignUpSheetDao {
 		alice.setPassword("queenofhearts");
 		alice.setEmail("alice@wonderland.com");
 		dao.register(alice);
-		*/
 
+		// 2) validate an organizer
 		boolean userExists = dao.validate(1);
 		if(userExists)
 			System.out.println("User Exists");
 		else
 			System.out.println("User Does Not Exists");
+		*/
+		
 
+		// 3) Create a sheet for an organizer ID with an address and display all sheets
+		Address address = new Address();
+		address.setStreet1("Las Canteras");
+		address.setCity("Palm Spring");
+		address.setState("CA");
+		address.setZip("12344-4321");
+		address.setStreet2(null);
+		
+		Sheet sheet = new Sheet();
+		sheet.setDescription("Web Project Demo Description");
+		sheet.setEventDate(new Date());
+		sheet.setName("Web Project Demo");
+		sheet.setWhere(address);
+		
+		address.setSheet(sheet);	// <-- ojo
+
+		List<Sheet> sheets = dao.createSheet(1, sheet);
+		
+		for(Sheet s : sheets) {
+			System.out.println(s.getName());
+		}
 	}
 }
