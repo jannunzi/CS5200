@@ -123,6 +123,18 @@ public class SignUpSheetDao {
 			e.printStackTrace();
 		}
 	}
+	public void exportOrganizersToXml(String xmlFileName, Organizers organizers) {
+		File file = new File(xmlFileName);
+		try {
+			JAXBContext jaxb = JAXBContext.newInstance(Organizers.class);
+			Marshaller marshaller = jaxb.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			marshaller.marshal(organizers, file);
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public Organizer getOrganizer(int organizer_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
@@ -229,7 +241,13 @@ public class SignUpSheetDao {
 		}
 		*/
 		// 8) Marshall organizer to XML
+		/*
 		Organizer alice = dao.getOrganizer(1);
 		dao.exportToXml("xml/alice.xml", alice);
+		*/
+		List<Organizer> orgs = dao.getAllOrganizers();
+		Organizers organizers = new Organizers();
+		organizers.setOrganizers(orgs);
+		dao.exportOrganizersToXml("xml/organizers.xml", organizers);	
 	}
 }
