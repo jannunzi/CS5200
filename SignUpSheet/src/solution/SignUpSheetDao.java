@@ -89,6 +89,24 @@ public class SignUpSheetDao {
 		
 		return slots;
 	}
+	public List<TimeSlot> updateTimeSlot(int sheet_id, int slot_id, TimeSlot newSlot) {
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		TimeSlot slot = em.find(TimeSlot.class, slot_id);
+		slot.setNotes(newSlot.getNotes());
+		slot.setSlotDate(newSlot.getSlotDate());
+		slot.setWho(slot.getWho());
+		em.merge(slot);
+		
+		Sheet sheet = em.find(Sheet.class, sheet_id);		
+		List<TimeSlot> slots = sheet.getTimeSlots();
+
+		em.getTransaction().commit();
+		em.close();
+		
+		return slots;
+	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
@@ -154,9 +172,21 @@ public class SignUpSheetDao {
 		}
 		*/
 		// 6) Remove TimeSlot from Sheet
+		/*
 		List<TimeSlot> slots = dao.deleteTimeSlot(3, 2);
 		for(TimeSlot s : slots) {
 			System.out.println(s.getNotes());
-		}		
+		}
+		*/
+		// 7) Update TimeSlot for Sheet
+		TimeSlot slot = new TimeSlot();
+		slot.setNotes("My awsome project 2 222");
+		slot.setSlotDate(new Date());
+		slot.setWho("Team C");
+		
+		List<TimeSlot> slots = dao.updateTimeSlot(3, 1, slot);
+		for(TimeSlot s : slots) {
+			System.out.println(s.getNotes());
+		}
 	}
 }
