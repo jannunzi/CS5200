@@ -4,3 +4,82 @@
 <br/>
 <a href="rest/organizer/1/sheet">Get Sheets for Organizer with ID = 1</a>
 <br/>
+
+<script src="js/jquery.js"></script>
+
+<script>
+	$(function() {
+		var organizer = {
+			firstName: "Charlie",
+			lastName: "Garcia",
+			username: "cgarcia",
+			password: "hormigas",
+			email: "charlie@argentina.com"
+		};
+		var address = {
+			street1: "123 Broadstreet",
+			city: "Springfield",
+			state: "MA",
+			zip: "12345"
+		};
+		var sheet = {
+			name: "Sheet 123",
+			description: "Sheet 123 Sheet 123 Sheet 123 Sheet 123 ",
+			eventDate: 1398052800000,
+			where: address
+		}
+		var slot = {
+			slotDate: 1398052800000,
+			who: "A Team",
+			notes: "Notes Notes Notes Notes Notes Notes "
+		};
+		// createNewOrganizer(organizer);
+		// createSheet(1, sheet);
+		addTimeSlot(3, slot);
+	});
+	function addTimeSlot(sheet_id, slot) {
+		$.ajax({
+			url: "rest/organizer/sheet/"+sheet_id+"/slot",
+			type: "put",
+			data: JSON.stringify(slot),
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+	function createSheet(organizer_id, sheet) {
+		$.ajax({
+			url: "rest/organizer/"+organizer_id+"/sheet",
+			type: "post",
+			data: JSON.stringify(sheet),
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+	function createNewOrganizer(organizer) {
+		$.ajax({
+			url: "rest/organizer",
+			type: "post",
+			data: JSON.stringify(organizer),
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+</script>

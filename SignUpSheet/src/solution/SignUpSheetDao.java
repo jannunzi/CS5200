@@ -91,7 +91,7 @@ public class SignUpSheetDao {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/sheet/{id}/slot")
-	public List<TimeSlot> addTimeSlot(int sheet_id, TimeSlot slot) {
+	public List<TimeSlot> addTimeSlot(@PathParam("id") int sheet_id, TimeSlot slot) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
