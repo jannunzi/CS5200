@@ -4,17 +4,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
+@XmlRootElement
 public class Address {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlAttribute
 	private int id;
+	@XmlAttribute
 	private String street1;
+	@XmlAttribute
 	private String street2;
+	@XmlAttribute
 	private String city;
+	@XmlAttribute
 	private String state;
+	@XmlAttribute
 	private String zip;
+	@XmlTransient
 	private Sheet sheet;
 	public String getStreet1() {
 		return street1;
