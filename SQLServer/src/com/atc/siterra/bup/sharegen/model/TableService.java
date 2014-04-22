@@ -177,4 +177,12 @@ public class TableService
 		
 		svc.exportDataseToXml(db, "siterra/bup.xml");
 	}
+
+	public TableService() {
+		super();
+		this.database = new Database("ShareGen",
+				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
+				"microsoft","sqlserver","QCSMN01","1433",
+				"semaan_app_user","qcdb01",null);
+	}
 }
