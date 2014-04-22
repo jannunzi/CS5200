@@ -134,6 +134,17 @@ public class SignUpSheetDao {
 		
 		return organizer;
 	}
+	public List<Organizer> getAllOrganizers() {
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		List<Organizer> organizers = em.createNamedQuery("findAllOrganizers").getResultList();
+
+		em.getTransaction().commit();
+		em.close();
+		
+		return organizers;
+	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
