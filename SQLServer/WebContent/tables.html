@@ -12,7 +12,9 @@
 
 	<table class="table">
 		<tr ng-repeat="table in tables">
-			<td>{{table.name}}
+			<td>
+				<a href="#{{table.name}}">{{table.name}}</a>
+			</td>
 		</tr>
 	</table>
 	
