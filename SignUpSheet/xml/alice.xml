@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<organizer id="1" firstName="Alice" lastName="Wonderland" username="alice" password="queenofhearts" email="alice@wonderland.com" joined="2014-04-21T00:00:00-04:00">
+    <sheet id="3" name="Project Demo" description="Project Demo Description" eventDate="2014-04-21T00:00:00-04:00">
+        <where id="3" street1="360 Hungtington Ave" city="Boston" state="MA" zip="12344-4321"/>
+        <time-slot id="1" slotDate="2014-04-21T00:00:00-04:00" who="Team A" notes="My awsome project 2 222"/>
+        <time-slot id="3" slotDate="2014-04-21T00:00:00-04:00" who="Team B" notes="My awsome project 2"/>
+    </sheet>
+    <sheet id="4" name="Web Project Demo" description="Web Project Demo Description" eventDate="2014-04-21T00:00:00-04:00">
+        <where id="4" street1="Las Canteras" city="Palm Spring" state="CA" zip="12344-4321"/>
+        <time-slot id="4" slotDate="2021-04-21T00:00:00-04:00" who="Team C" notes="Project 123"/>
+        <time-slot id="6" slotDate="2001-04-21T00:00:00-04:00" who="Team D" notes="Project 234"/>
+    </sheet>
+</organizer>
