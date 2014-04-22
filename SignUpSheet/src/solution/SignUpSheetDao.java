@@ -1,11 +1,15 @@
 package solution;
 
+import java.io.File;
 import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Marshaller;
 
 public class SignUpSheetDao {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("SignUpSheet");
@@ -107,7 +111,18 @@ public class SignUpSheetDao {
 		
 		return slots;
 	}
-	
+	public void exportToXml(String xmlFileName, Organizer organizer) {
+		File file = new File(xmlFileName);
+		try {
+			JAXBContext jaxb = JAXBContext.newInstance(Organizer.class);
+			Marshaller marshaller = jaxb.createMarshaller();
+			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+			marshaller.marshal(organizer, file);
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
