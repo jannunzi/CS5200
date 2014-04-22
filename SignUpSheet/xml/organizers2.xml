@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<organizers>
+    <organizer id="1" firstName="Alice" lastName="Wonderland" username="alice" password="queenofhearts" email="alice@wonderland.com" joined="2014-04-21T00:00:00-04:00">
+        <sheet id="3" name="Project Demo" description="Project Demo Description" eventDate="2014-04-21T00:00:00-04:00">
+            <where id="3" street1="360 Hungtington Ave" city="Boston" state="MA" zip="12344-4321"/>
+            <time-slot id="1" slotDate="2014-04-21T00:00:00-04:00" who="Team A" notes="My awsome project 2 222"/>
+            <time-slot id="3" slotDate="2014-04-21T00:00:00-04:00" who="Team B" notes="My awsome project 2"/>
+        </sheet>
+        <sheet id="4" name="Web Project Demo 1" description="Web Project Demo Description" eventDate="2014-04-21T00:00:00-04:00">
+            <where id="4" street1="Las Canteras" city="Palm Spring" state="CA" zip="12344-4321"/>
+            <time-slot id="4" slotDate="2021-04-21T00:00:00-04:00" who="Team C" notes="Project 123"/>
+            <time-slot id="6" slotDate="2001-04-21T00:00:00-04:00" who="Team D" notes="Project 234"/>
+        </sheet>
+        <sheet id="4" name="Web Project Demo 2" description="Web Project Demo Description" eventDate="2014-04-21T00:00:00-04:00">
+            <where id="4" street1="Las Canteras" city="Palm Spring" state="CA" zip="12344-4321"/>
+            <time-slot id="4" slotDate="2021-04-21T00:00:00-04:00" who="Team C" notes="Project 123"/>
+            <time-slot id="6" slotDate="2001-04-21T00:00:00-04:00" who="Team D" notes="Project 234"/>
+        </sheet>
+        <sheet id="4" name="Web Project Demo 3" description="Web Project Demo Description" eventDate="2014-04-21T00:00:00-04:00">
+            <where id="4" street1="Las Canteras" city="Palm Spring" state="CA" zip="12344-4321"/>
+            <time-slot id="4" slotDate="2021-04-21T00:00:00-04:00" who="Team C" notes="Project 123"/>
+            <time-slot id="6" slotDate="2001-04-21T00:00:00-04:00" who="Team D" notes="Project 234"/>
+        </sheet>
+    </organizer>
+    <organizer id="2" firstName="Bob" lastName="Marley" username="bobby" password="peace" email="bob@marley.com" joined="2014-04-21T00:00:00-04:00">
+        <sheet id="5" name="Is This Love" description="Is This Love Song Writing" eventDate="2014-04-21T00:00:00-04:00">
+            <where id="4" street1="Las Canteras 1" city="Palm Spring" state="CA" zip="12344-4321"/>
+            <time-slot id="7" slotDate="2014-05-21T00:00:00-04:00" who="Team 1E" notes="Project 345"/>
+            <time-slot id="7" slotDate="2014-05-22T00:00:00-04:00" who="Team 2E" notes="Project 345"/>
+            <time-slot id="7" slotDate="2014-05-23T00:00:00-04:00" who="Team 3E" notes="Project 345"/>
+            <time-slot id="7" slotDate="2014-05-24T00:00:00-04:00" who="Team 4E" notes="Project 345"/>
+        </sheet>
+        <sheet id="6" name="One Love" description="One Love singing" eventDate="2014-04-21T00:00:00-04:00">
+            <where id="4" street1="Las Canteras 2" city="Palm Spring" state="CA" zip="12344-4321"/>
+            <time-slot id="8" slotDate="2014-06-25T00:00:00-04:00" who="Team 45F" notes="Project 456"/>
+            <time-slot id="7" slotDate="2014-05-26T00:00:00-04:00" who="Team 56E" notes="Project 345"/>
+            <time-slot id="7" slotDate="2014-05-27T00:00:00-04:00" who="Team 67E" notes="Project 345"/>
+            <time-slot id="7" slotDate="2014-05-28T00:00:00-04:00" who="Team 78E" notes="Project 345"/>
+        </sheet>
+    </organizer>
+</organizers>

@@ -1,5 +1,6 @@
 package solution;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -11,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(value = XmlAccessType.FIELD)
 public class Organizers {
 	@XmlElement(name="organizer")
-	List<Organizer> organizers;
+	List<Organizer> organizers = new ArrayList<Organizer>();
 	public List<Organizer> getOrganizers() {
 		return organizers;
 	}

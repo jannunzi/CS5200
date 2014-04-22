@@ -1,6 +1,7 @@
 package solution;
 
 import java.io.File;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
 
@@ -10,6 +11,12 @@ import javax.persistence.Persistence;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.stream.StreamResult;
+import javax.xml.transform.stream.StreamSource;
 
 public class SignUpSheetDao {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("SignUpSheet");
@@ -135,6 +142,19 @@ public class SignUpSheetDao {
 			e.printStackTrace();
 		}
 	}
+	public Organizers importOrganizersFromXml(String xmlFileName) {
+		File file = new File(xmlFileName);
+		Organizers orgs = new Organizers();
+		try {
+			JAXBContext jaxb = JAXBContext.newInstance(Organizers.class);
+			Unmarshaller marshaller = jaxb.createUnmarshaller();
+			orgs = (Organizers) marshaller.unmarshal(file);
+		} catch (JAXBException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return orgs;
+	}
 	public Organizer getOrganizer(int organizer_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
@@ -156,6 +176,23 @@ public class SignUpSheetDao {
 		em.close();
 		
 		return organizers;
+	}
+	public void transform(String inputFileName, String outputFileName, String xsltFileName) {
+		File inputFile = new File(inputFileName);
+		File outputFile = new File(outputFileName);
+		File xsltFile = new File(xsltFileName);
+		javax.xml.transform.stream.StreamSource inputSrc = new StreamSource(inputFile);
+		javax.xml.transform.stream.StreamSource xsltSrc = new StreamSource(xsltFile);
+		javax.xml.transform.stream.StreamResult outputSrc = new StreamResult(outputFile);
+		javax.xml.transform.TransformerFactory factory = TransformerFactory.newInstance();
+		try {
+			Transformer tx = factory.newTransformer(xsltSrc);
+			tx.transform(inputSrc, outputSrc);
+		} catch (TransformerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
@@ -245,9 +282,26 @@ public class SignUpSheetDao {
 		Organizer alice = dao.getOrganizer(1);
 		dao.exportToXml("xml/alice.xml", alice);
 		*/
+		// 9) Marshall all organizers to XML
+		/*
 		List<Organizer> orgs = dao.getAllOrganizers();
 		Organizers organizers = new Organizers();
 		organizers.setOrganizers(orgs);
 		dao.exportOrganizersToXml("xml/organizers.xml", organizers);	
+		*/
+		// 10) Unmarshall all organizers from XML
+		/*
+		Organizers orgs = dao.importOrganizersFromXml("xml/organizers2.xml");
+		for(Organizer org : orgs.getOrganizers()) {
+			System.out.println(org.getLastName());
+			for(Sheet s : org.getSheets()) {
+				System.out.println(s.getName());
+				for(TimeSlot slot : s.getTimeSlots()) {
+					System.out.print(slot.getNotes());
+					System.out.println(slot.getSlotDate());
+				}
+			}
+		}
+		*/
 	}
 }
