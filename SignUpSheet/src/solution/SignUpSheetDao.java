@@ -59,6 +59,21 @@ public class SignUpSheetDao {
 		
 		return sheet;
 	}
+	public List<TimeSlot> addTimeSlot(int sheet_id, TimeSlot slot) {
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		Sheet sheet = em.find(Sheet.class, sheet_id);
+		sheet.getTimeSlots().add(slot);
+		List<TimeSlot> slots = sheet.getTimeSlots();
+		slot.setSheet(sheet);
+		em.merge(sheet);
+
+		em.getTransaction().commit();
+		em.close();
+		
+		return slots;
+	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
@@ -104,10 +119,22 @@ public class SignUpSheetDao {
 		}
 		*/
 		// 4) Get all sheets for an organizer
+		/*
 		List<Sheet> sheets = dao.getAllSheets(1);
 		
 		for(Sheet s : sheets) {
 			System.out.println(s.getName());
+		}
+		*/
+		// 5) Add TimeSlots to Sheet
+		TimeSlot slot = new TimeSlot();
+		slot.setNotes("My awsome project 2");
+		slot.setSlotDate(new Date());
+		slot.setWho("Team B");
+		
+		List<TimeSlot> slots = dao.addTimeSlot(3, slot);
+		for(TimeSlot s : slots) {
+			System.out.println(s.getNotes());
 		}
 	}
 }
