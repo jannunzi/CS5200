@@ -14,22 +14,34 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
+@XmlRootElement
 public class Sheet {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlAttribute
 	private int id;
+	@XmlAttribute
 	private String name;
+	@XmlAttribute
 	private String description;
 	@Temporal(TemporalType.DATE)
+	@XmlAttribute
 	private Date eventDate;
 	@OneToOne(mappedBy="sheet")
+	@XmlElement
 	private Address where;
 	@ManyToOne
 	@JoinColumn(name="organizer_id")
+	@XmlTransient
 	private Organizer organizer;
 	@OneToMany(mappedBy="sheet")
+	@XmlElement(name="time-slot")
 	private List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
 	public int getId() {
 		return id;
