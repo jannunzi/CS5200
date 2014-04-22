@@ -17,6 +17,27 @@
 	<classpathentry kind="lib" path="WebContent/lib/mssqlserver.jar"/>
 	<classpathentry kind="lib" path="WebContent/lib/msutil.jar"/>
 	<classpathentry kind="lib" path="WebContent/lib/mysql-connector-java-5.1.29-bin.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jackson-core-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jackson-jaxrs-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jackson-mapper-asl-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jackson-xc-1.9.2.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-apache-client-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-atom-abdera-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-client-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-core-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-guice-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-json-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-multipart-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-server-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-servlet-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-simple-server-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jersey-spring-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jettison-1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/oauth-client-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/oauth-server-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/oauth-signature-1.18.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.0 - Kepler">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
