@@ -75,7 +75,7 @@ public class SignUpSheetDao {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/{id}/sheet")
-	public List<Sheet> getAllSheets(int organizer_id) {
+	public List<Sheet> getAllSheets(@PathParam("id") int organizer_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
@@ -186,6 +186,7 @@ public class SignUpSheetDao {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
+	// <a href="rest/organizer">Get All Organizers</a>
 	public Organizer getOrganizer(@PathParam("id") int organizer_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
@@ -200,6 +201,7 @@ public class SignUpSheetDao {
 	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
+	// <a href="rest/organizer">Get All Organizers</a>
 	public List<Organizer> getAllOrganizers() {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
