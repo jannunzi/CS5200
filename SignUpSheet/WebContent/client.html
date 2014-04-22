@@ -35,8 +35,38 @@
 		};
 		// createNewOrganizer(organizer);
 		// createSheet(1, sheet);
-		addTimeSlot(3, slot);
+		// addTimeSlot(3, slot);
+		// deleteTimeSlot(3, 9);
+		// updateTimeSlot(6, 8, slot);
 	});
+	function updateTimeSlot(sheetId, slotId, slot) {
+		$.ajax({
+			url: "rest/organizer/sheet/"+sheetId+"/slot/"+slotId,
+			type: "put",
+			data: JSON.stringify(slot),
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
+	function deleteTimeSlot(sheetId, slotId) {
+		$.ajax({
+			url: "rest/organizer/sheet/"+sheetId+"/slot/"+slotId,
+			type: "delete",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			},
+			error: function(response) {
+				console.log(response);
+			}
+		});
+	}
 	function addTimeSlot(sheet_id, slot) {
 		$.ajax({
 			url: "rest/organizer/sheet/"+sheet_id+"/slot",
