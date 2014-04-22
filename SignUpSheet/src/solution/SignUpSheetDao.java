@@ -217,5 +217,8 @@ public class SignUpSheetDao {
 			System.out.println(s.getNotes());
 		}
 		*/
+		// 8) Marshall organizer to XML
+		Organizer alice = dao.getOrganizer(1);
+		dao.exportToXml("xml/alice.xml", alice);
 	}
 }
