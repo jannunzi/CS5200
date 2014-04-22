@@ -10,13 +10,48 @@
 </head>
 <body ng-controller="TableController">
 
-	<table class="table">
+	<div class="container">
+	<div class="row">
+		<div class="col-xs-12">
+	
+	<a href="#excel" class="btn btn-success" ng-click="exportToExcel()">Export to Excel</a>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Table</th>
+			</tr>
+		</thead>
+		<tbody>
 		<tr ng-repeat="table in tables">
 			<td>
-				<a href="#{{table.name}}">{{table.name}}</a>
+				<input type="checkbox" ng-model="tables[$index].selected" ng-click="selectTable($index)"/> <a href="#{{table.name}}" ng-click="toggleTable($index)">{{table.name}}</a>
+				<table class="table table-striped" ng-show="table.show">
+					<thead>
+						<tr>
+							<th>Database Field</th>
+							<th>Excel Column</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="column in table.columns">
+							<td>
+								<input type="checkbox" ng-model="column.selected" ng-click="selectColumn(table, $index)"/> <b>{{column.name}}</b>
+								<span class="initialism">{{column.typeName}}({{column.size}})</span>
+							</td>
+							<td>
+								<input type="text" class="form-control"/>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</td>
 		</tr>
+		</tbody>
 	</table>
+		</div>
+	</div>
+	</div>
 	
 </body>
 </html>

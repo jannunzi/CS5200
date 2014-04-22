@@ -38,6 +38,11 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-client-1.18.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-server-1.18.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-signature-1.18.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/poi-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/poi-ooxml-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/poi-ooxml-schemas-3.10-FINAL-20140208.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/xbean.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.0 - Kepler">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>

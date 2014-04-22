@@ -48,6 +48,12 @@ public class TableService
 	}
 	
 	@GET
+	@Path("/excel")
+	public void exportToExcel() {
+		System.out.println("Excel");
+	}
+	
+	@GET
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Table> getTables()
