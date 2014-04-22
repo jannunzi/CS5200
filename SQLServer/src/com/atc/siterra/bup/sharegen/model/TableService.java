@@ -4,10 +4,16 @@ import java.io.File;
 import java.sql.*;
 import java.util.*;
 
+import javax.ws.rs.GET;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
+@Path("/table")
 public class TableService
 {
 	private Database database = null;
@@ -41,6 +47,9 @@ public class TableService
 		}
 	}
 	
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Table> getTables()
 	{
 		List<Table> tables = new ArrayList<Table>();
@@ -65,7 +74,10 @@ public class TableService
 		return tables;
 	}
 	
-	public List<Column> getColumns(String tableName)
+	@GET
+	@Path("/{name}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Column> getColumns(@PathParam("name") String tableName)
 	{
 		List<Column> columns = new ArrayList<Column>();
 		
