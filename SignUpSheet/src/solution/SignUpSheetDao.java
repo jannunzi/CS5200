@@ -1,13 +1,20 @@
 package solution;
 
 import java.io.File;
-import java.sql.Time;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -17,10 +24,13 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
-
+@Path("/organizer")
 public class SignUpSheetDao {
 	EntityManagerFactory factory = Persistence.createEntityManagerFactory("SignUpSheet");
 	EntityManager em = null;
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/")
 	public void register(Organizer organizer) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
@@ -43,7 +53,11 @@ public class SignUpSheetDao {
 			return false;
 		return true;
 	}
-	public List<Sheet> createSheet(int organizer_id, Sheet sheet) {
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{id}/sheet")
+	public List<Sheet> createSheet(@PathParam("id") int organizer_id, Sheet sheet) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
@@ -58,6 +72,9 @@ public class SignUpSheetDao {
 		
 		return sheets;
 	}
+	@GET
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/{id}/sheet")
 	public List<Sheet> getAllSheets(int organizer_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
@@ -70,6 +87,10 @@ public class SignUpSheetDao {
 		
 		return sheet;
 	}
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/sheet/{id}/slot")
 	public List<TimeSlot> addTimeSlot(int sheet_id, TimeSlot slot) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
@@ -85,7 +106,10 @@ public class SignUpSheetDao {
 		
 		return slots;
 	}
-	public List<TimeSlot> deleteTimeSlot(int sheet_id, int slot_id) {
+	@DELETE
+	@Produces(MediaType.APPLICATION_JSON)
+	@Path("/sheet/{sheetId}/slot/{slotId}")
+	public List<TimeSlot> deleteTimeSlot(@PathParam("sheetId") int sheet_id, @PathParam("slotId") int slot_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
@@ -100,7 +124,11 @@ public class SignUpSheetDao {
 		
 		return slots;
 	}
-	public List<TimeSlot> updateTimeSlot(int sheet_id, int slot_id, TimeSlot newSlot) {
+	@PUT
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Path("/sheet/{sheetId}/slot/{slotId}")
+	public List<TimeSlot> updateTimeSlot(@PathParam("sheetId") int sheet_id,@PathParam("slotId")  int slot_id, TimeSlot newSlot) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
@@ -155,7 +183,10 @@ public class SignUpSheetDao {
 		}
 		return orgs;
 	}
-	public Organizer getOrganizer(int organizer_id) {
+	@GET
+	@Path("/{id}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Organizer getOrganizer(@PathParam("id") int organizer_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
@@ -166,6 +197,9 @@ public class SignUpSheetDao {
 		
 		return organizer;
 	}
+	@GET
+	@Path("/")
+	@Produces(MediaType.APPLICATION_JSON)
 	public List<Organizer> getAllOrganizers() {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
