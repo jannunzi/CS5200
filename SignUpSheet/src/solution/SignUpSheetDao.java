@@ -107,6 +107,7 @@ public class SignUpSheetDao {
 		
 		return slots;
 	}
+	
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
@@ -179,6 +180,7 @@ public class SignUpSheetDao {
 		}
 		*/
 		// 7) Update TimeSlot for Sheet
+		/*
 		TimeSlot slot = new TimeSlot();
 		slot.setNotes("My awsome project 2 222");
 		slot.setSlotDate(new Date());
@@ -188,5 +190,6 @@ public class SignUpSheetDao {
 		for(TimeSlot s : slots) {
 			System.out.println(s.getNotes());
 		}
+		*/
 	}
 }

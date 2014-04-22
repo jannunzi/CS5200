@@ -11,20 +11,32 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@XmlRootElement
 public class Organizer {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@XmlAttribute
 	private int id;
+	@XmlAttribute
 	private String firstName;
+	@XmlAttribute
 	private String lastName;
+	@XmlAttribute
 	private String username;
+	@XmlAttribute
 	private String password;
+	@XmlAttribute
 	private String email;
 	@Temporal(TemporalType.DATE)
+	@XmlAttribute
 	private Date joined = new Date();
 	@OneToMany(mappedBy="organizer")
+	@XmlElement(name="sheet")
 	private List<Sheet> sheets = new ArrayList<Sheet>();
 	public int getId() {
 		return id;
