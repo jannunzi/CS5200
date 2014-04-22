@@ -303,5 +303,10 @@ public class SignUpSheetDao {
 			}
 		}
 		*/
+		// 11) Transform 1
+		// dao.transform("xml/organizers2.xml", "xml/slots.xml", "xml/organizers2slots.xsl");
+		// 12) Transform 2
+		// dao.transform("xml/organizers2.xml", "xml/organizers.html", "xml/organizers2html.xsl");
+		
 	}
 }

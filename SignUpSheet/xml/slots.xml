@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><slots>
+<slot when="2014-04-21T00:00:00-04:00" who="Team A">
+<where street1="360 Hungtington Ave" street2="" city="Boston" state="MA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2014-04-21T00:00:00-04:00" who="Team B">
+<where street1="360 Hungtington Ave" street2="" city="Boston" state="MA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2021-04-21T00:00:00-04:00" who="Team C">
+<where street1="Las Canteras" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2001-04-21T00:00:00-04:00" who="Team D">
+<where street1="Las Canteras" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2021-04-21T00:00:00-04:00" who="Team C">
+<where street1="Las Canteras" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2001-04-21T00:00:00-04:00" who="Team D">
+<where street1="Las Canteras" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2021-04-21T00:00:00-04:00" who="Team C">
+<where street1="Las Canteras" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2001-04-21T00:00:00-04:00" who="Team D">
+<where street1="Las Canteras" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Alice" lastName="Wonderland" email="alice@wonderland.com"/>
+</slot>
+<slot when="2014-05-21T00:00:00-04:00" who="Team 1E">
+<where street1="Las Canteras 1" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+<slot when="2014-05-22T00:00:00-04:00" who="Team 2E">
+<where street1="Las Canteras 1" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+<slot when="2014-05-23T00:00:00-04:00" who="Team 3E">
+<where street1="Las Canteras 1" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+<slot when="2014-05-24T00:00:00-04:00" who="Team 4E">
+<where street1="Las Canteras 1" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+<slot when="2014-06-25T00:00:00-04:00" who="Team 45F">
+<where street1="Las Canteras 2" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+<slot when="2014-05-26T00:00:00-04:00" who="Team 56E">
+<where street1="Las Canteras 2" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+<slot when="2014-05-27T00:00:00-04:00" who="Team 67E">
+<where street1="Las Canteras 2" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+<slot when="2014-05-28T00:00:00-04:00" who="Team 78E">
+<where street1="Las Canteras 2" street2="" city="Palm Spring" state="CA" zip="12344-4321"/>
+<organizer firstName="Bob" lastName="Marley" email="bob@marley.com"/>
+</slot>
+</slots>
