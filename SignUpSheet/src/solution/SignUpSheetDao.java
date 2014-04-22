@@ -123,6 +123,17 @@ public class SignUpSheetDao {
 			e.printStackTrace();
 		}
 	}
+	public Organizer getOrganizer(int organizer_id) {
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		Organizer organizer = em.find(Organizer.class, organizer_id);
+
+		em.getTransaction().commit();
+		em.close();
+		
+		return organizer;
+	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
