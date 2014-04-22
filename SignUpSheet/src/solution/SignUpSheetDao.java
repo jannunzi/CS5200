@@ -47,6 +47,18 @@ public class SignUpSheetDao {
 		
 		return sheets;
 	}
+	public List<Sheet> getAllSheets(int organizer_id) {
+		em = factory.createEntityManager();
+		em.getTransaction().begin();
+
+		Organizer organizer = em.find(Organizer.class, organizer_id);
+		List<Sheet> sheet = organizer.getSheets();
+
+		em.getTransaction().commit();
+		em.close();
+		
+		return sheet;
+	}
 	public static void main(String[] args) {
 		SignUpSheetDao dao = new SignUpSheetDao();
 
@@ -67,9 +79,9 @@ public class SignUpSheetDao {
 		else
 			System.out.println("User Does Not Exists");
 		*/
-		
 
 		// 3) Create a sheet for an organizer ID with an address and display all sheets
+		/*
 		Address address = new Address();
 		address.setStreet1("Las Canteras");
 		address.setCity("Palm Spring");
@@ -86,6 +98,13 @@ public class SignUpSheetDao {
 		address.setSheet(sheet);	// <-- ojo
 
 		List<Sheet> sheets = dao.createSheet(1, sheet);
+		
+		for(Sheet s : sheets) {
+			System.out.println(s.getName());
+		}
+		*/
+		// 4) Get all sheets for an organizer
+		List<Sheet> sheets = dao.getAllSheets(1);
 		
 		for(Sheet s : sheets) {
 			System.out.println(s.getName());
