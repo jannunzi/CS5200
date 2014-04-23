@@ -52,11 +52,11 @@ public class TableService
 	@POST
 	@Path("/excel")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void exportToExcel(List<ExcelExportTable> tables) {
+	public void exportToExcel(List<ExcelExportTable> tables) throws SQLException {
 		System.out.println("Excel");
 		System.out.println(tables);
 		ExportToExcelFields edb = new ExportToExcelFields();
-		edb.exportExcelExportTables(tables, null);
+		edb.exportExcelExportTables(tables, this);
 	}
 	
 	@GET
@@ -84,6 +84,19 @@ public class TableService
 		}
 		
 		return tables;
+	}
+	
+	public ResultSet executeQuery(String query)
+	{
+		ResultSet result = null;
+		try {
+			Connection connection = getConnection();
+			Statement statement = connection.createStatement();
+			result = statement.executeQuery(query);
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return result;
 	}
 	
 	@GET

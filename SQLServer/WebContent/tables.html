@@ -7,17 +7,32 @@
 <script src="js/jquery.js"></script>
 <script src="js/angular.min.js"></script>
 <script src="js/app.js"></script>
+<style>
+	input {
+		margin-bottom : 5px;
+	}
+</style>
 </head>
 <body ng-controller="TableController">
 
 	<div class="container">
-	<div class="row">
-		<div class="col-xs-12">
+	<div class="row">	
+		<div class="col-xs-3">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Toolbox</th>
+					</tr>
+				</thead>
+			</table>
+		
+			<input ng-model="searchTable" placeholder="Filter Tables" class="form-control"/>
+			<input ng-model="searchField" placeholder="Filter Fields" class="form-control"/>
+			<a href="#excel" class="btn btn-success btn-block" ng-click="exportToExcel()">Export to Excel</a>	
+			<a href="#toggleAll" class="btn btn-success btn-block" ng-click="toggleAllTables()">Toggle All Tables</a>
+		</div>
 	
-	<a href="#excel" class="btn btn-success" ng-click="exportToExcel()">Export to Excel</a>	
-	<a href="#toggleAll" class="btn btn-success" ng-click="toggleAllTables()">Toggle All Tables</a>
-	<input ng-model="searchTable" placeholder="Filter Tables" class="form-control"/>
-	<input ng-model="searchField" placeholder="Filter Fields" class="form-control"/>
+		<div class="col-xs-9">
 
 	<table class="table table-striped">
 		<thead>
