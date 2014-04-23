@@ -4,7 +4,9 @@ import java.io.File;
 import java.sql.*;
 import java.util.*;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -47,10 +49,14 @@ public class TableService
 		}
 	}
 	
-	@GET
+	@POST
 	@Path("/excel")
-	public void exportToExcel() {
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void exportToExcel(List<ExcelExportTable> tables) {
 		System.out.println("Excel");
+		System.out.println(tables);
+		ExportToExcelFields edb = new ExportToExcelFields();
+		edb.exportExcelExportTables(tables, null);
 	}
 	
 	@GET

@@ -32,25 +32,29 @@ function TableController($scope, $http) {
 		for(var t=0; t<$scope.tables.length; t++) {
 			var table = $scope.tables[t];
 			if(table.selected) {
+				var tableObj = {tableName: table.name, columns: []};
 				for(var c=0; c<table.columns.length; c++) {
 					var column = table.columns[c];
-					var selection = {table: table.name, column: column.name, excelColumn: column.excelColumnName};
-					selected.push(selection);
+					var columnObj = {columnName: column.name, excelColumnName: column.excelColumnName};
+					tableObj.columns.push(columnObj);
 				}
+				selected.push(tableObj);
 			} else {
 				if(table.columns) {
+					var tableObj = {tableName: table.name, columns: []};
 					for(var c=0; c<table.columns.length; c++) {
 						var column = table.columns[c];
 						if(column.selected) {
-							var selection = {table: table.name, column: column.name, excelColumn: column.excelColumnName};
-							selected.push(selection);
+							var columnObj = {columnName: column.name, excelColumnName: column.excelColumnName};
+							tableObj.columns.push(columnObj);
 						}
 					}
+					selected.push(tableObj);
 				}
 			}
 		}
 		console.log(selected);
-		$http.get("api/table/excel")
+		$http.post("api/table/excel", selected)
 			.success(function(response){console.log(response);})
 	}
 	$http.get("api/table")
