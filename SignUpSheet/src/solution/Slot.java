@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @XmlRootElement
 @XmlAccessorType(value = XmlAccessType.FIELD)
-public class TimeSlot {
+public class Slot {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@XmlAttribute
@@ -59,7 +59,7 @@ public class TimeSlot {
 	public void setSheet(Sheet sheet) {
 		this.sheet = sheet;
 	}
-	public TimeSlot() {
+	public Slot() {
 		super();
 	}
 	public Date getSlotDate() {

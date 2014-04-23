@@ -5,7 +5,7 @@
 		<class>solution.Organizer</class>
 		<class>solution.Sheet</class>
 		<class>solution.Address</class>
-		<class>solution.TimeSlot</class>
+		<class>solution.Slot</class>
 		<properties>
 			<property name="eclipselink.jdbc.password" value=""/>
 			<property name="eclipselink.jdbc.user" value="root"/>

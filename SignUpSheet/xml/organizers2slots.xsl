@@ -3,7 +3,7 @@
 	<xsl:output method="xml" indent="yes"/>
 	<xsl:template match="/">
 		<slots>
-			<xsl:for-each select="organizers/organizer/sheet/time-slot">
+			<xsl:for-each select="organizers/organizer/sheet/slot">
 				<slot>
 					<xsl:attribute name="when">
 						<xsl:value-of select="@slotDate"/>

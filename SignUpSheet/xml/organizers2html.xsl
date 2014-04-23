@@ -11,7 +11,7 @@
 			<xsl:for-each select="sheet">
 			<h2><xsl:value-of select="@name"/></h2>
 			<table>
-				<xsl:for-each select="time-slot">
+				<xsl:for-each select="slot">
 				<tr>
 					<td><xsl:value-of select="@slotDate"/></td>
 					<td><xsl:value-of select="@who"/></td>

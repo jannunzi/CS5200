@@ -91,13 +91,13 @@ public class SignUpSheetDao {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/sheet/{id}/slot")
-	public List<TimeSlot> addTimeSlot(@PathParam("id") int sheet_id, TimeSlot slot) {
+	public List<Slot> addTimeSlot(@PathParam("id") int sheet_id, Slot slot) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
 		Sheet sheet = em.find(Sheet.class, sheet_id);
 		sheet.getTimeSlots().add(slot);
-		List<TimeSlot> slots = sheet.getTimeSlots();
+		List<Slot> slots = sheet.getTimeSlots();
 		slot.setSheet(sheet);
 		em.merge(sheet);
 
@@ -109,15 +109,15 @@ public class SignUpSheetDao {
 	@DELETE
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/sheet/{sheetId}/slot/{slotId}")
-	public List<TimeSlot> deleteTimeSlot(@PathParam("sheetId") int sheet_id, @PathParam("slotId") int slot_id) {
+	public List<Slot> deleteTimeSlot(@PathParam("sheetId") int sheet_id, @PathParam("slotId") int slot_id) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
-		TimeSlot slot = em.find(TimeSlot.class, slot_id);
+		Slot slot = em.find(Slot.class, slot_id);
 		em.remove(slot);
 		
 		Sheet sheet = em.find(Sheet.class, sheet_id);		
-		List<TimeSlot> slots = sheet.getTimeSlots();
+		List<Slot> slots = sheet.getTimeSlots();
 
 		em.getTransaction().commit();
 		em.close();
@@ -128,18 +128,18 @@ public class SignUpSheetDao {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/sheet/{sheetId}/slot/{slotId}")
-	public List<TimeSlot> updateTimeSlot(@PathParam("sheetId") int sheet_id,@PathParam("slotId")  int slot_id, TimeSlot newSlot) {
+	public List<Slot> updateTimeSlot(@PathParam("sheetId") int sheet_id,@PathParam("slotId")  int slot_id, Slot newSlot) {
 		em = factory.createEntityManager();
 		em.getTransaction().begin();
 
-		TimeSlot slot = em.find(TimeSlot.class, slot_id);
+		Slot slot = em.find(Slot.class, slot_id);
 		slot.setNotes(newSlot.getNotes());
 		slot.setSlotDate(newSlot.getSlotDate());
 		slot.setWho(slot.getWho());
 		em.merge(slot);
 		
 		Sheet sheet = em.find(Sheet.class, sheet_id);		
-		List<TimeSlot> slots = sheet.getTimeSlots();
+		List<Slot> slots = sheet.getTimeSlots();
 
 		em.getTransaction().commit();
 		em.close();
@@ -319,12 +319,12 @@ public class SignUpSheetDao {
 		dao.exportToXml("xml/alice.xml", alice);
 		*/
 		// 9) Marshall all organizers to XML
-		/*
+//		/*
 		List<Organizer> orgs = dao.getAllOrganizers();
 		Organizers organizers = new Organizers();
 		organizers.setOrganizers(orgs);
 		dao.exportOrganizersToXml("xml/organizers.xml", organizers);	
-		*/
+	//	*/
 		// 10) Unmarshall all organizers from XML
 		/*
 		Organizers orgs = dao.importOrganizersFromXml("xml/organizers2.xml");
@@ -340,9 +340,9 @@ public class SignUpSheetDao {
 		}
 		*/
 		// 11) Transform 1
-		// dao.transform("xml/organizers2.xml", "xml/slots.xml", "xml/organizers2slots.xsl");
+		dao.transform("xml/organizers2.xml", "xml/slots.xml", "xml/organizers2slots.xsl");
 		// 12) Transform 2
-		// dao.transform("xml/organizers2.xml", "xml/organizers.html", "xml/organizers2html.xsl");
+		dao.transform("xml/organizers2.xml", "xml/organizers.html", "xml/organizers2html.xsl");
 		
 	}
 }

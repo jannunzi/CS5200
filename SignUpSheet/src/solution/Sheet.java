@@ -44,8 +44,8 @@ public class Sheet {
 	@XmlTransient
 	private Organizer organizer;
 	@OneToMany(mappedBy="sheet")
-	@XmlElement(name="time-slot")
-	private List<TimeSlot> timeSlots = new ArrayList<TimeSlot>();
+	@XmlElement(name="slot")
+	private List<Slot> timeSlots = new ArrayList<Slot>();
 	public int getId() {
 		return id;
 	}
@@ -76,10 +76,10 @@ public class Sheet {
 	public void setOrganizer(Organizer organizer) {
 		this.organizer = organizer;
 	}
-	public List<TimeSlot> getTimeSlots() {
+	public List<Slot> getTimeSlots() {
 		return timeSlots;
 	}
-	public void setTimeSlots(List<TimeSlot> timeSlots) {
+	public void setTimeSlots(List<Slot> timeSlots) {
 		this.timeSlots = timeSlots;
 	}
 	public Sheet() {
