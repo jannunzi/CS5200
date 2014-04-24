@@ -19,7 +19,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExportToExcelFields
+public class ExportToExcel
 {
 	public void saveWorkbook(Workbook wb, String workbookFileName) {
 	    FileOutputStream fileOut;

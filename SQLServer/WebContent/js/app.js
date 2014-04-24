@@ -27,7 +27,8 @@ function TableController($scope, $http) {
 			table.show = true;
 		}
 	}
-	$scope.exportToExcel = function() {
+	
+	$scope.parseSelected = function() {
 		var selected = [];
 		for(var t=0; t<$scope.tables.length; t++) {
 			var table = $scope.tables[t];
@@ -56,6 +57,44 @@ function TableController($scope, $http) {
 				}
 			}
 		}
+		return selected;
+	}
+	
+	$scope.saveQuery = function() {
+		
+	}
+	$scope.exportToExcel = function() {
+		var selected = $scope.parseSelected();
+		/*
+		var selected = [];
+		for(var t=0; t<$scope.tables.length; t++) {
+			var table = $scope.tables[t];
+			if(table.selected === true) {
+				var tableObj = {tableName: table.name, columns: []};
+				for(var c=0; c<table.columns.length; c++) {
+					var column = table.columns[c];
+					var columnObj = {columnName: column.name, excelColumnName: column.excelColumnName};
+					tableObj.columns.push(columnObj);
+				}
+				selected.push(tableObj);
+			} else {
+				if(table.columns) {
+					var tableObj = {tableName: table.name, columns: []};
+					var add = false;
+					for(var c=0; c<table.columns.length; c++) {
+						var column = table.columns[c];
+						if(column.selected) {
+							var columnObj = {columnName: column.name, excelColumnName: column.excelColumnName};
+							tableObj.columns.push(columnObj);
+							add = true;
+						}
+					}
+					if(add)
+						selected.push(tableObj);
+				}
+			}
+		}
+		*/
 		console.log(selected);
 		$http.post("api/table/excel", selected)
 			.success(function(response){console.log(response);})

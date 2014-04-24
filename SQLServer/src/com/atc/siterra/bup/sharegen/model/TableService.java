@@ -55,7 +55,7 @@ public class TableService
 	public void exportToExcel(List<ExcelExportTable> tables) throws SQLException {
 		System.out.println("Excel");
 		System.out.println(tables);
-		ExportToExcelFields edb = new ExportToExcelFields();
+		ExportToExcel edb = new ExportToExcel();
 		edb.exportExcelExportTables(tables, this);
 	}
 	
