@@ -6,16 +6,16 @@ mongoose.connect("mongodb://localhost/bup");
 
 var ColumnMetaSchema = new mongoose.Schema(
 {
-	name: String,
+	columnName: String,
 	type: String,
 	comment: String,
-	excelName: String,
+	excelColumnName: String,
 	siterraName: String
 });
 
 var TableMetaSchema = new mongoose.Schema(
 {
-	name: String,
+	tableName: String,
 	comment: String,
 	columns: [ColumnMetaSchema]
 });
@@ -23,7 +23,7 @@ var TableMetaSchema = new mongoose.Schema(
 var SearchSchema = new mongoose.Schema(
 {
 	name: String,
-	table: [TableMetaSchema]
+	tables: [TableMetaSchema]
 });
 
 var Search = mongoose.model("Search", SearchSchema);
@@ -40,8 +40,24 @@ server.all('*', function(req, res, next) {
 	next();
 });
 
-
 server.post("/rest/search", function(req, res){
 	console.log("SEARCH!!!!");
-//	console.log(req.body);
+	console.log(req.body);
+	var search = req.body;
+	var searchName = search.name;
+	var tableName = search.tables[0].tableName;
+	var columns = search.tables[0].columns;
+	console.log(columns);
+	
+	Search.create(search, function(err, search){
+		console.log(search);
+	});
 });
+
+
+server.get("/rest/search", function(req, res){
+	Search.find(function(err, searches){
+		res.json(searches);
+	});
+});
+
