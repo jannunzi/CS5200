@@ -1,0 +1,70 @@
+<link rel="stylesheet" href="css/bootstrap.css"/>
+<script src="js/angular.js"></script>
+<div class="container" ng-app>
+	<h1>My Fish</h1>
+	<div ng-controller="FishController">
+		<table class="table">
+			<tr>
+				<td>&nbsp;</td>
+				<td><input class="form-control" ng-model="newFish.name"></td>
+				<td><input class="form-control" ng-model="newFish.length"></td>
+				<td><input class="form-control" ng-model="newFish.weight"></td>
+				<td>
+					<button ng-click="addFish(newFish)" class="btn btn-success">Add</button>
+					<button ng-click="updateFish(newFish)" class="btn btn-primary">Update</button>
+				</td>
+			</tr>
+			<tr ng-repeat="fish in fishes">
+				<td><input ng-click="selectFish(fish)" type="radio" name="selectFish"/></td>
+				<td>{{fish.name}}</td>
+				<td>{{fish.length}}</td>
+				<td>{{fish.weight}}</td>
+				<td>
+					<button ng-click="removeFish(fish)" class="btn btn-danger">Delete</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<script>
+	function FishController($scope, $http) {
+		$scope.selectFish = function(fish) {
+			$scope.newFish = fish;
+		}
+		
+		$scope.updateFish = function(fish) {
+			$http.put("api/fish/"+fish._id, fish)
+			.success(function(){
+				$http.get("api/fish")
+				.success(function(fishes){
+					$scope.fishes = fishes;
+				});
+			});
+		}
+	
+		$scope.addFish = function(newFish) {
+			$http.post("api/fish", newFish)
+			.success(function(){
+				$http.get("api/fish")
+				.success(function(fishes){
+					$scope.fishes = fishes;
+				});
+			});
+		}
+		$scope.removeFish = function(fish) {
+			console.log(fish);
+			$http.delete("api/fish/"+fish._id)
+			.success(function(){
+				$http.get("api/fish")
+				.success(function(fishes){
+					$scope.fishes = fishes;
+				});
+			});
+		}
+	
+		$http.get("api/fish")
+		.success(function(fishes){
+			$scope.fishes = fishes;
+		});
+	}
+</script>

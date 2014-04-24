@@ -1,0 +1,13 @@
+﻿<h2>New Trip</h2>
+<input ng-model="newTrip.name" class="form-control"/>
+<input ng-model="newTrip.start" class="form-control" type="date" />
+<input ng-model="newTrip.end" class="form-control" type="date"/>
+<a	href="#/{{username}}/trip/list"
+	class="btn btn-success btn-block"
+	ng-click="create()">
+	Create
+</a>
+<a	href="#/{{username}}/trip/list"
+	class="btn btn-danger btn-block">
+	Cancel
+</a>

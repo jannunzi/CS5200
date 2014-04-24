@@ -1,0 +1,18 @@
+﻿<h2>Edit Fish</h2>
+<input ng-model="editFish.length" class="form-control" placeholder="length"/>
+<input ng-model="editFish.weight" class="form-control" placeholder="weight"/>
+<input ng-model="editFish.caught" class="form-control" type="date"/>
+<a	href="#/{{username}}/trip/{{tripId}}/fish/list"
+	class="btn btn-success btn-block"
+	ng-click="update()">
+	Update
+</a>
+<a	href="#/{{username}}/trip/{{tripId}}/fish/list"
+	ng-click="remove()"
+	class="btn btn-danger btn-block">
+	Remove
+</a>
+<a	href="#/{{username}}/trip/{{tripId}}/fish/list"
+	class="btn btn-info btn-block">
+	Cancel
+</a>

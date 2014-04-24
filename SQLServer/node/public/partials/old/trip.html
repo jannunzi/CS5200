@@ -1,0 +1,32 @@
+﻿<h2>Trip</h2>
+
+
+<h3>Fish</h3>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Length</th>
+            <th>Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input ng-model="newFishLength" class="form-control" /></td>
+            <td><button class="btn btn-success">Add</button></td>
+        </tr>
+        <tr ng-repeat="fish in fishes">
+            <td>{{fish.id}}</td>
+            <td>{{fish.length}}</td>
+            <td>
+                <button class="btn btn-danger">Delete</button>
+                <a href="#/profile/{{currentUser.id}}/trip/{{trip.id}}/fish/{{fish.id}}" class="btn btn-success">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+<a href="#profile/{{currentUser.id}}">Cancel</a>
+<a href="#fish">Fish</a>

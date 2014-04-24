@@ -1,0 +1,14 @@
+﻿<h2>Trips</h2>
+<a	href="#/{{username}}/trip/new"
+	class="btn btn-success btn-block">
+	Add
+</a>
+<table class="table">
+	<tr ng-repeat="trip in trips">
+		<td>
+			<a href="#/{{username}}/trip/{{trip._id}}/fish/list">
+			{{trip.name}}
+			</a>
+		</tr>
+	</tr>
+</table>

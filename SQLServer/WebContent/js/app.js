@@ -61,7 +61,11 @@ function TableController($scope, $http) {
 	}
 	
 	$scope.saveQuery = function() {
-		
+		var selected = { selected: $scope.parseSelected() };
+		console.log(selected);
+		$http.post("http://localhost:9090/rest/search", selected)
+		.success(function(response){console.log(response);})
+		.error(function(response){console.log(response);})
 	}
 	$scope.exportToExcel = function() {
 		var selected = $scope.parseSelected();

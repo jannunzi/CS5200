@@ -1,0 +1,13 @@
+﻿<h2>New Fish</h2>
+<input ng-model="newFish.length" class="form-control" placeholder="length"/>
+<input ng-model="newFish.weight" class="form-control" placeholder="weight"/>
+<input ng-model="newFish.caught" class="form-control" type="date"/>
+<a	href="#/{{username}}/trip/{{tripId}}/fish/list"
+	class="btn btn-success btn-block"
+	ng-click="create()">
+	Create
+</a>
+<a	href="#/{{username}}/trip/{{tripId}}/fish/list"
+	class="btn btn-danger btn-block">
+	Cancel
+</a>

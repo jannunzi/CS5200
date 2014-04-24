@@ -1,0 +1,42 @@
+﻿<h2>Profile</h2>
+First Name
+<input ng-model="currentUser.first" class="form-control" /></td>
+Last Name
+<input ng-model="currentUser.last" class="form-control" /></td>
+Email
+<input ng-model="currentUser.email" class="form-control" /></td>
+Phone Number
+<input ng-model="currentUser.phone" class="form-control" /></td>
+<button class="btn btn-success">Update</button>
+<a href="#login" class="btn btn-primary">Cancel</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Place</th>
+            <th>Cost</th>
+            <th>Controls</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td><input ng-model="newTripName" class="form-control"/></td>
+            <td><input ng-model="newTripDate" class="form-control" /></td>
+            <td><input ng-model="newTripPlace" class="form-control" /></td>
+            <td><input ng-model="newTripCost" class="form-control" /></td>
+            <td><button class="btn btn-success" ng-click="addTrip()">Add</button></td>
+        </tr>
+        <tr ng-repeat="trip in trips">
+            <td>{{trip.name}}</td>
+            <td>{{trip.date | date}}</td>
+            <td>{{trip.place}}</td>
+            <td>{{trip.cost | currency}}</td>
+            <td>
+                <button class="btn btn-danger">Delete</button> 
+                <a href="#/profile/{{currentUser.id}}/trip/{{trip.id}}" class="btn btn-success">Edit</a>
+            </td>
+        </tr>
+    </tbody>
+</table>
