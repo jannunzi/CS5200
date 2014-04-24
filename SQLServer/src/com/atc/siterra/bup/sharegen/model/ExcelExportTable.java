@@ -2,6 +2,9 @@ package com.atc.siterra.bup.sharegen.model;
 
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class ExcelExportTable {
 	String tableName;
 	List<ExcelExportColumn> columns;

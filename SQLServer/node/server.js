@@ -37,6 +37,7 @@ server.listen(port);
 server.all('*', function(req, res, next) {
 	res.header("Access-Control-Allow-Origin", "*");
 	res.header("Access-Control-Allow-Headers", "X-Requested-With, Content-Type");
+	res.header("Access-Control-Allow-Methods", "POST, GET, PUT, DELETE, OPTIONS");
 	next();
 });
 
@@ -50,7 +51,9 @@ server.post("/rest/search", function(req, res){
 	console.log(columns);
 	
 	Search.create(search, function(err, search){
-		console.log(search);
+		Search.find(function(err, searches){
+			res.json(searches);
+		});
 	});
 });
 
@@ -61,3 +64,18 @@ server.get("/rest/search", function(req, res){
 	});
 });
 
+server.get("/rest/search/:id", function(req, res){
+	Search.findById(req.params.id, function(err, search){
+		res.json(search);
+	})
+});
+
+server.delete("/rest/search/:id", function(req, res){
+	Search.findById(req.params.id, function(err, search){
+		search.remove(function(err, search){
+			Search.find(function(err, searches){
+				res.json(searches);
+			});
+		});
+	})
+});

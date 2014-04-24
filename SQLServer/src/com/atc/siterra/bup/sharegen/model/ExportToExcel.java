@@ -34,6 +34,7 @@ public class ExportToExcel
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("Save Done");
 	}
 
 	@SuppressWarnings("deprecation")
@@ -70,7 +71,7 @@ public class ExportToExcel
 
 			for(ExcelExportColumn column : table.getColumns()) {
 				String excelColumnName = column.getExcelColumnName();
-				if(excelColumnName == null)
+				if(excelColumnName == null || "".equals(excelColumnName))
 				{
 					excelHeaders.add(column.getColumnName());
 				}
@@ -109,27 +110,31 @@ public class ExportToExcel
 			createCells(row, excelHeadersArray, 0, null, false);
 		}
 	}
-	
 	public String createSQLSelectFromExportTables(List<ExcelExportTable> tables)
 	{
 		String select = "select ";
 		String from = " from ";
 		String where = " where ";
+
+		String prevTableName = null;
 		for(ExcelExportTable table : tables)
 		{
 			String tableName = "["+table.getTableName()+"]";
 			from += tableName + ", ";
-			where += tableName+".[TowerNumber] = ";
+			if(prevTableName != null) {
+				where += prevTableName+".[TowerNumber] = " + tableName+".[TowerNumber] AND ";
+			}
 			for(ExcelExportColumn column : table.getColumns())
 			{
 				String columnName = "["+column.getColumnName()+"]";
 				select += tableName+"."+columnName+", ";
 			}
+			prevTableName = tableName;
 		}
 
-		from = from.substring(0, from.length()-2);
-		select = select.substring(0, select.length()-2);
-		where = where.substring(0, where.length()-2);
+		from = from.substring(0, from.length() - 2);
+		select = select.substring(0, select.length() - 2);
+		where = where.substring(0, where.length() - 5);
 		
 		select += from;
 		if(tables.size() > 1)

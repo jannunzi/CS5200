@@ -36,6 +36,15 @@
 			<hr/>
 			<input ng-model="searchName" placeholder="Search Name" class="form-control"/>
 			<a href="#saveQuery" class="btn btn-success btn-block" ng-click="saveQuery()">Save Query</a>
+			<table class=table>
+				<tr ng-repeat="search in searches">
+					<td>
+						<input name="select-search" type="radio" ng-click="selectSearch(search)"/>
+						{{search.name}}
+						<a href="#deleteSearch" class="pull-right" ng-click="deleteSearch(search)">&times;</a>
+					</td>
+				</tr>
+			</table>
 		</div>
 	
 		<div class="col-xs-9">
@@ -50,7 +59,7 @@
 		<tr ng-repeat="table in tables | filter:searchTable">
 			<td>
 				<input type="checkbox" ng-model="table.selected" ng-click="selectTable($index);toggleTable($index)"/>
-				<a class="table-name" href="#{{table.name}}" ng-click="toggleTable($index)">{{table.name}}</a>
+				<a class="table-name" id="{{table.name}}" href="#{{table.name}}" ng-click="toggleTable($index)">{{table.name}}</a>
 				<table class="table table-striped" ng-show="table.show">
 					<thead>
 						<tr>
@@ -61,7 +70,7 @@
 					<tbody>
 						<tr ng-repeat="column in table.columns | filter:searchField">
 							<td>
-								<input type="checkbox" ng-model="column.selected" ng-click="selectColumn(table, $index)"/> <b>{{column.name}}</b>
+								<input type="checkbox" id="{{table.name}}-{{column.name}}" ng-model="column.selected" ng-click="selectColumn(table, $index)"/> <b>{{column.name}}</b>
 								<span class="initialism">{{column.typeName}}({{column.size}})</span>
 							</td>
 							<td>
