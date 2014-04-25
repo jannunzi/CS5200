@@ -8,11 +8,34 @@
 <script src="js/angular.min.js"></script>
 <script src="js/app.js"></script>
 <style>
+	.toolbox {
+		position: fixed;
+		top: 0px;
+		left: 0px;
+		width: 200px;
+	}
 	.toolbox input {
 		margin-bottom : 5px;
 	}
 	table table {
 		margin-left: 20px;
+	}
+	.scroller-container {
+	
+		left: 180px;
+		position: absolute;
+/*	
+		position: absolute;
+		bottom: 0px;
+		top: 0px;
+		width: 500px;
+		float: right;
+		*/
+	}
+	.scroller {
+		overflow: scroll;
+		bottom: 0px;
+		top: 0px;
 	}
 </style>
 </head>
@@ -47,7 +70,8 @@
 			</table>
 		</div>
 	
-		<div class="col-xs-9">
+		<div class="col-xs-9 scroller-container">
+		<div class="scroller-later">
 
 	<table class="table table-striped">
 		<thead>
@@ -56,10 +80,10 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="table in tables | filter:searchTable">
+		<tr ng-repeat="table in tables | filter:searchTable" ng-click="toggleTable(table)">
 			<td>
-				<input type="checkbox" ng-model="table.selected" ng-click="selectTable($index);toggleTable($index)"/>
-				<a class="table-name" id="{{table.name}}" href="#{{table.name}}" ng-click="toggleTable($index)">{{table.name}}</a>
+				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table);"/>
+				<a class="table-name" id="{{table.name}}" href="#{{table.name}}">{{table.name}}</a>
 				<table class="table table-striped" ng-show="table.show">
 					<thead>
 						<tr>
@@ -70,7 +94,7 @@
 					<tbody>
 						<tr ng-repeat="column in table.columns | filter:searchField">
 							<td>
-								<input type="checkbox" id="{{table.name}}-{{column.name}}" ng-model="column.selected" ng-click="selectColumn(table, $index)"/> <b>{{column.name}}</b>
+								<input type="checkbox" id="{{table.name}}-{{column.name}}" ng-checked="table.selected" ng-model="column.selected" ng-click="selectColumn(table, $index)"/> <b>{{column.name}}</b>
 								<span class="initialism">{{column.typeName}}({{column.size}})</span>
 							</td>
 							<td>
@@ -83,6 +107,8 @@
 		</tr>
 		</tbody>
 	</table>
+			</div>
+	
 		</div>
 	</div>
 	</div>

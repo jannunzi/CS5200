@@ -1,24 +1,20 @@
 function TableController($scope, $http) {
-	$scope.selectTable = function(index) {
-		var table = $scope.tables[index];
-		console.log(table);
-		console.log(table.selected);
+	$scope.selectTable = function(table) {
+
 	}
-	$scope.selectColumn = function(table, index) {
-		var column = table.columns[index];
+	$scope.selectColumn = function(table, column) {
+		
 	}
 	$scope.toggleAllTables = function() {
-		$(".table-name").each(function(){
-			var link = $(this);
-			setTimeout(function() { link.click(); }, 100);
-		});
+		for(var t in $scope.tables) {
+			$scope.toggleTable($scope.tables[t]);
+		}
 	}
-	$scope.toggleTable = function(index) {
-		var table = $scope.tables[index];
+	$scope.toggleTable = function(table) {
 		if(table.columns == null) {
 			$http.get("api/table/"+table.name+"/column")
 			.success(function(columns){
-				$scope.tables[index].columns = columns;
+				table.columns = columns;
 			});
 		}
 		if(table.show == true) {
@@ -32,8 +28,8 @@ function TableController($scope, $http) {
 		
 		// jga
 		
-		$http.post("api/table/excel", search.tables)
-		.success(function(response){console.log(response);});
+//		$http.post("api/table/excel", search.tables)
+	//	.success(function(response){console.log(response);});
 
 		
 		// unselect all tables and columns
@@ -52,10 +48,20 @@ function TableController($scope, $http) {
 		// expand tables in search
 		var tables = search.tables;
 		console.log(tables);
+		for(var t=0; t<$scope.tables.length; t++) {
+			for(var tt=0; tt<tables.length; tt++) {
+				if($scope.tables[t].name === tables[tt].tableName) {
+					$scope.toggleTable($scope.tables[t]);
+					
+				}
+			}
+		}
+/*		
 		for(var t=0; t<tables.length; t++) {
 			var table = tables[t];
 			var tableId = "#"+table.tableName;
-			setTimeout(function(){$(tableId).click();}, 100);
+			$scope.toggleTable(t);
+//			setTimeout(function(){$(tableId).click();}, 100);
 			var columns = table.columns;
 			for(var c=0; c<columns.length; c++) {
 				var column = columns[c];
@@ -64,8 +70,8 @@ function TableController($scope, $http) {
 				setTimeout(function(){$(columnId).click();}, c*2000);
 			}
 		}
+	*/
 	}
-	
 	$scope.parseSelected = function() {
 		var selected = [];
 		for(var t=0; t<$scope.tables.length; t++) {
