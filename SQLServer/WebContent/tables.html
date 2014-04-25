@@ -8,6 +8,9 @@
 <script src="js/angular.min.js"></script>
 <script src="js/app.js"></script>
 <style>
+	img.busy {
+		width: 17px;
+	}
 	.toolbox {
 		position: fixed;
 		top: 0px;
@@ -83,7 +86,8 @@
 		<tr ng-repeat="table in tables | filter:searchTable" ng-click="toggleTable(table)">
 			<td>
 				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table);"/>
-				<a class="table-name" id="{{table.name}}" href="#{{table.name}}">{{table.name}}</a>
+				<a class="table-name" href="#{{table.name}}">{{table.name}}</a>
+				<img src="images/busy.gif" class="busy" ng-show="table.loading"/>
 				<table class="table table-striped" ng-show="table.show">
 					<thead>
 						<tr>

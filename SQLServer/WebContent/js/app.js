@@ -15,12 +15,15 @@ function TableController($scope, $http) {
 			$http.get("api/table/"+table.name+"/column")
 			.success(function(columns){
 				table.columns = columns;
+				table.loading = false;
 			});
 		}
 		if(table.show == true) {
 			table.show = false;
 		} else {
 			table.show = true;
+			if(table.columns == null)
+				table.loading = true;
 		}
 	}
 	
