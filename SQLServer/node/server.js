@@ -7,6 +7,7 @@ mongoose.connect("mongodb://localhost/bup");
 var ColumnMetaSchema = new mongoose.Schema(
 {
 	columnName: String,
+	selected: Boolean,
 	type: String,
 	comment: String,
 	excelColumnName: String,
@@ -16,6 +17,7 @@ var ColumnMetaSchema = new mongoose.Schema(
 var TableMetaSchema = new mongoose.Schema(
 {
 	tableName: String,
+	selected: Boolean,
 	comment: String,
 	columns: [ColumnMetaSchema]
 });
