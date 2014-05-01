@@ -18,6 +18,7 @@ var TableMetaSchema = new mongoose.Schema(
 {
 	tableName: String,
 	selected: Boolean,
+	ignored: {type: Boolean, "default": false},
 	comment: String,
 	columns: [ColumnMetaSchema]
 });
@@ -28,6 +29,7 @@ var SearchSchema = new mongoose.Schema(
 	tables: [TableMetaSchema]
 });
 
+var Table  = mongoose.model("Table",  TableMetaSchema);
 var Search = mongoose.model("Search", SearchSchema);
 
 server.configure(function() {
@@ -59,6 +61,13 @@ server.post("/rest/search", function(req, res){
 	});
 });
 
+server.put("/rest/search/:id", function(req, res){
+	Search.findById(req.params.id, function(err, search){
+		search.name = req.body.name;
+		search.save();
+		res.json(search);
+	});
+});
 
 server.get("/rest/search", function(req, res){
 	Search.find(function(err, searches){
@@ -80,4 +89,50 @@ server.delete("/rest/search/:id", function(req, res){
 			});
 		});
 	})
+});
+
+server.put("/rest/table/ignore", function(req, res){
+	console.log(req);
+});
+
+server.put("/rest/table/:id", function(req, res){
+	console.log(req.params.id);
+//	/*
+	var table = new Table(req.body.table);
+	table.tableName = req.body.name;
+	table.ignored = req.body.ignored;
+	var tableObj = table.toObject();
+//	delete tableObj._id;
+	// */
+	
+	Table.findById(req.params.id, function(err, existingTable){
+		if(err) {
+			Table.create(tableObj, function(err, table){
+				res.json(table);
+			});
+		} else {
+			if(existingTable != null) {
+				existingTable.remove();
+			} else {
+				Table.create(tableObj, function(err, table){
+					res.json(table);
+				});
+			}
+		}
+	});
+	
+	/*
+	Table.update({_id:table._id}, tableObj, {upsert: true}, function(err, table){
+		console.log(err);
+		console.log(table);
+		res.json(table);
+	});
+	*/
+});
+
+
+server.get("/rest/table", function(req, res){
+	Table.find(function(err, tables){
+		res.json(tables);
+	});
 });

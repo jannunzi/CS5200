@@ -8,24 +8,36 @@
 <script src="js/angular.min.js"></script>
 <script src="js/app.js"></script>
 <style>
+	body {
+		min-height: 2000px;
+		padding-top: 70px;
+	}
 	img.busy {
 		width: 17px;
 	}
 	.toolbox {
 		position: fixed;
-		top: 0px;
+		top: 70px;
 		left: 0px;
 		width: 200px;
+		overflow-y: scroll;
+		bottom: 0px;
 	}
-	.toolbox input {
+	.toolbox input,
+	.toolbox select,
+	.toolbox a {
 		margin-bottom : 5px;
 	}
 	table table {
 		margin-left: 20px;
 	}
+	table.skinny tbody td,
+	table.skinny thead th {
+		padding: 0px;
+	}
 	.scroller-container {
 	
-		left: 180px;
+		left: 190px;
 		position: absolute;
 /*	
 		position: absolute;
@@ -44,65 +56,86 @@
 </head>
 <body ng-controller="TableController">
 
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Extractor</a>
+    </div>
+
+    <form class="navbar-form navbar-right" role="search">
+  		<div class="form-group">
+			<a href="#ignore" class="btn btn-warning" ng-click="ignoreSelectedTables()">Ignore</a>	
+			<a href="#excel" class="btn btn-success" ng-click="exportToExcel()">2 Excel</a>	
+			<a href="#expandAllTables" class="btn btn-success" ng-click="expandAllTables()">&plus;</a>
+			<a href="#collapseAllTables" class="btn btn-success" ng-click="collapseAllTables()">&minus;</a>
+  		</div>
+	</form>
+
+  </div><!-- /.container-fluid -->
+</nav>
+
 	<div class="container">
 	<div class="row">
 		<div class="col-xs-3 toolbox">
-			<table class="table table-striped">
-				<thead>
-					<tr>
-						<th>Toolbox</th>
-					</tr>
-				</thead>
-			</table>
-		
+			<!-- a href="#toggleAll" class="btn btn-success btn-block" ng-click="toggleAllTables()" ng-model="allTablesExpanded">Toggle All Tables</a>
+			<a href="#toggleAll" class="btn btn-success btn-block" ng-click="toggleAllTables()" ng-model="allTablesExpanded">Toggle All Tables</a-->
+  			<select ng-model="currentDataSource" ng-options="dataSource.name for dataSource in dataSources" ng-change="selectDataSource()" class="form-control" title="Select data source">
+  			</select>
 			<input ng-model="searchTable" placeholder="Filter Tables" class="form-control"/>
 			<input ng-model="searchField" placeholder="Filter Fields" class="form-control"/>
-			<a href="#excel" class="btn btn-success btn-block" ng-click="exportToExcel()">Export to Excel</a>	
-			<a href="#toggleAll" class="btn btn-success btn-block" ng-click="toggleAllTables()">Toggle All Tables</a>
-			<hr/>
 			<input ng-model="searchName" placeholder="Search Name" class="form-control"/>
-			<a href="#saveQuery" class="btn btn-success btn-block" ng-click="saveQuery()">Save Query</a>
-			<table class=table>
-				<tr ng-repeat="search in searches">
-					<td>
-						<input name="select-search" type="radio" ng-click="selectSearch(search)"/>
-						{{search.name}}
-						<a href="#deleteSearch" class="pull-right" ng-click="deleteSearch(search)">&times;</a>
-					</td>
-				</tr>
-			</table>
+			<a href="#saveQuery" class="btn btn-success btn-block" ng-click="saveQuery()">Save Search</a>
+			<div class="form-inline"  ng-repeat="search in searches">
+				<input name="select-search" type="radio" ng-click="selectSearch(search)"/>
+				<input ng-model="search.name" class="form-control" style="width:124px" ng-keypress="updateSearch(search, $event)"/>
+				<a href="#deleteSearch" class="pull-right" ng-click="deleteSearch(search)">&times;</a>
+			</div>
 		</div>
 	
 		<div class="col-xs-9 scroller-container">
 		<div class="scroller-later">
 
-	<table class="table table-striped">
+	<table class="table table-striped skinny">
 		<thead>
 			<tr>
-				<th>Table</th>
+				<th>
+					<input type="checkbox" ng-model="selectAllTables" title="Select all tables"/>
+					Table
+				</th>
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="table in tables | filter:searchTable" ng-click="toggleTable(table)">
+		<tr ng-repeat="table in tables | filter:searchTable | filter:searchField | filter:{ignored: false}" ng-click="toggleTable(table)">
 			<td>
-				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table); $event.stopPropagation();"/>
+				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table); $event.stopPropagation();" ng-checked="selectAllTables" title="Select this table"/>
 				<a class="table-name" href="#{{table.name}}">{{table.name}}</a>
 				<img src="images/busy.gif" class="busy" ng-show="table.loading"/>
 				<table class="table table-striped" ng-show="table.show">
 					<thead>
-						<tr>
-							<th>Database Field</th>
+						<tr ng-click="$event.stopPropagation();">
+							<th>
+								<input type="checkbox" ng-click="selectAllColumns(table); $event.stopPropagation();" ng-model="selectAllFields" title="Select all fields"/>
+								Database Field
+							</th>
 							<th>Excel Column</th>
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="column in table.columns | filter:searchField">
+						<tr ng-repeat="column in table.columns | filter:searchField" ng-click="$event.stopPropagation();" title="Click to expand this table">
 							<td>
-								<input type="checkbox" id="{{table.name}}-{{column.name}}" ng-model="column.selected" ng-click="selectColumn(table, $index); $event.stopPropagation();"/> <b>{{column.name}}</b>
+								<input type="checkbox" id="{{table.name}}-{{column.name}}" ng-model="column.selected" ng-checked="selectAllFields" ng-click="selectColumn(table, $index); $event.stopPropagation();" title="Select this field"/> <b>{{column.name}}</b>
 								<span class="initialism">{{column.typeName}}({{column.size}})</span>
 							</td>
 							<td>
-								<input type="text" class="form-control" ng-model="column.excelColumnName"/>
+								<input type="text" class="form-control" ng-model="column.excelColumnName" ng-show="false"/>
+								<a href="#edit/{{column.name}}" class="btn btn-xs btn-success pull-right">Edit</a>
 							</td>
 						</tr>
 					</tbody>
@@ -112,6 +145,28 @@
 		</tbody>
 	</table>
 			</div>
+	
+	<table class="table table-striped skinny">
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" ng-model="selectIgnoredTables" title="Select ignored tables"/>
+					Ignored Tables
+				</th>
+				<th>			<a href="#unignore" class="btn btn-warning pull-right" ng-click="unignoreSelectedTables()">Unignore</a>	
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="table in tables | filter:{ignored: true}">
+				<td>
+					<input type="checkbox" ng-model="table.selected" ng-checked="selectIgnoredTables"/> <b>{{column.name}}</b>
+					{{table.name}}
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
 	
 		</div>
 	</div>

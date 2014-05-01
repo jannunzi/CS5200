@@ -7,13 +7,16 @@ import java.util.*;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
+import javax.xml.ws.WebServiceContext;
 
 @Path("/table")
 public class TableService
@@ -23,13 +26,13 @@ public class TableService
 	private PreparedStatement statement = null;
 	private ResultSet results = null;
 	
-	public Database getDatabase()
+	public Database getDatabase(String dataSourceName)
 	{
 		Tables tables = new Tables();
-		tables.table = this.getTables();
+		tables.table = this.getTables(dataSourceName);
 		
 		for(Table table:tables.table) {
-			table.column = this.getColumns(table.name);
+			table.column = this.getColumns(dataSourceName, table.name);
 		}
 		
 		this.database.tables = tables;
@@ -50,24 +53,24 @@ public class TableService
 	}
 	
 	@POST
-	@Path("/excel")
+	@Path("/excel/{dataSourceName}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void exportToExcel(List<ExcelExportTable> tables) throws SQLException {
+	public void exportToExcel(List<ExcelExportTable> tables, @PathParam("dataSourceName") String dataSourceName) throws SQLException {
 		System.out.println("Excel");
 		System.out.println(tables);
 		ExportToExcel edb = new ExportToExcel();
-		edb.exportExcelExportTables(tables, this);
+		edb.exportExcelExportTables(tables, this, dataSourceName);
 	}
 	
 	@GET
-	@Path("/")
+	@Path("/{dataSourceName}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Table> getTables()
+	public List<Table> getTables(@PathParam("dataSourceName") String dataSourceName)
 	{
 		List<Table> tables = new ArrayList<Table>();
 		
 		try {
-			Connection connection = getConnection();
+			Connection connection = getConnection(dataSourceName);
 			DatabaseMetaData meta = connection.getMetaData();
 			results = meta.getTables(null, null, null, null);
 			while(results.next()) {
@@ -86,11 +89,11 @@ public class TableService
 		return tables;
 	}
 	
-	public ResultSet executeQuery(String query)
+	public ResultSet executeQuery(String query, String dataSourceName)
 	{
 		ResultSet result = null;
 		try {
-			Connection connection = getConnection();
+			Connection connection = getConnection(dataSourceName);
 			Statement statement = connection.createStatement();
 			result = statement.executeQuery(query);
 		} catch(SQLException e) {
@@ -100,14 +103,14 @@ public class TableService
 	}
 	
 	@GET
-	@Path("/{name}/column")
+	@Path("/{dataSourceName}/{name}/column")
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Column> getColumns(@PathParam("name") String tableName)
+	public List<Column> getColumns(@PathParam("name") String tableName,@PathParam("dataSourceName") String dataSourceName)
 	{
 		List<Column> columns = new ArrayList<Column>();
 		
 		try {
-			Connection connection = getConnection();
+			Connection connection = getConnection(dataSourceName);
 			DatabaseMetaData meta = connection.getMetaData();
 			
 			
@@ -155,8 +158,9 @@ public class TableService
 		return columns;
 	}
 	
-	public Connection getConnection()
+	public Connection getConnection(String dataSourceName)
 	{
+		this.database = Database.DATABASES.get(dataSourceName);
 		try {
 			Driver d = (Driver)Class.forName(this.database.driver).newInstance();
 			connection = DriverManager.getConnection(this.database.getUrlString(),
@@ -190,7 +194,7 @@ public class TableService
 				"semaan_app_user","qcdb01",null);
 		TableService svc = new TableService(db);
 
-		db = svc.getDatabase();
+		db = svc.getDatabase("BUPQC");
 		
 		List<Table> tables = db.tables.table;
 		for(Table table : tables) {
@@ -203,11 +207,33 @@ public class TableService
 		svc.exportDataseToXml(db, "siterra/bup.xml");
 	}
 
+	@PUT
+	@Path("/database/{databaseName}")
+	public void setDatabase(@PathParam("databaseName") String name) {
+//		ServletContext servletContext =
+	//		    (ServletContext) context.getMessageContext().get(MessageContext.SERVLET_CONTEXT);
+//		System.out.println(servletContext);
+		this.database = Database.DATABASES.get(name);
+		System.out.println(name);
+	}
+	
+	static Database currentDatabase = Database.DATABASES.get("BUPQC");
+	
 	public TableService() {
 		super();
-		this.database = new Database("ShareGen",
+		/*
+		this.database = new Database(
+				"ShareGen",
 				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
-				"microsoft","sqlserver","QCSMN01","1433",
-				"semaan_app_user","qcdb01",null);
+				"microsoft",
+				"sqlserver",
+				"QCSMN01",
+				"1433",
+				"semaan_app_user",
+				"qcdb01",
+				null);
+				*/
+//		this.database = currentDatabase;
+//		this.database = Database.DATABASES.get(Database.ATPRODQC);
 	}
 }

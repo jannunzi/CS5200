@@ -9,7 +9,7 @@ public class Test {
 		return "Hello";
 	}
 	
-	public String test()
+	public String testQCSMN01()
 	{
 		Connection connection = null;
 		try {
@@ -48,6 +48,48 @@ public class Test {
 		return null;
 	}
 
+	public String testQCSQL12()
+	{
+		Connection connection = null;
+		try {
+			Driver d = (Driver)Class.forName("com.microsoft.jdbc.sqlserver.SQLServerDriver").newInstance();
+//			connection = DriverManager.getConnection("jdbc:microsoft:sqlserver://QCSQL12:1433;databaseName=ATProduction", "AMERICANTOWER\\Jose.Annunziato", "$anBenito11");
+//			connection = DriverManager.getConnection("jdbc:microsoft:sqlserver://QCSQL12:1433;domain=AMERICANTOWER;databaseName=ATProduction;integratedSecurity=true;authenticationScheme=JavaKerberos", "AMERICANTOWER\\Jose.Annunziato", "$anBenito11");
+			connection = DriverManager.getConnection("jdbc:microsoft:sqlserver://DB-QC-ATPRODUCTION:1433;databaseName=ATPRODUCTION", "semaan_app_user", "qcdb01");
+			System.out.println(connection);
+			String testSql = "select * from ColocationProject";
+			PreparedStatement statement = connection.prepareStatement(testSql);
+			ResultSet results = statement.executeQuery();
+			while(results.next())
+			{
+				int ColocationProjectID = results.getInt("ColocationProjectID");
+				System.out.println(ColocationProjectID);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+
 	public static void main(String[] args) {
+		Test test = new Test();
+		test.testQCSQL12();
 	}
 }

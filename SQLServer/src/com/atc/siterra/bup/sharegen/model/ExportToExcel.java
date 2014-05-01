@@ -142,13 +142,13 @@ public class ExportToExcel
 		return select;
 	}
 	
-	public void exportExcelExportTables(List<ExcelExportTable> tables, TableService svc) throws SQLException {
+	public void exportExcelExportTables(List<ExcelExportTable> tables, TableService svc, String dataSourceName) throws SQLException {
 		Workbook wb = new XSSFWorkbook();
 	    Sheet sheet = wb.createSheet("Generator Asset");
 	    generateHeaders(tables, sheet);
 	    String select = createSQLSelectFromExportTables(tables);
 	    System.out.println(select);
-	    ResultSet results = svc.executeQuery(select);
+	    ResultSet results = svc.executeQuery(select, dataSourceName);
 	    generateResults(results, sheet);
 	    svc.closeConnection();
 		saveWorkbook(wb, "/excel/test.xlsx");

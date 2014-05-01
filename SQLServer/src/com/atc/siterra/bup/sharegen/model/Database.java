@@ -1,6 +1,7 @@
 package com.atc.siterra.bup.sharegen.model;
 
 import java.sql.DriverManager;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -44,6 +45,37 @@ public class Database {
 	public Database() {
 		super();
 	}
+	
+	public static HashMap<String, Database> DATABASES = new HashMap<String, Database>();
+	public static String BUPQC    = "BUPQC";
+	public static String ATPRODQC = "ATPRODQC";
+	
+	static {
+		Database bupQc = new Database(
+				"ShareGen",
+				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
+				"microsoft",
+				"sqlserver",
+				"QCSMN01",
+				"1433",
+				"semaan_app_user",
+				"qcdb01",
+				null);
+		
+		Database atProdQc = new Database(
+				"ATPRODUCTION",
+				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
+				"microsoft",
+				"sqlserver",
+				"DB-QC-ATPRODUCTION",
+				"1433",
+				"semaan_app_user",
+				"qcdb01",
+				null);	
+		DATABASES.put("BUPQC", bupQc);
+		DATABASES.put("ATPRODQC", atProdQc);
+	}
+	
 	private String urlTemplate = "jdbc:{vendor}:{type}://{server}:{port};databaseName={name}";
 	public String getUrlString() {
 		String url = new String(urlTemplate);
