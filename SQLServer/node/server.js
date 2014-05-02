@@ -88,11 +88,38 @@ server.delete("/rest/search/:id", function(req, res){
 				res.json(searches);
 			});
 		});
-	})
+	});
 });
 
-server.put("/rest/table/ignore", function(req, res){
-	console.log(req);
+server.put("/rest/table/ignore/:ignore", function(req, res){
+	var ignore = req.params.ignore;
+	var tableNames = req.body.tableNames
+	console.log(tableNames);
+
+	for(var t in tableNames) {
+		var table = new Table({
+			tableName: tableNames[t],
+			ignored: ignore
+		});
+		var tableData = table.toObject();
+		delete tableData._id;
+		Table.update({tableName: tableNames[t]}, tableData, {upsert: true}, function(err, table){
+			console.log(err);
+			console.log(table);
+//			console.log(tableName);
+//			console.log(name);
+			/*
+			if(table === null) {
+				Table.create(table, function(err, table){
+					console.log(table);
+				});
+			} else {
+				table.ignore = true;
+				table.save();
+			}
+			*/
+		});
+	}
 });
 
 server.put("/rest/table/:id", function(req, res){

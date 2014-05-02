@@ -71,10 +71,10 @@
 
     <form class="navbar-form navbar-right" role="search">
   		<div class="form-group">
-			<a href="#ignore" class="btn btn-warning" ng-click="ignoreSelectedTables()">Ignore</a>	
-			<a href="#excel" class="btn btn-success" ng-click="exportToExcel()">2 Excel</a>	
-			<a href="#expandAllTables" class="btn btn-success" ng-click="expandAllTables()">&plus;</a>
-			<a href="#collapseAllTables" class="btn btn-success" ng-click="collapseAllTables()">&minus;</a>
+			<a href="#ignore" class="btn btn-warning" ng-click="ignoreSelectedTables()" title="Ignore selected tables below">Ignore</a>	
+			<a href="#excel" class="btn btn-success" ng-click="exportToExcel()" title="Export to Excel">2 Excel</a>	
+			<a href="#expandAllTables" class="btn btn-success" ng-click="expandSelectedTables()" title="Expand selected tables">&plus;</a>
+			<a href="#collapseAllTables" class="btn btn-success" ng-click="collapseAllTables()" title="Collapse selected tables">&minus;</a>
   		</div>
 	</form>
 
@@ -97,6 +97,7 @@
 				<input ng-model="search.name" class="form-control" style="width:124px" ng-keypress="updateSearch(search, $event)"/>
 				<a href="#deleteSearch" class="pull-right" ng-click="deleteSearch(search)">&times;</a>
 			</div>
+			<input type="checkbox" ng-model="tableFieldHeightTruncated" ng-click="truncateTableFieldHeight()"/>
 		</div>
 	
 		<div class="col-xs-9 scroller-container">
@@ -106,7 +107,7 @@
 		<thead>
 			<tr>
 				<th>
-					<input type="checkbox" ng-model="selectAllTables" title="Select all tables"/>
+					<input type="checkbox" ng-model="allTablesSelected" title="Select all tables" ng-click="selectAllTables()"/>
 					Table
 				</th>
 			</tr>
@@ -114,9 +115,10 @@
 		<tbody>
 		<tr ng-repeat="table in tables | filter:searchTable | filter:searchField | filter:{ignored: false}" ng-click="toggleTable(table)">
 			<td>
-				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table); $event.stopPropagation();" ng-checked="selectAllTables" title="Select this table"/>
+				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table); $event.stopPropagation();" title="Select this table"/>
 				<a class="table-name" href="#{{table.name}}">{{table.name}}</a>
 				<img src="images/busy.gif" class="busy" ng-show="table.loading"/>
+				<div ng-style="maxHeight">
 				<table class="table table-striped" ng-show="table.show">
 					<thead>
 						<tr ng-click="$event.stopPropagation();">
@@ -140,6 +142,7 @@
 						</tr>
 					</tbody>
 				</table>
+				</div>
 			</td>
 		</tr>
 		</tbody>
@@ -150,17 +153,17 @@
 		<thead>
 			<tr>
 				<th>
-					<input type="checkbox" ng-model="selectIgnoredTables" title="Select ignored tables"/>
+					<input type="checkbox" ng-model="allIgnoredTablesSelected" title="Select ignored tables" ng-click="selectAllIgnoredTables()"/>
 					Ignored Tables
 				</th>
-				<th>			<a href="#unignore" class="btn btn-warning pull-right" ng-click="unignoreSelectedTables()">Unignore</a>	
+				<th>			<a href="#unignore" class="btn btn-warning pull-right" ng-click="unignoreSelectedTables()" title="Unignore selected tables below">Unignore</a>	
 				</th>
 			</tr>
 		</thead>
 		<tbody>
-			<tr ng-repeat="table in tables | filter:{ignored: true}">
+			<tr ng-repeat="table in tables | filter:searchTable | filter:searchField | filter:{ignored: true}">
 				<td>
-					<input type="checkbox" ng-model="table.selected" ng-checked="selectIgnoredTables"/> <b>{{column.name}}</b>
+					<input type="checkbox" ng-model="table.selected"/> <b>{{column.name}}</b>
 					{{table.name}}
 				</td>
 				<td>&nbsp;</td>

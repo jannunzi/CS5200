@@ -1,5 +1,15 @@
 function TableController($scope, $http) {
 	
+	$scope.maxHeight = {"max-height": "300px", "overflow-y": "scroll", "overflow-x": "hidden"};
+	
+	$scope.truncateTableFieldHeight = function() {
+		if($scope.tableFieldHeightTruncated) {
+			$scope.maxHeight = {"max-height": "300px", "overflow-y": "scroll", "overflow-x": "hidden"};
+		} else {
+			$scope.maxHeight = {};			
+		}
+	};
+	
 	// choose database
 	$scope.dataSources = [
         {name: "BUPQC"},
@@ -28,10 +38,11 @@ function TableController($scope, $http) {
 			table.show = false;
 		}
 	};
-	$scope.expandAllTables = function(callback) {
+	$scope.expandSelectedTables = function(callback) {
 		for(var t=0; t<$scope.tables.length; t++) {
 			var table = $scope.tables[t];
-			$scope.expandTable(table, callback);
+			if(table.selected)
+				$scope.expandTable(table, callback);
 		}
 	};
 	$scope.expandTable = function(table, callback) {
@@ -119,38 +130,37 @@ function TableController($scope, $http) {
 				console.log($scope.tables);
 			});
 		});
-	}
+	};
+	
 	$scope.getTables($scope.currentDataSource.name);
-///*
+
 	$scope.ignoreSelectedTables = function() {
+		var ignore = { tableNames: [] };
 		for(var t=0; t<$scope.tables.length; t++) {
 			if($scope.tables[t].selected) {
 				$scope.tables[t].ignored = true;
 				$scope.tables[t].selected = false;
-//				console.log(table);
-				$http.put("http://localhost:9090/rest/table/"+$scope.tables[t]._id, $scope.tables[t])
-				.success(function(responseTable){
-					$scope.tables[t]._id = responseTable._id;
-					console.log($scope.tables[t]);
-				});
-				break;
+				ignore.tableNames.push($scope.tables[t].name);
 			}
 		}
+		$http.put("http://localhost:9090/rest/table/ignore/true", ignore)
+		.success(function(responseTable){
+			console.log(response);
+		});
 	};
 	$scope.unignoreSelectedTables = function() {
+		var ignore = { tableNames: [] };
 		for(var t=0; t<$scope.tables.length; t++) {
 			if($scope.tables[t].selected) {
 				$scope.tables[t].ignored = false;
-				$scope.tables[t].selected = false;
-				console.log($scope.tables[t]);
-				$http.put("http://localhost:9090/rest/table/"+$scope.tables[t]._id, $scope.tables[t])
-				.success(function(responseTable){
-					$scope.tables[t]._id = responseTable._id;
-					console.log(responseTable);
-				});
-				break;
+				$scope.tables[t].selected = true;
+				ignore.tableNames.push($scope.tables[t].name);
 			}
 		}
+		$http.put("http://localhost:9090/rest/table/ignore/false", ignore)
+		.success(function(responseTable){
+			console.log(response);
+		});
 	};
 	
 //	*/
@@ -266,6 +276,18 @@ function TableController($scope, $http) {
 			.error(function(response){
 				console.log(response);
 			});
+		}
+	};
+	$scope.selectAllTables = function() {
+		for(var t in $scope.tables) {
+			if(!$scope.tables[t].ignored)
+				$scope.tables[t].selected = !$scope.allTablesSelected;
+		}
+	};
+	$scope.selectAllIgnoredTables = function() {
+		for(var t in $scope.tables) {
+			if($scope.tables[t].ignored)
+				$scope.tables[t].selected = !$scope.allIgnoredTablesSelected;
 		}
 	};
 }
