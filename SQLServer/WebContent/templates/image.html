@@ -1,0 +1,29 @@
+<style>
+	.caption {
+		border: 5px solid red;
+		cursor: pointer;
+	}
+	.delete {
+		float: right;
+		cursor: default;
+		position: relative;
+		top: -5px;
+		left: -2px;
+	}
+</style>
+<div class="row">
+	<div class="col-xs-1">
+		<h2>Tools</h2>
+		<button class="btn btn-success btn-block" ng-click="addCaption()">+</button>
+		<button class="btn btn-success btn-block" ng-click="save()">OK</button>
+	</div>
+	<div class="col-xs-9">
+		<h2>Image Editor</h2>
+		<div style="position: relative">
+			<div id="caption._id" ng-dblclick="showCaptionEditDialog(caption)" class="caption" title="{{caption.title}}" my-draggable ng-repeat="caption in captions" style="position:absolute; top: {{caption.top}}px; left:{{caption.left}}px; width: {{caption.width}}px; height:{{caption.height}}px;">
+				<span class="delete" ng-click="deleteCaption(caption)" title="Delete caption">&times;</span>
+			</div>
+			<img src="images/{{image.fileName}}"/>
+		</div>
+	</div>
+</div>

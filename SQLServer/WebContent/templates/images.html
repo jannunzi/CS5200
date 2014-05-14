@@ -1,0 +1,60 @@
+<style>
+	.image {
+		position: relative;
+		width: 200px;
+		height: 200px;
+		float: left;
+		margin-top: 10px;
+		margin-right: 10px;
+	}
+	.image .img {
+		width: 100%;
+		height: 100%;
+		background-size:200px 200px;
+		background-repeat:no-repeat;
+	}
+	.image .btn.add {
+		height: 100%;
+		padding-top: 25px;
+		font-size: 100px;
+	}
+	
+	.image .btn.img {
+		padding: 0px;
+	}
+	
+	.delete {
+		position: absolute;
+		right: 5px;
+		top: 0px;
+		color: black;
+		padding-top: 0px;
+		font-size: 20px;
+		cursor: pointer;
+	}
+	
+</style>
+
+<div class="container">
+	<div class="row">
+		<div class="col-xs-2">
+		</div>
+		<div class="col-xs-10">
+			<h2>Images</h2>
+				
+				<div class="input-group">
+				  <input type="file" class="form-control" fileread="imageFile" />
+			      <span class="input-group-btn">
+			        <a class="btn btn-default btn-success" type="button" ng-click="addImage()">Add Image</a>
+			      </span>
+			    </div><!-- /input-group -->
+				
+			<div class="image" ng-repeat="image in images" style="position: relative">
+				<span class="delete" ng-click="deleteImage(image._id)">&times;</span>
+				<a href="#/image/{{image._id}}" class="btn btn-default btn-block img" title="Click to add image" style="background-image:url(images/{{image.fileName}})">
+					&nbsp;
+				</a>
+			</div>
+		</div>
+	</div>
+</div>

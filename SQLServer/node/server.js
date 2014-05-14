@@ -32,6 +32,22 @@ var SearchSchema = new mongoose.Schema(
 var Table  = mongoose.model("Table",  TableMetaSchema);
 var Search = mongoose.model("Search", SearchSchema);
 
+var ImageCaptionSchema = new mongoose.Schema({
+	text: String,
+	title: String,
+	top: Number,
+	left: Number,
+	width: Number,
+	height: Number
+});
+
+var ImageSchema = new mongoose.Schema({
+	fileName: String,
+	captions: [ImageCaptionSchema]
+});
+
+var Image  = mongoose.model("Image", ImageSchema);
+
 server.configure(function() {
 	server.use(express.static(__dirname + '/public'));
 	server.use(express.bodyParser());
@@ -161,5 +177,93 @@ server.put("/rest/table/:id", function(req, res){
 server.get("/rest/table", function(req, res){
 	Table.find(function(err, tables){
 		res.json(tables);
+	});
+});
+
+server.post("/rest/image/:imageFileName", function(req, res) {
+	Image.create(req.body, function(err, image){
+		console.log(image);
+		Image.find(function(err, images){
+			res.json(images);
+		});
+	});
+});
+
+server.get("/rest/image", function(req, res){
+	Image.find(function(err, images){
+		res.json(images);
+	});
+});
+
+server.get("/rest/image/:id", function(req, res){
+	Image.findById(req.params.id, function(err, image){
+		res.json(image);
+	});
+});
+
+server.delete("/rest/image/:id", function(req, res){
+	Image.findById(req.params.id, function(err, image){
+		image.remove(function(err, i){
+			Image.find(function(err, images){
+				res.json(images);
+			});
+		});
+	});
+});
+
+/*
+ * Image Captions
+ */
+
+server.post("/rest/image/:id/caption", function(req, res){
+	var caption = req.body;
+	Image.findById(req.params.id, function(err, image){
+		image.captions.push(caption);
+		image.save(function(err, img){
+			res.json(img);
+		});
+	});
+});
+
+server.put("/rest/image/:image_id/caption", function(req, res){
+	var newCaptions = req.body;
+	Image.findById(req.params.image_id, function(err, image){
+		for(var c in newCaptions) {
+			var newCaption = newCaptions[c];
+			var caption = image.captions.id(newCaption._id);
+			caption.top = newCaption.top;
+			caption.left = newCaption.left;
+			caption.width = newCaption.width;
+			caption.height = newCaption.height;
+			caption.text = newCaption.text;
+			caption.title = newCaption.title;
+		};
+		image.save(function(err){;});
+	});
+});
+
+server.delete("/rest/image/:image_id/caption/:caption_id", function(req, res){
+	Image.findById(req.params.image_id, function(err, image){
+		var caption = image.captions.id(req.params.caption_id);
+		caption.remove();
+		image.save(function(err, image){
+			res.json(image.captions);
+		});
+	});
+});
+
+// not used yet
+server.put("/rest/image/:image_id/caption/:caption_id", function(req, res){
+	var newCaption = req.body;
+	Image.findById(req.params.image_id, function(err, image){
+		image.captions.id(req.params.caption_id, function(err, caption){
+			caption.top = newCaption.top;
+			caption.left = newCaption.left;
+			caption.save(function(err, caption){
+				Image.findById(req.params.image_id, function(err, image){
+					res.json(image);
+				});
+			});
+		});
 	});
 });
