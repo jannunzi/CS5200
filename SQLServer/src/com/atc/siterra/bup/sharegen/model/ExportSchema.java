@@ -1,4 +1,4 @@
-package com.atc.db2xls;
+package com.atc.siterra.bup.sharegen.model;
 
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -15,7 +15,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellUtil;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-public class ExportDatabase {
+public class ExportSchema {
 
 	public void saveWorkbook(Workbook wb, String workbookFileName) {
 	    FileOutputStream fileOut;
@@ -93,17 +93,16 @@ public class ExportDatabase {
 		createCells(row, finalCols, row.getLastCellNum(), centeredBold, false);
 	}
 	
-
-	public void export(Database db, String workbookFileName, String[] tableNames) {
+	public void export(Database db, String workbookFileName)
+	{
 		TableService svc = new TableService(db);
-		db = svc.getDatabase(tableNames);
 		
 		Workbook wb = new XSSFWorkbook();
 		
 		Row row;
 		Cell cell;
 
-		List<Table> tables = db.tables.table;
+		List<Table> tables = db.tables.table;//svc.getTables(dataSourceName, tableNames);
 		int fieldCount = 0;
 		for(Table table : tables) {
 		    Sheet sheet = wb.createSheet(table.name);
@@ -131,11 +130,11 @@ public class ExportDatabase {
 	
 	public static void main(String[] args) {
 		
-		ExportDatabase edb = new ExportDatabase();
+		ExportSchema edb = new ExportSchema();
 		
 		Database db = Database.DATABASES.get("ORADEVDB1");
 		
-		edb.export(db, "xls/dictionary2.xlsx", new String[] {"ATC_INBLD_COLO", "ATC_INBLD_OTM", "ATC_OASISTOWERLIST", "ATC_OASIS_TLAS", "ATC_REDEV_LIGHTING_TYPES", "ATC_REDEV_OASIS_EXTRACT"});
+//		edb.export(db, "xls/dictionary2.xlsx", new String[] {"ATC_INBLD_COLO", "ATC_INBLD_OTM", "ATC_OASISTOWERLIST", "ATC_OASIS_TLAS", "ATC_REDEV_LIGHTING_TYPES", "ATC_REDEV_OASIS_EXTRACT"});
 	}
 
 }

@@ -2,6 +2,8 @@ package com.atc.siterra.bup;
 
 import java.sql.*;
 
+import com.atc.siterra.bup.sharegen.model.Table;
+
 public class Test {
 	
 	public String hello()
@@ -88,8 +90,63 @@ public class Test {
 		return null;
 	}
 
+	public String testORADEVDB1()
+	{
+		Connection connection = null;
+		try {
+			Driver d = (Driver)Class.forName("oracle.jdbc.OracleDriver").newInstance();
+			connection = DriverManager.getConnection("jdbc:oracle:thin:@oradevdb1.americantower.com:1521:tst", "atc", "oracle_atc");
+			System.out.println(connection);
+			
+			DatabaseMetaData meta = connection.getMetaData();
+			System.out.println(1);
+			System.out.println(meta);
+			ResultSet results = meta.getTables(null, null, null, new String[] {"VIEW"});
+			System.out.println(2);
+			System.out.println(results);
+			System.out.println(3);
+			System.out.println(results.next());
+			while(results.next()) {
+				String tableName = results.getString("TABLE_NAME");
+				System.out.println(tableName);
+			}
+
+			
+/*			
+			String testSql = "select * from ACS_AR_BUDGETS";
+			PreparedStatement statement = connection.prepareStatement(testSql);
+			ResultSet results = statement.executeQuery();
+			while(results.next())
+			{
+				String lsProjectNumber = results.getString("LS_PROJECT_NUMBER");
+				System.out.println(lsProjectNumber);
+			}
+			*/
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InstantiationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				connection.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
+	
 	public static void main(String[] args) {
 		Test test = new Test();
-		test.testQCSQL12();
+		test.testORADEVDB1();
 	}
 }

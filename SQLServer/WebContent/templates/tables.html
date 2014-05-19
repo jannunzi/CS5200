@@ -17,6 +17,7 @@
 			<input type="checkbox" ng-model="tableFieldHeightTruncated" ng-click="truncateTableFieldHeight()"/>
 			Truncate Fields
 			
+			<a href="#" class="btn btn-success btn-block" ng-click="exportSchema()" title="Export Schema for Selected Tables">&minus;</a>
 			<a href="#ignore" class="btn btn-warning btn-block" ng-click="ignoreSelectedTables()" title="Ignore selected tables below">Ignore</a>	
 			<a href="#excel" class="btn btn-success btn-block" ng-click="exportToExcel()" title="Export to Excel">2 Excel</a>	
 			<a href="#expandAllTables" class="btn btn-success btn-block" ng-click="expandSelectedTables()" title="Expand selected tables">&plus;</a>
@@ -37,7 +38,7 @@
 			</tr>
 		</thead>
 		<tbody>
-		<tr ng-repeat="table in tables | filter:searchTable | filter:searchField | filter:{ignored: false}" ng-click="toggleTable(table)">
+		<tr title="Click to expand table fields" ng-repeat="table in tables | filter:searchTable | filter:searchField | filter:{ignored: false}" ng-click="toggleTable(table)">
 			<td>
 				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table); $event.stopPropagation();" title="Select this table"/>
 				<a class="table-name" href="#{{table.name}}">{{table.name}}</a>

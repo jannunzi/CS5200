@@ -23,7 +23,7 @@ public class Column {
 		else if(type == Types.TIMESTAMP)
 			return "DATETIME";
 		else if(type == 3)
-			return "MONEY";
+			return "NUMBER";
 		return "TEXT";
 	}
 }

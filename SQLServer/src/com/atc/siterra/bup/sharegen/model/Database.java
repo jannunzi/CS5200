@@ -26,11 +26,13 @@ public class Database {
 	public String username;
 	@XmlAttribute
 	public String password;
+	@XmlAttribute
+	public String urlPattern;
 	@XmlElement
 	public Tables tables = new Tables();
 	public Database(String name, String driver, String vendor, String type,
 			String server, String port, String username, String password,
-			Tables tables) {
+			Tables tables, String urlPattern) {
 		super();
 		this.name = name;
 		this.driver = driver;
@@ -41,6 +43,7 @@ public class Database {
 		this.username = username;
 		this.password = password;
 		this.tables = tables;
+		this.urlPattern = urlPattern;
 	}
 	public Database() {
 		super();
@@ -60,7 +63,7 @@ public class Database {
 				"1433",
 				"semaan_app_user",
 				"qcdb01",
-				null);
+				null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
 		
 		Database atProdQc = new Database(
 				"ATPRODUCTION",
@@ -71,14 +74,30 @@ public class Database {
 				"1433",
 				"semaan_app_user",
 				"qcdb01",
-				null);	
+				null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
+		
+		Database oraDevDb1 = new Database(
+//				"ORADEVDB1",
+				"tst",
+				"oracle.jdbc.OracleDriver",
+				"oracle",
+				"thin",
+				"oradevdb1.americantower.com",
+				"1521",
+				"atc",
+				"oracle_atc",
+				null,"jdbc:{vendor}:{type}:@{server}:{port}:tst"
+				);
+		
 		DATABASES.put("BUPQC", bupQc);
 		DATABASES.put("ATPRODQC", atProdQc);
+		DATABASES.put("ORADEVDB1", oraDevDb1);
 	}
 	
 	private String urlTemplate = "jdbc:{vendor}:{type}://{server}:{port};databaseName={name}";
 	public String getUrlString() {
-		String url = new String(urlTemplate);
+		
+		String url = new String(this.urlPattern);
 		url = url.replace("{vendor}", this.vendor);
 		url = url.replace("{type}", this.type);
 		url = url.replace("{server}", this.server);

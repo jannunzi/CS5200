@@ -1,6 +1,7 @@
 package com.atc.db2xls;
 
 import java.sql.DriverManager;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlAttribute;
@@ -25,11 +26,13 @@ public class Database {
 	public String username;
 	@XmlAttribute
 	public String password;
+	@XmlAttribute
+	public String urlPattern;
 	@XmlElement
 	public Tables tables = new Tables();
 	public Database(String name, String driver, String vendor, String type,
 			String server, String port, String username, String password,
-			Tables tables) {
+			Tables tables, String urlPattern) {
 		super();
 		this.name = name;
 		this.driver = driver;
@@ -40,13 +43,58 @@ public class Database {
 		this.username = username;
 		this.password = password;
 		this.tables = tables;
+		this.urlPattern = urlPattern;
 	}
 	public Database() {
 		super();
 	}
+	
+	public static HashMap<String, Database> DATABASES = new HashMap<String, Database>();
+	public static String BUPQC    = "BUPQC";
+	public static String ATPRODQC = "ATPRODQC";
+	
+	static {
+		Database bupQc = new Database(
+				"ShareGen",
+				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
+				"microsoft",
+				"sqlserver",
+				"QCSMN01",
+				"1433",
+				"semaan_app_user",
+				"qcdb01",
+				null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
+		
+		Database atProdQc = new Database(
+				"ATPRODUCTION",
+				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
+				"microsoft",
+				"sqlserver",
+				"DB-QC-ATPRODUCTION",
+				"1433",
+				"semaan_app_user",
+				"qcdb01",
+				null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
+		
+		Database oraDevDb1 = new Database(
+				"tst",
+				"oracle.jdbc.OracleDriver",
+				"oracle",
+				"thin",
+				"oradevdb1.americantower.com",
+				"1521",
+				"atc",
+				"oracle_atc",
+				null,"jdbc:{vendor}:{type}:@{server}:{port}:tst");
+		
+		DATABASES.put("BUPQC", bupQc);
+		DATABASES.put("ATPRODQC", atProdQc);
+		DATABASES.put("ORADEVDB1", oraDevDb1);
+	}
+	
 	private String urlTemplate = "jdbc:{vendor}:{type}://{server}:{port};databaseName={name}";
 	public String getUrlString() {
-		String url = new String(urlTemplate);
+		String url = new String(this.urlPattern);
 		url = url.replace("{vendor}", this.vendor);
 		url = url.replace("{type}", this.type);
 		url = url.replace("{server}", this.server);

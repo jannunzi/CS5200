@@ -48,11 +48,13 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-ooxml-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-ooxml-schemas-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xbean.jar"/>
+	<classpathentry kind="lib" path="WebContent/lib/ojdbc6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.0 - Kepler">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/jose.annunziato/Downloads/ojdbc6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

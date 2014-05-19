@@ -14,11 +14,12 @@ public class TableService
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet results = null;
+	private String[] tableNames = null;
 	
-	public Database getDatabase()
+	public Database getDatabase(String[] tableNames)
 	{
 		Tables tables = new Tables();
-		tables.table = this.getTables();
+		tables.table = this.getTables(tableNames);
 		
 		for(Table table:tables.table) {
 			table.column = this.getColumns(table.name);
@@ -26,6 +27,11 @@ public class TableService
 		
 		this.database.tables = tables;
 		return this.database;
+	}
+	
+	public void setTableNames(String[] tableNames)
+	{
+		this.tableNames = tableNames;
 	}
 	
 	public void exportDataseToXml(Database database, String xmlFileName) {
@@ -41,9 +47,20 @@ public class TableService
 		}
 	}
 	
-	public List<Table> getTables()
+	public List<Table> getTables(String[] tableNames)
 	{
 		List<Table> tables = new ArrayList<Table>();
+		
+		if(tableNames != null)
+		{
+			for(String tableName : tableNames)
+			{
+				Table table = new Table();
+				table.name = tableName;
+				tables.add(table);
+			}
+			return tables;
+		}
 		
 		try {
 			Connection connection = getConnection();
@@ -150,10 +167,10 @@ public class TableService
 		Database db = new Database("ShareGen",
 				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
 				"microsoft","sqlserver","QCSMN01","1433",
-				"semaan_app_user","qcdb01",null);
+				"semaan_app_user","qcdb01",null,"");
 		TableService svc = new TableService(db);
 
-		db = svc.getDatabase();
+		db = svc.getDatabase(new String[] {"ATC_INBLD_COLO", "ATC_INBLD_OTM"});
 		
 		List<Table> tables = db.tables.table;
 		for(Table table : tables) {

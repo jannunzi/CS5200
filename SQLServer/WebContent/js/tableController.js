@@ -1,5 +1,12 @@
 function TableController($scope, $http) {
 	
+	$scope.exportSchema = function()
+	{
+		console.log("export");
+		var tableNames = "ATC_REDEV_TASK_DET_TMP,ATC_REDEV_TASK_DETAILS,ATC_REDEV_TASK,ATC_REDEV_PROJECT,ATC_REDEV_OASIS_EXTRACT,ATC_REDEV_LIGHTING_TYPES,ATC_REDEV_CUSTOMERS,ATC_REDEV_CONTACTS";
+		$http.get("api/table/schema/ORADEVDB1/"+tableNames);
+	};
+	
 	$scope.maxHeight = {"max-height": "300px", "overflow-y": "scroll", "overflow-x": "hidden"};
 	$scope.busy = false;
 	$scope.tableFieldHeightTruncated = true;
@@ -14,7 +21,8 @@ function TableController($scope, $http) {
 	// choose database
 	$scope.dataSources = [
         {name: "BUPQC"},
-        {name: "ATPRODQC"}
+        {name: "ATPRODQC"},
+        {name: "ORADEVDB1"}
 	];
 	
 	$scope.currentDataSource = $scope.dataSources[0];

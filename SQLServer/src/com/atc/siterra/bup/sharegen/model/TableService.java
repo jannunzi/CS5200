@@ -1,6 +1,11 @@
 package com.atc.siterra.bup.sharegen.model;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.Writer;
+import java.io.BufferedWriter;
 import java.sql.*;
 import java.util.*;
 
@@ -11,8 +16,12 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.Response.ResponseBuilder;
+import javax.ws.rs.core.StreamingOutput;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
@@ -25,6 +34,7 @@ public class TableService
 	private Connection connection = null;
 	private PreparedStatement statement = null;
 	private ResultSet results = null;
+	private String[] tableNames = null;
 	
 	public Database getDatabase(String dataSourceName)
 	{
@@ -39,17 +49,65 @@ public class TableService
 		return this.database;
 	}
 	
-	public void exportDataseToXml(Database database, String xmlFileName) {
+	public Database getDatabase(String dataSourceName, String[] tableNames)
+	{
+		Tables tables = new Tables();
+		tables.table = this.getTables(dataSourceName, tableNames);
+		
+		for(Table table:tables.table) {
+			table.column = this.getColumns(table.name, dataSourceName);
+		}
+		
+		this.database.tables = tables;
+		return this.database;
+	}
+	
+	public void exportDatabaseToXml(Database database, String xmlFileName)
+	{
 		File xmlFile = new File(xmlFileName);
-		try {
+		try
+		{
 			JAXBContext jaxb = JAXBContext.newInstance(Database.class);
 			Marshaller marshaller = jaxb.createMarshaller();
 			marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
 			marshaller.marshal(database, xmlFile);
-		} catch (JAXBException e) {
+		}
+		catch (JAXBException e)
+		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
+	
+	@GET
+	@Path("/schema/{dataSourceName}/{tableNames}")
+	@Produces("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+	public Response exportSchemaToExcel(@PathParam("dataSourceName") String dataSourceStr,@PathParam("tableNames") String tableNamesStr)
+	{
+		String[] tableNames = tableNamesStr.split(",");
+		Database db = this.getDatabase(dataSourceStr, tableNames);
+		ExportSchema es = new ExportSchema();
+		es.export(db, "/excel/schemaExport.xls");
+
+/*
+		StreamingOutput stream = new StreamingOutput() {
+		    @Override
+		    public void write(OutputStream os) throws IOException,
+		    WebApplicationException {
+		      Writer writer = new BufferedWriter(new OutputStreamWriter(os));
+		      writer.write("test");
+		      writer.flush();
+		    }
+		  };
+		  */
+
+		File fileToSend = new File("/excel/schemaExport.xlsx");
+		
+		ResponseBuilder response = Response.ok((Object)fileToSend);
+		response.header("Content-Disposition",
+			"attachment; filename=schemaExport.xlsx");
+		
+		return response.build();
 	}
 	
 	@POST
@@ -69,23 +127,40 @@ public class TableService
 	{
 		List<Table> tables = new ArrayList<Table>();
 		
+		System.out.println("Getting Tables");
+		
 		try {
 			Connection connection = getConnection(dataSourceName);
 			DatabaseMetaData meta = connection.getMetaData();
-			results = meta.getTables(null, null, null, null);
+			results = meta.getTables(null, null, null, new String[] {"TABLE", "VIEW"});
 			while(results.next()) {
-				String tableName = results.getString(3);
+				String tableName = results.getString("TABLE_NAME");
 				if(tableName.startsWith("sys") || tableName.startsWith("dt"))
 					continue;
 				Table table = new Table();
-				table.name = results.getString(3);
+				table.name = tableName;
+				System.out.print(".");
 				tables.add(table);
 			}
 			closeConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
+		System.out.println("\nDone Getting Tables");
 		
+		return tables;
+	}
+	
+	public List<Table> getTables(String dataSourceName, String[] tableNames)
+	{
+		List<Table> tables = new ArrayList<Table>();
+		
+		for(String tableName : tableNames)
+		{
+			Table table = new Table();
+			table.name = tableName;
+			tables.add(table);
+		}
 		return tables;
 	}
 	
@@ -191,10 +266,10 @@ public class TableService
 		Database db = new Database("ShareGen",
 				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
 				"microsoft","sqlserver","QCSMN01","1433",
-				"semaan_app_user","qcdb01",null);
+				"semaan_app_user","qcdb01",null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
 		TableService svc = new TableService(db);
 
-		db = svc.getDatabase("BUPQC");
+		db = svc.getDatabase("ORADEVDB1");
 		
 		List<Table> tables = db.tables.table;
 		for(Table table : tables) {
@@ -204,7 +279,7 @@ public class TableService
 			}
 		}
 		
-		svc.exportDataseToXml(db, "siterra/bup.xml");
+		svc.exportDatabaseToXml(db, "siterra/bup.xml");
 	}
 
 	@PUT
@@ -217,7 +292,7 @@ public class TableService
 		System.out.println(name);
 	}
 	
-	static Database currentDatabase = Database.DATABASES.get("BUPQC");
+	static Database currentDatabase = Database.DATABASES.get("ORADEVDB1");
 	
 	public TableService() {
 		super();
