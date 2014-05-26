@@ -20,9 +20,9 @@ function TableController($scope, $http) {
 	
 	// choose database
 	$scope.dataSources = [
-        {name: "BUPQC"},
-        {name: "ATPRODQC"},
-        {name: "ORADEVDB1"}
+		{name: "BUPQC"},
+		{name: "ATPRODQC"},
+		{name: "ORADEVDB1"}
 	];
 	
 	$scope.currentDataSource = $scope.dataSources[0];

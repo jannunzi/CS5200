@@ -173,7 +173,6 @@ server.put("/rest/table/:id", function(req, res){
 	*/
 });
 
-
 server.get("/rest/table", function(req, res){
 	Table.find(function(err, tables){
 		res.json(tables);
