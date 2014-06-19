@@ -41,14 +41,9 @@
 		</div>
 		<div class="col-xs-10">
 			<h2>Images</h2>
-				
-				<div class="input-group">
-				  <input type="file" class="form-control" fileread="imageFile" />
-			      <span class="input-group-btn">
-			        <a class="btn btn-default btn-success" type="button" ng-click="addImage()">Add Image</a>
-			      </span>
-			    </div><!-- /input-group -->
-				
+			
+			<input type="file" ng-file-select="onFileSelect($files)" class="form-control">
+
 			<div class="image" ng-repeat="image in images" style="position: relative">
 				<span class="delete" ng-click="deleteImage(image._id)">&times;</span>
 				<a href="#/image/{{image._id}}" class="btn btn-default btn-block img" title="Click to add image" style="background-image:url(images/{{image.fileName}})">

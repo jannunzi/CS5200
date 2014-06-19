@@ -2,16 +2,26 @@ function TableController($scope, $http) {
 	
 	$scope.exportSchema = function()
 	{
-		console.log("export");
+		var selectedTables = [];
+		for(var t=0; t<$scope.tables.length; t++) {
+			var table = $scope.tables[t];
+			if(table.selected)
+				selectedTables.push(table.name);
+		}
+		selectedTables = selectedTables.join();
+		var dataSource = $scope.currentDataSource.name;
+		console.log(dataSource);
+		console.log(selectedTables);
 		var tableNames = "ATC_REDEV_TASK_DET_TMP,ATC_REDEV_TASK_DETAILS,ATC_REDEV_TASK,ATC_REDEV_PROJECT,ATC_REDEV_OASIS_EXTRACT,ATC_REDEV_LIGHTING_TYPES,ATC_REDEV_CUSTOMERS,ATC_REDEV_CONTACTS";
-		$http.get("api/table/schema/ORADEVDB1/"+tableNames);
+		$http.get("api/table/schema/"+dataSource+"/"+selectedTables);
 	};
 	
-	$scope.maxHeight = {"max-height": "300px", "overflow-y": "scroll", "overflow-x": "hidden"};
+//	$scope.maxHeight = {"max-height": "300px", "overflow-y": "scroll", "overflow-x": "hidden"};
 	$scope.busy = false;
-	$scope.tableFieldHeightTruncated = true;
+	$scope.tableFieldHeightTruncated = false;
 	$scope.truncateTableFieldHeight = function() {
-		if($scope.tableFieldHeightTruncated) {
+		console.log($scope.tableFieldHeightTruncated);
+		if($scope.tableFieldHeightTruncated === false) {
 			$scope.maxHeight = {"max-height": "300px", "overflow-y": "scroll", "overflow-x": "hidden"};
 		} else {
 			$scope.maxHeight = {};			
@@ -20,9 +30,9 @@ function TableController($scope, $http) {
 	
 	// choose database
 	$scope.dataSources = [
-        {name: "BUPQC"},
-        {name: "ATPRODQC"},
-        {name: "ORADEVDB1"}
+         {name: "BUPQC"}
+        ,{name: "ATPRODQC"}
+        ,{name: "ORADEVDB1"}
 	];
 	
 	$scope.currentDataSource = $scope.dataSources[0];
@@ -52,9 +62,10 @@ function TableController($scope, $http) {
 		}
 	};
 	$scope.expandTable = function(table, callback) {
-		if(table.columns == null) {
+		if(table.columns == null || typeof table.columns == "undefined") {
 			table.loading = true;
-			$scope.loadColumns(table, function(){
+			$scope.loadColumns(table, function(columns){
+				table.columns = columns;
 				table.loading = false;
 				table.show = true;
 				if(typeof callback === "function")
@@ -68,9 +79,12 @@ function TableController($scope, $http) {
 	$scope.loadColumns = function(table, callback) {
 		$http.get("api/table/"+$scope.currentDataSource.name+"/"+table.name+"/column")
 		.success(function(columns){
-			table.columns = columns;
+//			table.columns = columns;
 			if(typeof callback === "function")
-				setTimeout(callback, 200);
+			{
+//				setTimeout(callback, 200);
+				callback(columns);
+			}
 		});
 	};
 	
@@ -98,23 +112,21 @@ function TableController($scope, $http) {
 			if(table.show == true) {
 				table.show = false;
 			} else {
-				$scope.expandTable(table, function(){
-					table.show = true;
-					table.loading = false;
-				});
+				$scope.expandTable(table);
 			}
 		}
-	};	
-
+	};
 	$scope.exportToExcel = function() {
 		var selected = $scope.parseSelected();
 		$http.post("api/table/excel/"+$scope.currentDataSource.name, selected)
-			.success(function(response){console.log(response);});
+		.success(function (response) {
+			$(".download").click();
+		})
 	};
 	$scope.getTables = function(name) {
 		$http.get("api/table/"+name)
 		.success(function(tables){
-			$http.get("http://localhost:9090/rest/table")
+			$http.get("http://10.8.155.22:9090/rest/table")
 			.success(function(ignoredTables){
 				for(var t in tables) {
 					tables[t].ignored = false;
@@ -143,7 +155,7 @@ function TableController($scope, $http) {
 				ignore.tableNames.push($scope.tables[t].name);
 			}
 		}
-		$http.put("http://localhost:9090/rest/table/ignore/true", ignore)
+		$http.put("http://10.8.155.22:9090/rest/table/ignore/true", ignore)
 		.success(function(responseTable){
 		});
 	};
@@ -156,36 +168,48 @@ function TableController($scope, $http) {
 				ignore.tableNames.push($scope.tables[t].name);
 			}
 		}
-		$http.put("http://localhost:9090/rest/table/ignore/false", ignore)
+		$http.put("http://10.8.155.22:9090/rest/table/ignore/false", ignore)
 		.success(function(responseTable){
 		});
 	};
+	
+	$scope.unignoreTables = function(tables) {
+		for(var tt=0; tt<tables.length; tt++) {
+			for(var t=0; t<$scope.tables.length; t++) {
+				if(tables[tt].tableName == $scope.tables[t].name)
+				{
+					$scope.tables[t].ignored = false;
+					$scope.tables[t].selected = true;
+				}
+			}
+		}	
+	}
 	
 //	*/
 	/*
 	 * search
 	 */
-	$http.get("http://localhost:9090/rest/search")
+	$http.get("http://10.8.155.22:9090/rest/search")
 	.success(function(searches){
 		$scope.searches = searches;
 	});
 	$scope.saveQuery = function() {
 		var search = { tables: $scope.parseSelected(), name: $scope.searchName };
-		$http.post("http://localhost:9090/rest/search", search)
+		$http.post("http://10.8.155.22:9090/rest/search", search)
 		.success(function(searches){
 			$scope.searches = searches;
 		})
 		.error(function(response){console.log(response);});
 	};
 	$scope.selectSearch = function(search) {
-		$http.get("http://localhost:9090/rest/search/"+search._id)
+		$http.get("http://10.8.155.22:9090/rest/search/"+search._id)
 		.success(function(search){
 			$scope.updateUiFromSearch(search);
 		})
 		.error(function(response){console.log("unable to remove");});
 	};
 	$scope.deleteSearch = function(search) {
-		$http.delete("http://localhost:9090/rest/search/"+search._id).success(function(searches){$scope.searches = searches;}).error(function(response){console.log("unable to remove");});
+		$http.delete("http://10.8.155.22:9090/rest/search/"+search._id).success(function(searches){$scope.searches = searches;}).error(function(response){console.log("unable to remove");});
 	};
 	$scope.updateUiFromSearch = function(search) {
 //		$http.post("api/table/excel", search.tables)
@@ -194,8 +218,16 @@ function TableController($scope, $http) {
 		
 		// unselect all tables and columns
 		$scope.collapseAllTables();
-		$scope.expandTablesFromSearch(search);
+		$scope.ignoreAllTablesInUi();
+		$scope.unignoreTables(search.tables);
+		$scope.expandTables(search.tables);
 	};
+	$scope.ignoreAllTablesInUi = function()
+	{
+		for(var t=0; t<$scope.tables.length; t++) {
+			$scope.tables[t].ignored = true;
+		}
+	}
 	$scope.parseSelected = function() {
 		var selected = [];
 		for(var t=0; t<$scope.tables.length; t++) {
@@ -227,8 +259,7 @@ function TableController($scope, $http) {
 		}
 		return selected;
 	};
-	$scope.selectColumnsFromSearch = function(search) {
-		var tables = search.tables;
+	$scope.selectColumnsForTables = function(tables) {
 		for(var tt=0; tt<tables.length; tt++) {
 			for(var t=0; t<$scope.tables.length; t++) {
 				if($scope.tables[t].name === tables[tt].tableName) {
@@ -250,14 +281,13 @@ function TableController($scope, $http) {
 			}
 		}
 	};
-	$scope.expandTablesFromSearch = function(search) {
-		var tables = search.tables;
+	$scope.expandTables = function(tables) {
 		for(var tt=0; tt<tables.length; tt++) {
 			for(var t=0; t<$scope.tables.length; t++) {
 				if($scope.tables[t].name === tables[tt].tableName) {
 					$scope.expandTable($scope.tables[t], function() {
 						setTimeout(function(){
-							$scope.selectColumnsFromSearch(search)
+							$scope.selectColumnsForTables(tables)
 						}, 200);
 					});
 				}
@@ -266,7 +296,7 @@ function TableController($scope, $http) {
 	};
 	$scope.updateSearch = function(search, event) {
 		if(event.which === 13) {
-			$http.put("http://localhost:9090/rest/search/"+search._id, search)
+			$http.put("http://10.8.155.22:9090/rest/search/"+search._id, search)
 			.success(function(response){
 				console.log(response);
 			})
@@ -283,7 +313,7 @@ function TableController($scope, $http) {
 	};
 	$scope.selectAllIgnoredTables = function() {
 		for(var t in $scope.tables) {
-			if($scope.tables[t].ignored)
+			if( $scope.tables[t].ignored)
 				$scope.tables[t].selected = !$scope.allIgnoredTablesSelected;
 		}
 	};

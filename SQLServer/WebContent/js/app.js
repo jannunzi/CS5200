@@ -1,4 +1,4 @@
-var siterraApp = angular.module('siterraApp', ['ngRoute']);
+var siterraApp = angular.module('siterraApp', ['ngRoute', 'angularFileUpload', 'ui.bootstrap']);
 
 siterraApp.config(['$routeProvider',
 function($routeProvider) {

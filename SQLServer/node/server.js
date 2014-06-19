@@ -1,3 +1,4 @@
+var fs = require('fs');
 var mongoose = require("mongoose");
 var express	= require('express');
 var server		= express();
@@ -50,7 +51,8 @@ var Image  = mongoose.model("Image", ImageSchema);
 
 server.configure(function() {
 	server.use(express.static(__dirname + '/public'));
-	server.use(express.bodyParser());
+	server.use(express.bodyParser({uploadDir:'./uploads'}));
+//	server.use(express.bodyParser());
 });
 server.listen(port);
 
@@ -181,12 +183,52 @@ server.get("/rest/table", function(req, res){
 });
 
 server.post("/rest/image/:imageFileName", function(req, res) {
+	console.log(req.body)
 	Image.create(req.body, function(err, image){
 		console.log(image);
 		Image.find(function(err, images){
 			res.json(images);
 		});
 	});
+});
+
+server.post("/rest/image/upload/:imageFileName", function(req, res) {
+	console.log("got it !!!!");
+	var tmp_path = req.files.file.path;
+	var originalFilename = req.files.file.originalFilename;
+	console.log(tmp_path);
+	console.log(originalFilename);
+	
+	
+    originalFilename = originalFilename.replace(/ /g, "_");
+    //var target_path = __dirname + '/../WebContent/images/' + originalFilename;
+    var target_path = 'C:/Users/jose/workspace/.metadata/.plugins/org.eclipse.wst.server.core/tmp0/wtpwebapps/SQLServer/images/' + originalFilename;
+	console.log(target_path);
+	console.log(__dirname);
+    // move the file from the temporary location to the intended location
+    fs.rename(tmp_path, target_path, function(err) {
+        if (err) throw err;
+        // delete the temporary file, so that the explicitly set temporary upload dir does not get filled with unwanted files
+        fs.unlink(tmp_path, function() {
+            if (err) throw err;
+//            res.send('File uploaded to: ' + target_path + ' - ' + req.files.thumbnail.size + ' bytes');
+            
+            
+        	var image = {
+        			  fileName: originalFilename,
+        			  captions: [] };
+        		
+        		
+        		Image.create(image, function(err, image){
+        			console.log(image);
+        			Image.find(function(err, images){
+        				res.json(images);
+        			});
+        		});
+        });
+    });
+
+	
 });
 
 server.get("/rest/image", function(req, res){

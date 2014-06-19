@@ -3,15 +3,22 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
-<link rel="stylesheet" href="css/bootstrap.css"/>
+<link rel="stylesheet" href="css/bootstrap.min.css"/>
 <link rel="stylesheet" href="css/jquery-ui.css"/>
 <script src="js/jquery.js"></script>
 <script src="js/jquery-ui.js"></script>
+
+
+<script src="js/angular-file-upload/angular-file-upload-shim.min.js"></script> 
 <script src="js/angular.min.js"></script>
 <script src="js/angular-route.min.js"></script>
+<script src="js/angular-file-upload/angular-file-upload.min.js"></script> 
 <script src="js/app.js"></script>
+<script src="js/ui-bootstrap-0.11.0.min.js"></script>
+<script src="js/ui-bootstrap-tpls-0.11.0.min.js"></script>
 <script src="js/tableController.js"></script>
 <script src="js/imageController.js"></script>
+<script src="js/bootstrap.min.js"></script>
 <style>
 	.width95 {
 		width: 95%;
@@ -24,10 +31,11 @@
 		width: 17px;
 	}
 	.toolbox {
+		padding-top: 10px;
 		position: fixed;
-		top: 70px;
+		top: 51px;
 		left: 0px;
-		width: 200px;
+		width: 210px;
 		overflow-y: scroll;
 		bottom: 0px;
 	}
@@ -45,7 +53,7 @@
 	}
 	.scroller-container {
 	
-		left: 190px;
+		left: 200px;
 		position: absolute;
 /*	
 		position: absolute;
@@ -59,6 +67,19 @@
 		overflow: scroll;
 		bottom: 0px;
 		top: 0px;
+	}
+	.input-xs {
+		padding : 2px;
+		height : 25px;
+		font-size : 80%;
+		border: 0px;
+		border-radius: 0px;
+		background-color: transparent;
+		box-shadow: none;
+	}
+	.input-xs:hover {
+		box-shadow: 0 3px 3px rgba(100, 100, 100, 1.0);
+		background-color: white;
 	}
 </style>
 </head>
@@ -85,10 +106,10 @@
           <a href="#/images">Images</a>
         </li>
       </ul>
-      <ul class="nav navbar-nav navbar-right">
+      <!-- ul class="nav navbar-nav navbar-right">
         <li><a href="#/tables">Tables</a></li>
         <li><a href="#/images">Images</a></li>
-      </ul>
+      </ul-->
     </nav>
   </div>
 </nav>

@@ -13,11 +13,8 @@
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
-	<classpathentry kind="lib" path="WebContent/lib/msbase.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/mssqlserver.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/msutil.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/mysql-connector-java-5.1.29-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/asm-3.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-core-asl-1.9.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-jaxrs-1.9.2.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jackson-mapper-asl-1.9.2.jar"/>
@@ -35,26 +32,22 @@
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jersey-spring-1.18.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jettison-1.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/jsr311-api-1.1.1.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/msbase.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mssqlserver.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/msutil.jar"/>
+	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/mysql-connector-java-5.1.29-bin.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-client-1.18.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-server-1.18.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/oauth-signature-1.18.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/dom4j-1.6.1.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/poi-3.10-FINAL-20140208.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/poi-ooxml-3.10-FINAL-20140208.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/poi-ooxml-schemas-3.10-FINAL-20140208.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/xbean.jar"/>
-	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-ooxml-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/poi-ooxml-schemas-3.10-FINAL-20140208.jar"/>
 	<classpathentry kind="lib" path="WebContent/WEB-INF/lib/xbean.jar"/>
-	<classpathentry kind="lib" path="WebContent/lib/ojdbc6.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/EclipseLink 2.5.0 - Kepler">
 		<attributes>
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 			<attribute name="owner.project.facets" value="jpt.jpa"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/jose.annunziato/Downloads/ojdbc6.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -6,6 +6,7 @@ import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.io.BufferedWriter;
+import java.net.URL;
 import java.sql.*;
 import java.util.*;
 
@@ -81,13 +82,19 @@ public class TableService
 	
 	@GET
 	@Path("/schema/{dataSourceName}/{tableNames}")
-	@Produces("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
-	public Response exportSchemaToExcel(@PathParam("dataSourceName") String dataSourceStr,@PathParam("tableNames") String tableNamesStr)
+	public void exportSchemaToExcel(@PathParam("dataSourceName") String dataSourceStr,@PathParam("tableNames") String tableNamesStr)
 	{
+		URL resource = getClass().getResource("/");
+		String path = resource.getPath();
+		System.out.println("PATH");
+		System.out.println(path);
+		
+		path = path.replace("WEB-INF/classes/", "");
+		
 		String[] tableNames = tableNamesStr.split(",");
 		Database db = this.getDatabase(dataSourceStr, tableNames);
 		ExportSchema es = new ExportSchema();
-		es.export(db, "/excel/schemaExport.xls");
+		es.export(db, path+"/schemaExport.xlsx");
 
 /*
 		StreamingOutput stream = new StreamingOutput() {
@@ -100,7 +107,7 @@ public class TableService
 		    }
 		  };
 		  */
-
+/*
 		File fileToSend = new File("/excel/schemaExport.xlsx");
 		
 		ResponseBuilder response = Response.ok((Object)fileToSend);
@@ -108,16 +115,41 @@ public class TableService
 			"attachment; filename=schemaExport.xlsx");
 		
 		return response.build();
+		*/
 	}
+	
+	private static final String FILE_PATH = "C:\\excel\\dataExport.xlsx";
+
 	
 	@POST
 	@Path("/excel/{dataSourceName}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public void exportToExcel(List<ExcelExportTable> tables, @PathParam("dataSourceName") String dataSourceName) throws SQLException {
+	public void  exportToExcel(List<ExcelExportTable> tables, @PathParam("dataSourceName") String dataSourceName) throws SQLException {
+		
+		URL resource = getClass().getResource("/");
+		String path = resource.getPath();
+		System.out.println("PATH");
+		System.out.println(path);
+		
+		path = path.replace("WEB-INF/classes/", "");
+
 		System.out.println("Excel");
 		System.out.println(tables);
 		ExportToExcel edb = new ExportToExcel();
-		edb.exportExcelExportTables(tables, this, dataSourceName);
+		edb.exportExcelExportTables(tables, this, dataSourceName, path);
+
+		
+		File workingDir = (new File("./"));
+		System.out.println("PWD2");
+		System.out.println(workingDir.getAbsolutePath());
+
+		/*
+		File file = new File(FILE_PATH);
+		 
+		ResponseBuilder response = Response.ok((Object) file);
+		response.header("Content-Disposition","attachment; filename=new-excel-file.xlsx");
+		return response.build();
+		*/
 	}
 	
 	@GET

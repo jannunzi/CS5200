@@ -3,6 +3,7 @@ package com.atc.siterra.bup.sharegen.model;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.File;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
@@ -142,7 +143,11 @@ public class ExportToExcel
 		return select;
 	}
 	
-	public void exportExcelExportTables(List<ExcelExportTable> tables, TableService svc, String dataSourceName) throws SQLException {
+	public void exportExcelExportTables(List<ExcelExportTable> tables, TableService svc, String dataSourceName, String path) throws SQLException {
+		File workingDir = (new File("./"));
+		System.out.println("PWD");
+		System.out.println(workingDir.getAbsolutePath());
+
 		Workbook wb = new XSSFWorkbook();
 	    Sheet sheet = wb.createSheet("Generator Asset");
 	    generateHeaders(tables, sheet);
@@ -151,6 +156,6 @@ public class ExportToExcel
 	    ResultSet results = svc.executeQuery(select, dataSourceName);
 	    generateResults(results, sheet);
 	    svc.closeConnection();
-		saveWorkbook(wb, "/excel/test.xlsx");
+		saveWorkbook(wb, path + "dataExport.xlsx");
 	}
 }
