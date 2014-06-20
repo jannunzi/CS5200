@@ -1,0 +1,42 @@
+<script src="js/jquery.js"></script>
+
+<a href="http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=umgs9aw92awmyuw6qvmgqkgv&q=Avatar">
+	Avatar
+</a>
+
+<ul class="myMovies">
+
+</ul>
+
+<script>
+	$(function(){
+
+		$.ajax({
+			url: "http://api.rottentomatoes.com/api/public/v1.0/movies.json?apikey=umgs9aw92awmyuw6qvmgqkgv&q=Avatar",
+			dataType: "jsonp",
+			success: function(response)
+			{
+				var movies = response.movies;
+				var ul = $(".myMovies");
+				for(var i=0; i<movies.length; i++)
+				{
+					var movie = movies[i];
+					var id = movie.id;
+					var title = movie.title;
+					console.log([id, title]);
+					var li = $("<li>").append(title);
+					li.attr("id", id);
+					ul.append(li);
+					li.click(selectMovie);
+				}
+			}
+		});
+		
+	});
+	
+	function selectMovie(event) {
+		var li = $(event.currentTarget);
+		var id = li.attr("id");
+		console.log(id);
+	}
+</script>
