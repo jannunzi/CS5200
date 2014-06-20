@@ -65,6 +65,17 @@ public class Database {
 				"qcdb01",
 				null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
 		
+		Database bupProd = new Database(
+				"ShareGen",
+				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
+				"microsoft",
+				"sqlserver",
+				"SDMAMXTKR01",
+				"1433",
+				"semaan_app_user",
+				"W7!smnDBrw",
+				null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
+		
 		Database atProdQc = new Database(
 				"ATPRODUCTION",
 				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
@@ -90,6 +101,7 @@ public class Database {
 				);
 		
 		DATABASES.put("BUPQC", bupQc);
+		DATABASES.put("BUPPROD", bupProd);
 		DATABASES.put("ATPRODQC", atProdQc);
 		DATABASES.put("ORADEVDB1", oraDevDb1);
 	}

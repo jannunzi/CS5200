@@ -132,9 +132,20 @@ public class ExportToExcel
 			prevTableName = tableName;
 		}
 
-		from = from.substring(0, from.length() - 2);
+	//	from = from.substring(0, from.length() - 2);
+		/*
+		from = " from ([ShareGen].[dbo].[ShareGenMain] LEFT JOIN "+
+				"[ShareGen].[dbo].[AEOrder] ON "+
+				"[ShareGen].[dbo].[ShareGenMain].[TowerNumber] = "+
+				"[ShareGen].[dbo].[AEOrder].[TowerNumber]) LEFT JOIN "+
+				"[ShareGen].[dbo].[Tenant] ON "+
+				"[ShareGen].[dbo].[Tenant].[TowerNumber] = "+ 
+				"[ShareGen].[dbo].[ShareGenMain].[TowerNumber]";
+				*/
+		from = " from [ShareGen].[dbo].[ShareGenMain] ";
 		select = select.substring(0, select.length() - 2);
 		where = where.substring(0, where.length() - 5);
+		where = "";
 		
 		select += from;
 		if(tables.size() > 1)
