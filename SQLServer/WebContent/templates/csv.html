@@ -1,0 +1,137 @@
+	<div class="container">
+	<div class="row">
+		<div class="col-xs-3 toolbox">
+			<!-- a href="#toggleAll" class="btn btn-success btn-block" ng-click="toggleAllTables()" ng-model="allTablesExpanded">Toggle All Tables</a>
+			<a href="#toggleAll" class="btn btn-success btn-block" ng-click="toggleAllTables()" ng-model="allTablesExpanded">Toggle All Tables</a-->
+  			<select ng-model="currentDataSource" ng-options="dataSource.name for dataSource in dataSources" ng-change="selectDataSource()" class="form-control" title="Select data source">
+  			</select>
+			<input ng-model="searchTable" placeholder="Filter Tables" class="form-control"/>
+			<input ng-model="searchField" placeholder="Filter Fields" class="form-control"/>
+			<input ng-model="searchName" placeholder="Search Name" class="form-control"/>
+			<a href="#saveQuery" class="btn btn-success btn-block" ng-click="saveQuery()">Save Search</a>
+			<div class="form-inline"  ng-repeat="search in searches">
+				<input name="select-search" type="radio" ng-click="selectSearch(search)"/>
+				<input ng-model="search.name" class="form-control" style="width:124px" ng-keypress="updateSearch(search, $event)"/>
+				<a href="#deleteSearch" class="pull-right" ng-click="deleteSearch(search)">&times;</a>
+			</div>
+			
+			<a href="#ignore" class="btn btn-warning btn-block" ng-click="ignoreSelectedTables()" title="Ignore selected tables">Ignore Tables</a>	
+			Export Data:
+			<div class="row">
+				<div class="col-xs-6" style="padding-right:5px">
+					<a href="#excel" class="btn btn-success btn-block" ng-click="exportToExcel()" title="Export Data For Selected Tables and Fields">Generate</a>
+				</div>
+				<div class="col-xs-6" style="padding-left:5px">
+					<a href="dataExport.xlsx" class="btn btn-success btn-block">Download</a>
+				</div>
+			</div>
+			Export Schema:
+			<div class="row">				
+				<div class="col-xs-6" style="padding-right:5px">
+					<a href="#" class="btn btn-success btn-block" ng-click="exportSchema()" title="Generate Schemas for Selected Tables">Generate</a>
+				</div>
+				<div class="col-xs-6" style="padding-left:5px">
+					<a href="schemaExport.xlsx" class="btn btn-success btn-block">Download</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-12">
+					<input type="checkbox" id="onlySelectedFields"/>
+					<label for="onlySelectedFields" title="TBD">Only Selected Fields</label>
+				</div>
+			</div>
+			<!-- div class="row">
+				<div class="col-xs-6" style="padding-right:5px">
+					<a href="#expandAllTables" class="btn btn-success btn-block" ng-click="expandSelectedTables()" title="Expand selected tables">Expand</a>
+				</div>
+				<div class="col-xs-6" style="padding-left:5px">
+					<a href="#collapseAllTables" class="btn btn-success btn-block" ng-click="collapseAllTables()" title="Collapse selected tables">Collapse</a>
+				</div>
+			</div-->
+			
+		</div>
+	
+		<div class="col-xs-9 scroller-container">
+		<div class="scroller-later">
+
+	<table class="table table-striped skinny table-hover">
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" ng-model="allTablesSelected" title="Select all tables" ng-click="selectAllTables()"/>
+					Tables (Click table row to expand table fields)
+					<span class="pull-right" title="Click to truncate list of table fields">
+						<input type="checkbox" ng-model="tableFieldHeightTruncated" ng-click="truncateTableFieldHeight()" id="truncateFields"/>
+						<label id="truncateFields">Truncate Fields</label>
+					</span>
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+		<tr title="Click to expand table fields" ng-repeat="table in tables | filter:searchTable | filter:searchField | filter:{ignored: false}" ng-click="toggleTable(table)">
+			<td>
+				<input type="checkbox" ng-model="table.selected" ng-click="selectTable(table); $event.stopPropagation();" title="Select this table"/>
+				<a class="table-name" href="#{{table.name}}">{{table.name}}</a>
+				<img src="images/busy.gif" class="busy" ng-show="table.loading"/>
+				<div ng-style="maxHeight">
+					<table class="table table-striped table-hover width95" ng-show="table.show">
+						<thead>
+							<tr ng-click="$event.stopPropagation();">
+								<th>
+									<input type="checkbox" ng-click="selectAllColumns(table); $event.stopPropagation();" ng-model="selectAllFields" title="Select all fields"/>
+									Database Field
+								</th>
+								<th>Siterra Schema (TBD)</th>
+								<th>Siterra Field (TBD)</th>
+								<!-- th>Screen	Field</th><th>Used</th><th>Required</th><th>Source</th><th>Default</th><th>LOVs</th><th>Description</th><th>Screen</th><th>Field</th><th>Comments</th-->
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="column in table.columns | filter:searchField" ng-click="$event.stopPropagation();" title="Click to expand this table">
+								<td>
+									<input type="checkbox" id="{{table.name}}-{{column.name}}" ng-model="column.selected" ng-checked="selectAllFields" ng-click="selectColumn(table, $index); $event.stopPropagation();" title="Select this field"/> <b>{{column.name}}</b>
+									<span class="initialism">{{column.typeName}}({{column.size}})</span>
+								</td>
+								<td>
+									<select value="{{column.siterraSchema}}" class="input-xs">
+										<option>Sites</option>
+										<option>Assets</option>
+										<option>Projects</option>
+									</select>
+								</td>
+								<td><input class="input-xs" title=" " value="{{column.siterraField}}"/></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</td>
+		</tr>
+		</tbody>
+	</table>
+			</div>
+	
+	<table class="table table-striped skinny">
+		<thead>
+			<tr>
+				<th>
+					<input type="checkbox" ng-model="allIgnoredTablesSelected" title="Select ignored tables" ng-click="selectAllIgnoredTables()"/>
+					Ignored Tables
+				</th>
+				<th>			<a href="#unignore" class="btn btn-warning pull-right" ng-click="unignoreSelectedTables()" title="Unignore selected tables below">Unignore</a>	
+				</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="table in tables | filter:searchTable | filter:searchField | filter:{ignored: true}">
+				<td>
+					<input type="checkbox" ng-model="table.selected"/> <b>{{column.name}}</b>
+					{{table.name}}
+				</td>
+				<td>&nbsp;</td>
+			</tr>
+		</tbody>
+	</table>
+	
+		</div>
+	</div>
+</div>

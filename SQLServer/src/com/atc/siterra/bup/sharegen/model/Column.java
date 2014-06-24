@@ -10,6 +10,8 @@ public class Column {
 	@XmlAttribute
 	public String name;
 	@XmlAttribute
+	public Object value;
+	@XmlAttribute
 	public int type;
 	@XmlAttribute
 	public int size;

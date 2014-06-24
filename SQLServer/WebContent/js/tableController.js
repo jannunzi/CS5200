@@ -1,5 +1,10 @@
 function TableController($scope, $http) {
 	
+	$scope.save = function()
+	{
+		console.log("save");
+	}
+	
 	$scope.exportSchema = function()
 	{
 		var selectedTables = [];
@@ -127,7 +132,7 @@ function TableController($scope, $http) {
 	$scope.getTables = function(name) {
 		$http.get("api/table/"+name)
 		.success(function(tables){
-			$http.get("http://10.8.155.22:9090/rest/table")
+			$http.get("http://localhost:9090/rest/table")
 			.success(function(ignoredTables){
 				for(var t in tables) {
 					tables[t].ignored = false;
@@ -156,7 +161,7 @@ function TableController($scope, $http) {
 				ignore.tableNames.push($scope.tables[t].name);
 			}
 		}
-		$http.put("http://10.8.155.22:9090/rest/table/ignore/true", ignore)
+		$http.put("http://localhost:9090/rest/table/ignore/true", ignore)
 		.success(function(responseTable){
 		});
 	};
@@ -169,7 +174,7 @@ function TableController($scope, $http) {
 				ignore.tableNames.push($scope.tables[t].name);
 			}
 		}
-		$http.put("http://10.8.155.22:9090/rest/table/ignore/false", ignore)
+		$http.put("http://localhost:9090/rest/table/ignore/false", ignore)
 		.success(function(responseTable){
 		});
 	};
@@ -190,27 +195,27 @@ function TableController($scope, $http) {
 	/*
 	 * search
 	 */
-	$http.get("http://10.8.155.22:9090/rest/search")
+	$http.get("http://localhost:9090/rest/search")
 	.success(function(searches){
 		$scope.searches = searches;
 	});
 	$scope.saveQuery = function() {
 		var search = { tables: $scope.parseSelected(), name: $scope.searchName };
-		$http.post("http://10.8.155.22:9090/rest/search", search)
+		$http.post("http://localhost:9090/rest/search", search)
 		.success(function(searches){
 			$scope.searches = searches;
 		})
 		.error(function(response){console.log(response);});
 	};
 	$scope.selectSearch = function(search) {
-		$http.get("http://10.8.155.22:9090/rest/search/"+search._id)
+		$http.get("http://localhost:9090/rest/search/"+search._id)
 		.success(function(search){
 			$scope.updateUiFromSearch(search);
 		})
 		.error(function(response){console.log("unable to remove");});
 	};
 	$scope.deleteSearch = function(search) {
-		$http.delete("http://10.8.155.22:9090/rest/search/"+search._id).success(function(searches){$scope.searches = searches;}).error(function(response){console.log("unable to remove");});
+		$http.delete("http://localhost:9090/rest/search/"+search._id).success(function(searches){$scope.searches = searches;}).error(function(response){console.log("unable to remove");});
 	};
 	$scope.updateUiFromSearch = function(search) {
 //		$http.post("api/table/excel", search.tables)
@@ -237,8 +242,10 @@ function TableController($scope, $http) {
 				var tableObj = {tableName: table.name, selected: true, columns: []};
 				for(var c=0; c<table.columns.length; c++) {
 					var column = table.columns[c];
-					var columnObj = {columnName: column.name, selected: true, excelColumnName: column.excelColumnName};
-					tableObj.columns.push(columnObj);
+					if(column.selected === true) {
+						var columnObj = {columnName: column.name, selected: true, excelColumnName: column.excelColumnName};
+						tableObj.columns.push(columnObj);
+					}
 				}
 				selected.push(tableObj);
 			} else {
@@ -297,7 +304,7 @@ function TableController($scope, $http) {
 	};
 	$scope.updateSearch = function(search, event) {
 		if(event.which === 13) {
-			$http.put("http://10.8.155.22:9090/rest/search/"+search._id, search)
+			$http.put("http://localhost:9090/rest/search/"+search._id, search)
 			.success(function(response){
 				console.log(response);
 			})

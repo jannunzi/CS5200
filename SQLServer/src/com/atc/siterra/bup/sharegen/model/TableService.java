@@ -43,7 +43,7 @@ public class TableService
 		tables.table = this.getTables(dataSourceName);
 		
 		for(Table table:tables.table) {
-			table.column = this.getColumns(dataSourceName, table.name);
+			table.column = this.getColumns(table.name, dataSourceName);
 		}
 		
 		this.database.tables = tables;
@@ -79,7 +79,14 @@ public class TableService
 			e.printStackTrace();
 		}
 	}
-	
+
+	/*
+	@GET
+	@Path("/select/{dataSourceName}")
+	public Result executeQueryJson(String sql, @PathParam(value = "dataSourceName") String dataSourceName) {
+		executeQuery(String query, String dataSourceName)
+	}
+	 */	
 	@GET
 	@Path("/schema/{dataSourceName}/{tableNames}")
 	public void exportSchemaToExcel(@PathParam("dataSourceName") String dataSourceStr,@PathParam("tableNames") String tableNamesStr)
@@ -120,6 +127,14 @@ public class TableService
 	
 	private static final String FILE_PATH = "C:\\excel\\dataExport.xlsx";
 
+	@POST
+	@Path("/excel/{dataSourceName}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void  exportToExcel2(@PathParam("dataSourceName") String dataSourceName, List<String> siterraFieldNames, List<String> mappings) throws SQLException {
+		System.out.println(dataSourceName);
+		System.out.println(siterraFieldNames);
+		System.out.println(mappings);
+	}
 	
 	@POST
 	@Path("/excel/{dataSourceName}")
@@ -174,9 +189,10 @@ public class TableService
 				System.out.print(".");
 				tables.add(table);
 			}
-			closeConnection();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		} finally {
+			closeConnection();
 		}
 		System.out.println("\nDone Getting Tables");
 		
@@ -269,7 +285,7 @@ public class TableService
 	{
 		this.database = Database.DATABASES.get(dataSourceName);
 		try {
-			Driver d = (Driver)Class.forName(this.database.driver).newInstance();
+			Class.forName(this.database.driver).newInstance();
 			connection = DriverManager.getConnection(this.database.getUrlString(),
 					this.database.username, this.database.password);
 		} catch (SQLException e) {
@@ -294,15 +310,20 @@ public class TableService
 		this.database = database;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 		Database db = new Database("ShareGen",
 				"com.microsoft.jdbc.sqlserver.SQLServerDriver",
 				"microsoft","sqlserver","QCSMN01","1433",
 				"semaan_app_user","qcdb01",null,"jdbc:{vendor}:{type}://{server}:{port};databaseName={name}");
 		TableService svc = new TableService(db);
 
-		db = svc.getDatabase("ORADEVDB1");
+		db = svc.getDatabase("BUPQC");
+
+		String[] siterraFieldNameArray = {"Status","Name","Type"};
+		String[] mappingArray = {"Status:GeneratorStatus","Name:SiteName","rew"};
 		
+		svc.exportToExcel2("BUPQC", Arrays.asList(siterraFieldNameArray), Arrays.asList(mappingArray));
+/*
 		List<Table> tables = db.tables.table;
 		for(Table table : tables) {
 			System.out.println(table.name);
@@ -310,8 +331,8 @@ public class TableService
 				System.out.println("\t"+column.name);
 			}
 		}
-		
-		svc.exportDatabaseToXml(db, "siterra/bup.xml");
+*/
+	//	svc.exportDatabaseToXml(db, "siterra/bup.xml");
 	}
 
 	@PUT

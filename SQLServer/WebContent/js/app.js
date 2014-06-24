@@ -14,9 +14,10 @@ function($routeProvider) {
     when('/image/:id', {
         templateUrl: 'templates/image.html',
         controller: 'ImageController'
-    }).
-    otherwise({
-      redirectTo: '/tables'
+    })
+    .otherwise({
+        templateUrl: 'templates/tables.html',
+        controller: 'TableController'
     });
 }]);
 

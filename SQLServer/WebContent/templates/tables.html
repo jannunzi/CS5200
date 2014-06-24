@@ -8,7 +8,7 @@
 			<input ng-model="searchTable" placeholder="Filter Tables" class="form-control"/>
 			<input ng-model="searchField" placeholder="Filter Fields" class="form-control"/>
 			<input ng-model="searchName" placeholder="Search Name" class="form-control"/>
-			<a href="#saveQuery" class="btn btn-success btn-block" ng-click="saveQuery()">Save Search</a>
+			<a href="#" class="btn btn-success btn-block" ng-click="saveQuery()">Save Search</a>
 			<div class="form-inline"  ng-repeat="search in searches">
 				<input name="select-search" type="radio" ng-click="selectSearch(search)"/>
 				<input ng-model="search.name" class="form-control" style="width:124px" ng-keypress="updateSearch(search, $event)"/>
@@ -16,6 +16,7 @@
 			</div>
 			
 			<a href="#ignore" class="btn btn-warning btn-block" ng-click="ignoreSelectedTables()" title="Ignore selected tables">Ignore Tables</a>	
+			<a href="#" class="btn btn-success btn-block" ng-click="save()" title="Save Changes">Save</a>	
 			Export Data:
 			<div class="row">
 				<div class="col-xs-6" style="padding-right:5px">

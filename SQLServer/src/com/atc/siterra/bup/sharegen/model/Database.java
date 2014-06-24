@@ -30,6 +30,7 @@ public class Database {
 	public String urlPattern;
 	@XmlElement
 	public Tables tables = new Tables();
+	
 	public Database(String name, String driver, String vendor, String type,
 			String server, String port, String username, String password,
 			Tables tables, String urlPattern) {
