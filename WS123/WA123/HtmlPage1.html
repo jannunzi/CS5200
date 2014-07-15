@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <input type="hidden" class="id" />
+    <input class="name" />
+    <button class="add">Add</button>
+    <button class="update">Update</button>
+    <button class="delete">Delete</button>
+    <ul class="forms">
+
+    </ul>
+    <script>
+        $(function () {
+            getAllForms(renderForms);
+            $(".add").click(addForm);
+            $(".delete").click(deleteForm);
+            $(".update").click(updateForm);
+        });
+        function updateForm() {
+            var form = {
+                name: $(".name").val()
+            };
+            var id = $(".id").val();
+            $.ajax({
+                url: "api/forms/" + id,
+                dataType: "json",
+                data: form,
+                type: "PUT",
+                success: function () {
+                    getAllForms(renderForms);
+                }
+            })
+        }
+        function deleteForm() {
+            var id = $(".id").val();
+            $.ajax({
+                url: "api/forms/"+id,
+                type: "delete",
+                success: function () {
+                    getAllForms(renderForms);
+                }
+            })
+        }
+        function addForm() {
+            var name = $(".name").val();
+            var form = {
+                name: name,
+                id: 123
+            };
+            $.ajax({
+                url: "api/forms",
+                dataType: "json",
+                type: "post",
+                data: form,
+                success: function () {
+                    getAllForms(renderForms);
+                }
+            });
+        }
+        function getAllForms(callback) {
+            $(".name").val("");
+            $.ajax({
+                url: "api/forms",
+                dataType: "json",
+                success: function (response) {
+                    callback(response);
+                }
+            })
+        }
+        function renderForms(forms) {
+            var ul = $(".forms");
+            ul.empty();
+            for (var f = 0; f < forms.length; f++) {
+                var form = forms[f];
+                var li = $("<li>")
+                                .attr("id", form.id)
+                                .append(form.name)
+                                .click(selectForm)
+                                .attr("value", form.name);
+                ul.append(li);
+            }
+        }
+        function selectForm(event) {
+            var li = $(event.currentTarget);
+            var id = li.attr("id");
+            var name = li.attr("value");
+            console.log(id);
+            $(".id").val(id);
+            $(".name").val(name);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app>
+<head>
+    <script src="Scripts/angular.min.js"></script>
+    <link rel="stylesheet" href="Content/bootstrap.css" />
+    <title></title>
+</head>
+<body>
+    <div class="container" ng-controller="myController">
+        <h1>Forms</h1>
+        <table class="table">
+            <tr>
+                <td><input ng-model="newForm.Id" class="form-control" readonly="readonly" value="123" /></td>
+                <td>
+                    <input ng-model="newForm.name" class="form-control" />
+                </td>
+                <td>
+                    <a ng-click="add()" class="btn btn-default">Add</a>
+                    <a ng-click="update()" class="btn btn-default">Update</a>
+                </td>
+            </tr>
+            <tr ng-repeat="form in forms">
+                <td>{{form.Id}}</td>
+                <td>{{form.name}}</td>
+                <td>
+                    <a ng-click="select(form)" class="btn btn-default">Select</a>
+                    <a ng-click="delete(form.Id)" class="btn btn-default">Delete</a>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        function myController($scope, $http) {
+            $scope.hello = "Hello World";
+            $scope.delete = function (id) {
+                $http.delete("api/forms/" + id)
+                .success(function () {
+                    $scope.get();
+                });
+            }
+            $scope.update = function () {
+                $http.put("api/forms/" + $scope.newForm.Id, $scope.newForm);
+            }
+            $scope.select = function (form) {
+                $scope.newForm = form;
+            }
+            $scope.get = function () {
+                $http
+                    .get("api/forms")
+                    .success(function (response) {
+                        $scope.forms = response;
+                    });
+            }
+            $scope.add = function () {
+                console.log($scope.newForm);
+                $http
+                    .post("api/forms", $scope.newForm)
+                    .success(function () {
+                        $scope.get();
+                    });
+            }
+            $scope.get();
+        }
+    </script>
+</body>
+</html>

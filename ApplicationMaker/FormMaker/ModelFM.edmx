@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FormField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+          <Property Name="fieldType" Type="varchar" MaxLength="20" />
+          <Property Name="defaultValue" Type="varchar" MaxLength="50" />
+          <Property Name="formId" Type="int" />
+        </EntityType>
+        <Association Name="FK__FormField__formI__1273C1CD">
+          <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+          <End Role="FormField" Type="Self.FormField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Form">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormField">
+              <PropertyRef Name="formId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FMModelStoreContainer">
+          <EntitySet Name="Form" EntityType="Self.Form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormField" EntityType="Self.FormField" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FormField__formI__1273C1CD" Association="Self.FK__FormField__formI__1273C1CD">
+            <End Role="Form" EntitySet="Form" />
+            <End Role="FormField" EntitySet="FormField" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FMModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FormFields" Relationship="Self.FK__FormField__formI__1273C1CD" FromRole="Form" ToRole="FormField" />
+        </EntityType>
+        <EntityType Name="FormField">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fieldType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="defaultValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="formId" Type="Int32" />
+          <NavigationProperty Name="Form" Relationship="Self.FK__FormField__formI__1273C1CD" FromRole="FormField" ToRole="Form" />
+        </EntityType>
+        <Association Name="FK__FormField__formI__1273C1CD">
+          <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+          <End Role="FormField" Type="Self.FormField" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Form">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormField">
+              <PropertyRef Name="formId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="FMEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Forms" EntityType="Self.Form" />
+          <EntitySet Name="FormFields" EntityType="Self.FormField" />
+          <AssociationSet Name="FK__FormField__formI__1273C1CD" Association="Self.FK__FormField__formI__1273C1CD">
+            <End Role="Form" EntitySet="Forms" />
+            <End Role="FormField" EntitySet="FormFields" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FMModelStoreContainer" CdmEntityContainer="FMEntities">
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="FMModel.Form">
+              <MappingFragment StoreEntitySet="Form">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormFields">
+            <EntityTypeMapping TypeName="FMModel.FormField">
+              <MappingFragment StoreEntitySet="FormField">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="fieldType" ColumnName="fieldType" />
+                <ScalarProperty Name="defaultValue" ColumnName="defaultValue" />
+                <ScalarProperty Name="formId" ColumnName="formId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

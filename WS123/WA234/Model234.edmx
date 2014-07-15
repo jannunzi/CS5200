@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AM2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="FormControl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="defaultValue" Type="varchar" MaxLength="20" />
+          <Property Name="dataType" Type="varchar" MaxLength="20" />
+          <Property Name="type" Type="varchar" MaxLength="20" />
+          <Property Name="formId" Type="int" />
+        </EntityType>
+        <EntityType Name="FormControlOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="optionLabel" Type="varchar" MaxLength="50" />
+          <Property Name="optionValue" Type="varchar" MaxLength="50" />
+          <Property Name="formControlId" Type="int" />
+        </EntityType>
+        <Association Name="FK__FormContr__formC__173876EA">
+          <End Role="FormControl" Type="Self.FormControl" Multiplicity="0..1" />
+          <End Role="FormControlOption" Type="Self.FormControlOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormControl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormControlOption">
+              <PropertyRef Name="formControlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FormContr__formI__182C9B23">
+          <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+          <End Role="FormControl" Type="Self.FormControl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Form">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormControl">
+              <PropertyRef Name="formId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AM2ModelStoreContainer">
+          <EntitySet Name="Form" EntityType="Self.Form" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormControl" EntityType="Self.FormControl" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FormControlOption" EntityType="Self.FormControlOption" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__FormContr__formC__173876EA" Association="Self.FK__FormContr__formC__173876EA">
+            <End Role="FormControl" EntitySet="FormControl" />
+            <End Role="FormControlOption" EntitySet="FormControlOption" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FormContr__formI__182C9B23" Association="Self.FK__FormContr__formI__182C9B23">
+            <End Role="Form" EntitySet="Form" />
+            <End Role="FormControl" EntitySet="FormControl" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AM2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Form">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="FormControls" Relationship="Self.FK__FormContr__formI__182C9B23" FromRole="Form" ToRole="FormControl" />
+        </EntityType>
+        <EntityType Name="FormControl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="defaultValue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="dataType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="formId" Type="Int32" />
+          <NavigationProperty Name="Form" Relationship="Self.FK__FormContr__formI__182C9B23" FromRole="FormControl" ToRole="Form" />
+          <NavigationProperty Name="FormControlOptions" Relationship="Self.FK__FormContr__formC__173876EA" FromRole="FormControl" ToRole="FormControlOption" />
+        </EntityType>
+        <EntityType Name="FormControlOption">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="optionLabel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="optionValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="formControlId" Type="Int32" />
+          <NavigationProperty Name="FormControl" Relationship="Self.FK__FormContr__formC__173876EA" FromRole="FormControlOption" ToRole="FormControl" />
+        </EntityType>
+        <Association Name="FK__FormContr__formI__182C9B23">
+          <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+          <End Role="FormControl" Type="Self.FormControl" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Form">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormControl">
+              <PropertyRef Name="formId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__FormContr__formC__173876EA">
+          <End Role="FormControl" Type="Self.FormControl" Multiplicity="0..1" />
+          <End Role="FormControlOption" Type="Self.FormControlOption" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FormControl">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="FormControlOption">
+              <PropertyRef Name="formControlId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AM234" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Forms" EntityType="Self.Form" />
+          <EntitySet Name="FormControls" EntityType="Self.FormControl" />
+          <EntitySet Name="FormControlOptions" EntityType="Self.FormControlOption" />
+          <AssociationSet Name="FK__FormContr__formI__182C9B23" Association="Self.FK__FormContr__formI__182C9B23">
+            <End Role="Form" EntitySet="Forms" />
+            <End Role="FormControl" EntitySet="FormControls" />
+          </AssociationSet>
+          <AssociationSet Name="FK__FormContr__formC__173876EA" Association="Self.FK__FormContr__formC__173876EA">
+            <End Role="FormControl" EntitySet="FormControls" />
+            <End Role="FormControlOption" EntitySet="FormControlOptions" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AM2ModelStoreContainer" CdmEntityContainer="AM234">
+          <EntitySetMapping Name="Forms">
+            <EntityTypeMapping TypeName="AM2Model.Form">
+              <MappingFragment StoreEntitySet="Form">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormControls">
+            <EntityTypeMapping TypeName="AM2Model.FormControl">
+              <MappingFragment StoreEntitySet="FormControl">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="defaultValue" ColumnName="defaultValue" />
+                <ScalarProperty Name="dataType" ColumnName="dataType" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="formId" ColumnName="formId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FormControlOptions">
+            <EntityTypeMapping TypeName="AM2Model.FormControlOption">
+              <MappingFragment StoreEntitySet="FormControlOption">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="optionLabel" ColumnName="optionLabel" />
+                <ScalarProperty Name="optionValue" ColumnName="optionValue" />
+                <ScalarProperty Name="formControlId" ColumnName="formControlId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

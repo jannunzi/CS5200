@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <script>
+        $(function () {
+            var form = {
+                name: "Form 123321"
+            };
+            remove (20);
+            //update(20, form);
+            //create(form);
+            //read();
+        });
+        function remove(id) {
+            $.ajax({
+                url: "api/forms/" + id,
+                type: "DELETE"
+            })
+        }
+        function update(id, form) {
+            $.ajax({
+                url: "api/forms/" + id,
+                dataType: "json",
+                data: form,
+                type: "PUT"
+            });
+        }
+        function read() {
+            $.ajax({
+                url: "api/forms",
+                type: "GET",
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+        }
+        function create(form) {
+            $.ajax({
+                url: "api/forms",
+                type: "POST",
+                data: form,
+                dataType: "json"
+            });
+        }
+    </script>
+</body>
+</html>

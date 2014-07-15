@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="Scripts/jquery-1.10.2.js"></script>
+</head>
+<body>
+    <script>
+        $(function () {
+            /*
+            $.ajax({
+                url: "api/forms",
+                success: function (response) {
+                    console.log(response);
+                }
+            });
+            */
+            var f1 = {
+                name : "Form 1"
+            }
+            $.ajax({
+                url: "api/forms",
+                data: f1,
+                dataType: "json",
+                type: "post",
+                success: function (response) {
+
+                }
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AM2ModelStoreContainer" CdmEntityContainer="DDD">
+    <EntitySetMapping Name="Forms">
+      <EntityTypeMapping TypeName="AM2Model.Form">
+        <MappingFragment StoreEntitySet="Form">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormControls">
+      <EntityTypeMapping TypeName="AM2Model.FormControl">
+        <MappingFragment StoreEntitySet="FormControl">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="defaultValue" ColumnName="defaultValue" />
+          <ScalarProperty Name="dataType" ColumnName="dataType" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="formId" ColumnName="formId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FormControlOptions">
+      <EntityTypeMapping TypeName="AM2Model.FormControlOption">
+        <MappingFragment StoreEntitySet="FormControlOption">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="optionLabel" ColumnName="optionLabel" />
+          <ScalarProperty Name="optionValue" ColumnName="optionValue" />
+          <ScalarProperty Name="formControlId" ColumnName="formControlId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

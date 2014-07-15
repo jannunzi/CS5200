@@ -12,6 +12,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.ss.usermodel.Cell;
@@ -33,7 +36,7 @@ public class Import {
 				generatorTableNames,				// act table name
 				null,								// join field
 				"TowerNumber",						// order by field name
-				150,								// max row count
+				-1,									// max row count
 				0,									// sheet index
 				0,									// siterra field row index
 				3,									// atc field row index
@@ -41,21 +44,25 @@ public class Import {
 				5									// format row index
 		);
 		*/
+//		/*
 		String[] switchesTableNames = {"Tenant", "ShareGenMain"};
 		Import.generateImport(
-				"/siterra/Import_Schemarev.xlsx",	// schema/config file
+				"/siterra/Import_Schemarev_with_oracle_project_number.xlsx",	// schema/config file
 				"/siterra/switches.csv",			// output CSV file
 				switchesTableNames,					// act table names
 				"TowerNumber",						// join field
 				"TowerNumber",						// order by field name
-				-1,								// max row count
+				-1,									// max row count
 				0,									// sheet index
 				0,									// siterra field row index
 				6,									// atc field row index
 				7,									// default values row index
 				8									// format row index
 		);
+//		*/
 	}
+	public static SimpleDateFormat dateFormatMMDDYYYY = new SimpleDateFormat("MM/dd/yyyy");
+	public static SimpleDateFormat dateFormatYYYYMMDD = new SimpleDateFormat("yyyy-MM-dd");
 	public static void generateImport(
 			String xlsxFileName,
 			String csvFileName,
@@ -159,7 +166,8 @@ public class Import {
 			    {
 			    	siterraFieldStr = siterraCell.getStringCellValue();
 			    	int dashIndex = siterraFieldStr.indexOf(" -");
-			    	siterraFieldStr = siterraFieldStr.substring(0, dashIndex);
+			    	if(dashIndex >= 0 )
+			    		siterraFieldStr = siterraFieldStr.substring(0, dashIndex);
 			    	siterraFieldStr = siterraFieldStr.replace("'", "");
 			    }
 			    out.print(siterraFieldStr);
@@ -173,6 +181,11 @@ public class Import {
 			int count = 0;
 			while(results.next())
 			{
+				System.out.println(count);
+				if(count == 136)
+				{
+					System.out.println("found");
+				}
 				if(maxRowCount > 0 && count > maxRowCount - 1)
 				{
 					break;
@@ -224,24 +237,38 @@ public class Import {
 				    	value = results.getObject(atcFieldStr);
 				    }
 				    
-				    if(formatStr != null)
-				    {
-				    	value = formatStr.replaceAll("000", value.toString());
-				    }
-				    
 				    if(value == null)
 				    {
 				    	value = "";
 				    }
 				    else
 				    {
+					    if(formatStr != null)
+					    {
+					    	if(formatStr.equals("MM/DD/YYYY"))
+					    	{
+					    		String dateStr = (value.toString()).replace(" 00:00:00.0","");
+					    		try {
+					    			Date date = dateFormatYYYYMMDD.parse(dateStr);
+					    			value = dateFormatMMDDYYYY.format(date);
+								} catch (ParseException e) {
+									e.printStackTrace();
+								}
+					    	}
+					    	else
+					    	{
+						    	value = formatStr.replaceAll("000", value.toString());
+					    	}
+					    }
+					    
 				    	try
 				    	{
-					    	value = ((String)value).replace(",", "");
+				    		
+					    	value = (value.toString()).replace(",", "");
 				    	}
 				    	catch(Exception e)
 				    	{
-				    		
+				    		e.printStackTrace();
 				    	}
 				    }
 				    

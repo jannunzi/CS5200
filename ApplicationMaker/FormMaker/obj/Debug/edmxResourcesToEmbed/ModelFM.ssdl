@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="FMModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Form">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="FormField">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" />
+    <Property Name="fieldType" Type="varchar" MaxLength="20" />
+    <Property Name="defaultValue" Type="varchar" MaxLength="50" />
+    <Property Name="formId" Type="int" />
+  </EntityType>
+  <Association Name="FK__FormField__formI__1273C1CD">
+    <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+    <End Role="FormField" Type="Self.FormField" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormField">
+        <PropertyRef Name="formId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="FMModelStoreContainer">
+    <EntitySet Name="Form" EntityType="Self.Form" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FormField" EntityType="Self.FormField" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__FormField__formI__1273C1CD" Association="Self.FK__FormField__formI__1273C1CD">
+      <End Role="Form" EntitySet="Form" />
+      <End Role="FormField" EntitySet="FormField" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AM2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Form">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="FormControls" Relationship="Self.FK__FormContr__formI__182C9B23" FromRole="Form" ToRole="FormControl" />
+  </EntityType>
+  <EntityType Name="FormControl">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="defaultValue" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="dataType" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="formId" Type="Int32" />
+    <NavigationProperty Name="Form" Relationship="Self.FK__FormContr__formI__182C9B23" FromRole="FormControl" ToRole="Form" />
+    <NavigationProperty Name="FormControlOptions" Relationship="Self.FK__FormContr__formC__173876EA" FromRole="FormControl" ToRole="FormControlOption" />
+  </EntityType>
+  <EntityType Name="FormControlOption">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="optionLabel" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="optionValue" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="formControlId" Type="Int32" />
+    <NavigationProperty Name="FormControl" Relationship="Self.FK__FormContr__formC__173876EA" FromRole="FormControlOption" ToRole="FormControl" />
+  </EntityType>
+  <Association Name="FK__FormContr__formI__182C9B23">
+    <End Role="Form" Type="Self.Form" Multiplicity="0..1" />
+    <End Role="FormControl" Type="Self.FormControl" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Form">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormControl">
+        <PropertyRef Name="formId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__FormContr__formC__173876EA">
+    <End Role="FormControl" Type="Self.FormControl" Multiplicity="0..1" />
+    <End Role="FormControlOption" Type="Self.FormControlOption" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FormControl">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="FormControlOption">
+        <PropertyRef Name="formControlId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AM234" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Forms" EntityType="Self.Form" />
+    <EntitySet Name="FormControls" EntityType="Self.FormControl" />
+    <EntitySet Name="FormControlOptions" EntityType="Self.FormControlOption" />
+    <AssociationSet Name="FK__FormContr__formI__182C9B23" Association="Self.FK__FormContr__formI__182C9B23">
+      <End Role="Form" EntitySet="Forms" />
+      <End Role="FormControl" EntitySet="FormControls" />
+    </AssociationSet>
+    <AssociationSet Name="FK__FormContr__formC__173876EA" Association="Self.FK__FormContr__formC__173876EA">
+      <End Role="FormControl" EntitySet="FormControls" />
+      <End Role="FormControlOption" EntitySet="FormControlOptions" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="mssqlserver.jar"/>
 	<classpathentry kind="lib" path="msutil.jar"/>
 	<classpathentry kind="lib" path="C:/Users/jose.annunziato/Downloads/ojdbc6.jar"/>
+	<classpathentry kind="lib" path="javacsv.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
