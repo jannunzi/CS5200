@@ -3,7 +3,10 @@ package edu.neu.cs5200.onlineide;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ApplicationDAO {
 	public Connection getConnection() {
@@ -49,6 +52,31 @@ public class ApplicationDAO {
 		}
 	}
 	
+	public List<Application> selectAll()
+	{
+		List<Application> applications = new ArrayList<Application>();
+		String sql = "select * from applications";
+
+		Connection connection = getConnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			ResultSet results = statement.executeQuery();
+			while(results.next()) {
+				int id = results.getInt("id");
+				String name = results.getString("name");
+				double price = results.getDouble("price");
+				Application application  = new Application(id, name, price);
+				applications.add(application);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+
+		return applications;
+	}
+
 	public static void main(String[] args) {
 		ApplicationDAO dao = new ApplicationDAO();
 
