@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1" import="edu.neu.cs5200.onlineide.*"%>
+    pageEncoding="ISO-8859-1" import="edu.neu.cs5200.onlineide.*,java.util.*"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,11 +10,17 @@
 
 	<h1>Applications</h1>
 
-<%
-	ApplicationDAO dao = new ApplicationDAO();
-	Application app1 = new Application("Chess", 1.99);
-	dao.create(app1);
-%>
+<%	ApplicationDAO dao = new ApplicationDAO();
+
+	List<Application> applications = dao.selectAll();
+%>	<ul>
+<%	for(Application app : applications) {
+%>		<li>
+			<span><%= app.getName() %></span>
+			<span>$<%= app.getPrice() %></span>
+		</li>
+<%	}
+%>	</ul>
 
 </body>
 </html>
