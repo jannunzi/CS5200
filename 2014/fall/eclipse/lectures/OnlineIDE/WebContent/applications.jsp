@@ -15,13 +15,17 @@
 
 	String action = request.getParameter("action");
 	String name = request.getParameter("name");
-	String price = request.getParameter("price");
-
+	String priceStr = request.getParameter("price");
+	String idStr = request.getParameter("id");
+	
 	Application ap = new Application();
 	if("create".equals(action)) {
-		double pd = Double.parseDouble(price);
-		ap = new Application(name, pd);
+		double price = Double.parseDouble(priceStr);
+		ap = new Application(name, price);
 		dao.create(ap);
+	} else if("remove".equals(action)) {
+		int id = Integer.parseInt(idStr);
+		dao.remove(id);
 	}
 
 	List<Application> applications = dao.selectAll();
@@ -42,6 +46,8 @@
 %>		<tr>
 			<td><%= app.getName() %></td>
 			<td>$<%= app.getPrice() %></td>
+			<td><a href="applications.jsp?action=remove&id=<%= app.getId() %>" class="btn btn-danger">Delete</a>
+			</td>
 		</tr>
 <%	}
 %>	</table>

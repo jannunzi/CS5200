@@ -76,6 +76,21 @@ public class ApplicationDAO {
 
 		return applications;
 	}
+	
+	public void remove(int id)
+	{
+		String sql = "delete from applications where id=?";
+		Connection connection = getConnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setInt(1, id);
+			statement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+	}
 
 	public static void main(String[] args) {
 		ApplicationDAO dao = new ApplicationDAO();
