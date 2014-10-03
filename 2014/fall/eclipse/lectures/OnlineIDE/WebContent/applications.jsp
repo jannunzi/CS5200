@@ -13,14 +13,14 @@
 <%	ApplicationDAO dao = new ApplicationDAO();
 
 	List<Application> applications = dao.selectAll();
-%>	<ul>
+%>	<table>
 <%	for(Application app : applications) {
-%>		<li>
-			<span><%= app.getName() %></span>
-			<span>$<%= app.getPrice() %></span>
-		</li>
+%>		<tr>
+			<td><%= app.getName() %></td>
+			<td>$<%= app.getPrice() %></td>
+		</tr>
 <%	}
-%>	</ul>
+%>	</table>
 
 </body>
 </html>
