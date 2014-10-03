@@ -51,12 +51,9 @@ public class ApplicationDAO {
 	
 	public static void main(String[] args) {
 		ApplicationDAO dao = new ApplicationDAO();
-		Connection connection = dao.getConnection();
 
 		Application app1 = new Application("Tic Tac Toe", 0.99);
 		dao.create(app1);
-
-		dao.closeConnection(connection);
 	}
 
 }
