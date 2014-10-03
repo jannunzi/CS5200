@@ -13,6 +13,17 @@
 
 <%	ApplicationDAO dao = new ApplicationDAO();
 
+	String action = request.getParameter("action");
+	String name = request.getParameter("name");
+	String price = request.getParameter("price");
+
+	Application ap = new Application();
+	if("create".equals(action)) {
+		double pd = Double.parseDouble(price);
+		ap = new Application(name, pd);
+		dao.create(ap);
+	}
+
 	List<Application> applications = dao.selectAll();
 %>
 	<form action="applications.jsp">
