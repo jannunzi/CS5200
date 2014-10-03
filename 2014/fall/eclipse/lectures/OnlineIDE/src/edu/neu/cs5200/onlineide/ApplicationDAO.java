@@ -32,7 +32,10 @@ public class ApplicationDAO {
 	}
 	
 	public static void main(String[] args) {
-
+		ApplicationDAO dao = new ApplicationDAO();
+		Connection connection = dao.getConnection();
+		System.out.println(connection); // com.mysql.jdbc.JDBC4Connection@27420a71
+		dao.closeConnection(connection);
 	}
 
 }
