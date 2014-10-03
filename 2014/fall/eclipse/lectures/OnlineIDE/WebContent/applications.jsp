@@ -4,16 +4,17 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Applications</title>
+<link href="css/bootstrap.css" rel="stylesheet"/>
 </head>
 <body>
-
+<div class="container">
 	<h1>Applications</h1>
 
 <%	ApplicationDAO dao = new ApplicationDAO();
 
 	List<Application> applications = dao.selectAll();
-%>	<table>
+%>	<table class="table">
 <%	for(Application app : applications) {
 %>		<tr>
 			<td><%= app.getName() %></td>
@@ -21,6 +22,6 @@
 		</tr>
 <%	}
 %>	</table>
-
+</div>
 </body>
 </html>
