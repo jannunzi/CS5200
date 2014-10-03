@@ -12,20 +12,25 @@ public class Application {
 			String connectionUrl = "jdbc:mysql://localhost:3306/onlineide";
 			connection = DriverManager.getConnection(connectionUrl, "root", null);
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return connection;
 	}
+	
+	public void closeConnection(Connection connection) {
+		try {
+			connection.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
 
 	}
