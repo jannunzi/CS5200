@@ -92,6 +92,29 @@ public class ApplicationDAO {
 		}
 	}
 
+	public Application selectOne(int id)
+	{
+		Application application = new Application();
+		String sql = "select * from applications where id=?";
+		Connection connection = getConnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setInt(1, id);
+			ResultSet results = statement.executeQuery();
+			if(results.next()) {
+				id = results.getInt("id");
+				String name = results.getString("name");
+				double price = results.getDouble("price");
+				application  = new Application(id, name, price);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+		return application;
+	}
+
 	public static void main(String[] args) {
 		ApplicationDAO dao = new ApplicationDAO();
 

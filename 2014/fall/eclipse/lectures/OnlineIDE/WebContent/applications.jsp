@@ -26,6 +26,9 @@
 	} else if("remove".equals(action)) {
 		int id = Integer.parseInt(idStr);
 		dao.remove(id);
+	} else if("select".equals(action)) {
+		int id = Integer.parseInt(idStr);
+		ap = dao.selectOne(id);
 	}
 
 	List<Application> applications = dao.selectAll();
@@ -37,8 +40,8 @@
 			<th>Price</th>
 		</tr>
 		<tr>
-			<td><input name="name" class="form-control"/></td>
-			<td><input name="price" class="form-control"/></td>
+			<td><input name="name" class="form-control" value="<%= ap.getName() %>"/></td>
+			<td><input name="price" class="form-control" value="<%= ap.getPrice() %>"/></td>
 			<td><button name="action" value="create" class="btn btn-success">Add</button>
 			</td>
 		</tr>
@@ -47,6 +50,7 @@
 			<td><%= app.getName() %></td>
 			<td>$<%= app.getPrice() %></td>
 			<td><a href="applications.jsp?action=remove&id=<%= app.getId() %>" class="btn btn-danger">Delete</a>
+				<a href="applications.jsp?action=select&id=<%= app.getId() %>" class="btn btn-warning">Select</a>
 			</td>
 		</tr>
 <%	}
