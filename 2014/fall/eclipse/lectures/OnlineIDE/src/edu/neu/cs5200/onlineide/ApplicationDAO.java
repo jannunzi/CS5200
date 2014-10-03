@@ -2,6 +2,7 @@ package edu.neu.cs5200.onlineide;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
 public class ApplicationDAO {
@@ -28,6 +29,23 @@ public class ApplicationDAO {
 			connection.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+	}
+
+	public void create(Application entity)
+	{
+		String sql = "insert into applications (name, price) values (?,?)";
+
+		Connection connection = getConnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, entity.getName());
+			statement.setDouble(2, entity.getPrice());
+			statement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection);
 		}
 	}
 	
