@@ -115,6 +115,23 @@ public class ApplicationDAO {
 		return application;
 	}
 
+	public void update(int id, Application entity)
+	{
+		String sql = "update applications set name=?, price=? where id=?";
+		Connection connection = getConnection();
+		try {
+			PreparedStatement statement = connection.prepareStatement(sql);
+			statement.setString(1, entity.getName());
+			statement.setDouble(2, entity.getPrice());
+			statement.setInt(3, id);
+			statement.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeConnection(connection);
+		}
+	}
+
 	public static void main(String[] args) {
 		ApplicationDAO dao = new ApplicationDAO();
 

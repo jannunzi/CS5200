@@ -29,6 +29,11 @@
 	} else if("select".equals(action)) {
 		int id = Integer.parseInt(idStr);
 		ap = dao.selectOne(id);
+	} else if("update".equals(action)) {
+		int id = Integer.parseInt(idStr);
+		double price = Double.parseDouble(priceStr);
+		ap = new Application(name, price);
+		dao.update(id, ap);
 	}
 
 	List<Application> applications = dao.selectAll();
@@ -43,6 +48,8 @@
 			<td><input name="name" class="form-control" value="<%= ap.getName() %>"/></td>
 			<td><input name="price" class="form-control" value="<%= ap.getPrice() %>"/></td>
 			<td><button name="action" value="create" class="btn btn-success">Add</button>
+				<button name="action" value="update" class="btn btn-primary">Update</button>
+				<input  name="id" value="<%= ap.getId() %>" type="hidden"/>
 			</td>
 		</tr>
 <%	for(Application app : applications) {
