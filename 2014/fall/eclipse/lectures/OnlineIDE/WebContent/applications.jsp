@@ -14,7 +14,19 @@
 <%	ApplicationDAO dao = new ApplicationDAO();
 
 	List<Application> applications = dao.selectAll();
-%>	<table class="table">
+%>
+	<form action="applications.jsp">
+	<table class="table">
+		<tr>
+			<th>Name</th>
+			<th>Price</th>
+		</tr>
+		<tr>
+			<td><input name="name" class="form-control"/></td>
+			<td><input name="price" class="form-control"/></td>
+			<td><button name="action" value="create" class="btn btn-success">Add</button>
+			</td>
+		</tr>
 <%	for(Application app : applications) {
 %>		<tr>
 			<td><%= app.getName() %></td>
@@ -22,6 +34,7 @@
 		</tr>
 <%	}
 %>	</table>
+	</form>
 </div>
 </body>
 </html>
