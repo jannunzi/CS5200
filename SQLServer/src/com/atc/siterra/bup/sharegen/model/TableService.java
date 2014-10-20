@@ -127,14 +127,14 @@ public class TableService
 	
 	private static final String FILE_PATH = "C:\\excel\\dataExport.xlsx";
 
-	@POST
-	@Path("/excel/{dataSourceName}")
-	@Consumes(MediaType.APPLICATION_JSON)
-	public void  exportToExcel2(@PathParam("dataSourceName") String dataSourceName, List<String> siterraFieldNames, List<String> mappings) throws SQLException {
-		System.out.println(dataSourceName);
-		System.out.println(siterraFieldNames);
-		System.out.println(mappings);
-	}
+//	@POST
+//	@Path("/excel/{dataSourceName}")
+//	@Consumes(MediaType.APPLICATION_JSON)
+//	public void  exportToExcel2(@PathParam("dataSourceName") String dataSourceName, List<String> siterraFieldNames, List<String> mappings) throws SQLException {
+//		System.out.println(dataSourceName);
+//		System.out.println(siterraFieldNames);
+//		System.out.println(mappings);
+//	}
 	
 	@POST
 	@Path("/excel/{dataSourceName}")
@@ -322,8 +322,8 @@ public class TableService
 		String[] siterraFieldNameArray = {"Status","Name","Type"};
 		String[] mappingArray = {"Status:GeneratorStatus","Name:SiteName","rew"};
 		
+		/*
 		svc.exportToExcel2("BUPQC", Arrays.asList(siterraFieldNameArray), Arrays.asList(mappingArray));
-/*
 		List<Table> tables = db.tables.table;
 		for(Table table : tables) {
 			System.out.println(table.name);

@@ -19,6 +19,7 @@ import com.sun.net.ssl.HttpsURLConnection;
 public class WeatherJsonWebServiceClient {
 	
 	private String urlApi = "http://api.worldweatheronline.com/free/v1/weather.ashx?q={{ZIP}},USA&format=json&num_of_days=2&key=s3uv4fjbaw4pqtp26rh48afd";
+	
 	public Weather getWeatherForZip(String zip) {
 		
 		String urlStr = urlApi.replace("{{ZIP}}", zip);

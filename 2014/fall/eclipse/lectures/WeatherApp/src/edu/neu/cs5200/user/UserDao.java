@@ -6,21 +6,27 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 public class UserDao {
 
 	public Connection getConnection() {
 		Connection connection = null;
+		
+		Context initContext;
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			String connectionUrl = "jdbc:mysql://localhost:3306/weatherApp2";
-			connection = DriverManager.getConnection(connectionUrl, "root", null);
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+			initContext = new InitialContext();
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			DataSource ds = (DataSource)envContext.lookup("jdbc/WeatherDB");
+			connection = ds.getConnection();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return connection;

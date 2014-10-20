@@ -1,0 +1,7 @@
+import org.json.simple.*;
+import org.json.simple.parser.*;
+
+JSONParser parser = new JSONParser();
+JSONObject object = (JSONObject) parser.parse(response);
+JSONObject photos = (JSONObject) object.get("photos");
+JSONArray photo = (JSONArray) photos.get("photo");

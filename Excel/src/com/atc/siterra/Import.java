@@ -28,38 +28,37 @@ public class Import {
 
 	public static void main(String[] args)
 	{
-		/*
-		String[] generatorTableNames = {"ShareGenMain"};
-		Import.generateImport(
-				"/siterra/Import_Schemarev.xlsx",	// schema/config file
-				"/siterra/generators.csv",			// output CSV file
-				generatorTableNames,				// act table name
-				null,								// join field
-				"TowerNumber",						// order by field name
-				-1,									// max row count
-				0,									// sheet index
-				0,									// siterra field row index
-				3,									// atc field row index
-				4,									// default values row index
-				5									// format row index
-		);
-		*/
-//		/*
+
+//		String[] generatorTableNames = {"ShareGenMain"};
+//		Import.generateImport(
+////				"/siterra/Import_Schemarev.xlsx",	// schema/config file
+//				"/siterra/ImportSchema-Assets-10_10_14-new-mapping.xlsx",	// schema/config file
+//				"/siterra/generators-10-16.csv",	// output CSV file
+//				generatorTableNames,				// ATC table name
+//				null,								// join field
+//				"TowerNumber",						// order by field name
+//				-1,									// max row count
+//				0,									// sheet index
+//				0,									// siterra field row index
+//				3,									// ATC field row index
+//				4,									// default values row index
+//				5									// format row index
+//		);
+
 		String[] switchesTableNames = {"Tenant", "ShareGenMain"};
 		Import.generateImport(
 				"/siterra/Import_Schemarev_with_oracle_project_number.xlsx",	// schema/config file
-				"/siterra/switches.csv",			// output CSV file
-				switchesTableNames,					// act table names
+				"/siterra/switches-10-16.csv",			// output CSV file
+				switchesTableNames,					// ATC table names
 				"TowerNumber",						// join field
 				"TowerNumber",						// order by field name
 				-1,									// max row count
 				0,									// sheet index
 				0,									// siterra field row index
-				6,									// atc field row index
+				6,									// ATC field row index
 				7,									// default values row index
 				8									// format row index
 		);
-//		*/
 	}
 	public static SimpleDateFormat dateFormatMMDDYYYY = new SimpleDateFormat("MM/dd/yyyy");
 	public static SimpleDateFormat dateFormatYYYYMMDD = new SimpleDateFormat("yyyy-MM-dd");

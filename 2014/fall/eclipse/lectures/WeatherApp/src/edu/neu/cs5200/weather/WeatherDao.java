@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 // DAO Design Pattern
 public class WeatherDao {
 	
@@ -22,17 +27,18 @@ public class WeatherDao {
 	
 	public Connection getConnection() {
 		Connection connection = null;
+		
+		Context initContext;
 		try {
-			Class.forName("com.mysql.jdbc.Driver").newInstance();
-			String connectionUrl = "jdbc:mysql://localhost:3306/weatherApp2";
-			connection = DriverManager.getConnection(connectionUrl, "root", null);
-		} catch (InstantiationException e) {
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
-			e.printStackTrace();
-		} catch (ClassNotFoundException e) {
+			initContext = new InitialContext();
+			Context envContext  = (Context)initContext.lookup("java:/comp/env");
+			DataSource ds = (DataSource)envContext.lookup("jdbc/WeatherDB");
+			connection = ds.getConnection();
+		} catch (NamingException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (SQLException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return connection;
@@ -49,14 +55,35 @@ public class WeatherDao {
 	private void create(Weather weather) {
 		String sql = "insert into weather (zip, locationName) values (?,?)";
 		Connection connection = getConnection();
+		PreparedStatement statement = null;
 		try {
-			PreparedStatement statement = connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setString(1, weather.getZip());
 			statement.setString(2, weather.getLocationName());
 			statement.execute();
+			statement.close();
+			statement = null;
+			connection.close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if(statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 	}
 	
@@ -65,12 +92,15 @@ public class WeatherDao {
 		
 		String sql = "select zip, locationName, weather.id from weather, user2weather, user where user.id = ? AND user.id = user2weather.userId AND weather.id = user2weather.weatherId";
 
-		Connection connection = getConnection();
+		System.out.println("====123====");
 		
+		Connection connection = getConnection();
+		PreparedStatement statement = null;
+		ResultSet results = null;
 		try {
-			PreparedStatement statement = connection.prepareStatement(sql);
+			statement = connection.prepareStatement(sql);
 			statement.setInt(1, id);
-			ResultSet results = statement.executeQuery();
+			results = statement.executeQuery();
 			while(results.next()) {
 				id = results.getInt("id");
 				String zip = results.getString("zip");
@@ -78,9 +108,40 @@ public class WeatherDao {
 				Weather weather = new Weather(id, zip, locationName);
 				ws.add(weather);
 			}
+			results.close();
+			results = null;
+			statement.close();
+			statement = null;
+			connection.close();
+			connection = null;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			if(results != null) {
+				try {
+					results.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(statement != null) {
+				try {
+					statement.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			if(connection != null) {
+				try {
+					connection.close();
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
 		}
 		return ws;
 	}
