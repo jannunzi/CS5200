@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="js/jquery.js"></script>
+<link href="css/bootstrap.css" rel="stylesheet"/>
+</head>
+<body>
+
+<div class="container">
+<h1>Users</h1>
+
+<input id="id" placeholder="User ID" class="form-control"/>
+<input id="username" placeholder="Username" class="form-control"/>
+<input id="email" placeholder="Email" class="form-control"/>
+<button id="create" class="btn btn-block btn-primary">Create</button>
+<button id="read" class="btn btn-block btn-primary">Read</button>
+<button id="update" class="btn btn-block btn-primary">Update</button>
+<button id="delete" class="btn btn-block btn-primary">Delete</button>
+
+<script>
+
+	$(function(){
+		
+	//	var newUser = {"id":2,"username":"username333","email":"email333"};
+		
+//		updateUser(3, newUser);
+		
+	//	createUser(newUser);
+		$("#create").click(createHandler);
+		$("#update").click(updateHandler);
+		
+	});
+	
+	function createHandler() {
+		var newUser = {
+				"id":$("#id").val(),
+				"username":$("#username").val(),
+				"email":$("#email").val()
+		};
+		createUser(newUser);
+	}
+	
+	function updateHandler() {
+		var newUser = {
+				"id":$("#id").val(),
+				"username":$("#username").val(),
+				"email":$("#email").val()
+		};
+		updateUser($("#id").val(), newUser);
+	}
+
+	
+	function updateUser(id, user) {
+		
+		$.ajax({
+			url : "http://localhost:8080/JWS/rest/user/"+id,
+			type:"put",
+			data: JSON.stringify(user),
+			dataType: "json",
+			contentType: "application/json",
+			success:function(response) {
+				console.log(response);
+			}
+		});
+		
+	}
+
+	
+	function createUser(user) {
+		
+		$.ajax({
+			url : "http://localhost:8080/JWS/rest/user",
+			type:"post",
+			data: JSON.stringify(user),
+			dataType: "json",
+			contentType: "application/json",
+			success:function(response) {
+				console.log(response);
+			}
+		});
+		
+	}
+
+</script>
+</div>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script src="js/jquery.js"></script>
+</head>
+<body>
+
+	<input type="text" id="username"/>
+	<input type="text" id="firstName"/>
+	<input type="text" id="lastName"/>
+	<input type="text" id="salary"/>
+	<button id="post">POST</button>
+	<button id="update">UPDATE</button>
+	
+	<script>
+		$(function(){
+			$("#post").click(function(){
+				var user = {
+						firstName : $("#firstName").val(),
+						lastName : $("#lastName").val(),
+						salary : $("#salary").val(),
+				};
+				console.log(user);
+				$.ajax({
+					url : "http://localhost:8080/JWS/api/hello/user",
+					type: "post",
+					contentType : "application/json",
+					data : JSON.stringify(user),
+					success : function(response) {
+						console.log(response);
+					}
+				});
+			});
+			$("#update").click(function(){
+				username = $("#username").val();
+				var user = {
+					firstName : $("#firstName").val(),
+					lastName : $("#lastName").val(),
+					salary : $("#salary").val(),
+				};
+				$.ajax({
+					url : "http://localhost:8080/JWS/api/hello/user/"+username,
+					type: "put",
+					contentType : "application/json",
+					data : JSON.stringify(user),
+					success : function(response) {
+						console.log(response);
+					}
+				});
+			});
+		});
+	</script>
+	
+</body>
+</html>

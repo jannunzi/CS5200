@@ -1,0 +1,1666 @@
+<?xml version="1.0" encoding="UTF-8"?><Arguments>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Title DDR Review Date</Name>
+<Type>Date</Type>
+<Description>Title DDR Review Date</Description>
+</Argument>
+<Argument>
+<Name>Title Review Date</Name>
+<Type>Date</Type>
+<Description>Title Review Date</Description>
+</Argument>
+<Argument>
+<Name>Title Expiration Date</Name>
+<Type>Date</Type>
+<Description>Title Expiration Date</Description>
+</Argument>
+<Argument>
+<Name>Date of Request</Name>
+<Type>Date</Type>
+<Description>Date of Request</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Environmental PO Request Date</Name>
+<Type>Date</Type>
+<Description>Environmental PO Request Date</Description>
+</Argument>
+
+
+
+
+<Argument>
+<Name>NPN National Notice Date</Name>
+<Type>Date</Type>
+<Description>NPN National Notice Date</Description>
+</Argument>
+
+<Argument>
+<Name>Standard Service Ordered Date</Name>
+<Type>Date</Type>
+<Description>Standard Service Ordered Date</Description>
+</Argument>
+
+
+
+
+<Argument>
+<Name>Ordered Date</Name>
+<Type>Date</Type>
+<Description>Ordered Date</Description>
+</Argument>
+<Argument>
+<Name>Finalized Date</Name>
+<Type>Date</Type>
+<Description>Finalized Date</Description>
+</Argument>
+<Argument>
+<Name>Received Date</Name>
+<Type>Date</Type>
+<Description>Received Date</Description>
+</Argument>
+<Argument>
+<Name>Expires Date</Name>
+<Type>Date</Type>
+<Description>Expires Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Construction Completed Date</Name>
+<Type>Date</Type>
+<Description>Construction Completed Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>ATC Received Date</Name>
+<Type>Date</Type>
+<Description>ATC Received Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Partially Executed Ground Lease Date</Name>
+<Type>Date</Type>
+<Description>Partially Executed Ground Lease Date</Description>
+</Argument>
+<Argument>
+<Name>Date Sent to ATC</Name>
+<Type>Date</Type>
+<Description>Date Sent to ATC</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Request Date</Name>
+<Type>Date</Type>
+<Description>Request Date</Description>
+</Argument>
+
+
+
+
+
+<Argument>
+<Name>Current Option Expires Date</Name>
+<Type>Date</Type>
+<Description>Current Option Expires Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Requested by Date</Name>
+<Type>Date</Type>
+<Description>Requested by Date</Description>
+</Argument>
+<Argument>
+<Name>Approved by Date</Name>
+<Type>Date</Type>
+<Description>Approved by Date</Description>
+</Argument>
+<Argument>
+<Name>Entered by Date</Name>
+<Type>Date</Type>
+<Description>Entered by Date</Description>
+</Argument>
+<Argument>
+<Name>Requested Date</Name>
+<Type>Date</Type>
+<Description>Requested Date</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Date Open with Environmental</Name>
+<Type>Date</Type>
+<Description>Date Open with Environmental</Description>
+</Argument>
+<Argument>
+<Name>Customer Phase I ESA Reviewed</Name>
+<Type>Date</Type>
+<Description>Customer Phase I ESA Reviewed</Description>
+</Argument>
+<Argument>
+<Name>Customer NEPA Reviewed</Name>
+<Type>Date</Type>
+<Description>Customer NEPA Reviewed</Description>
+</Argument>
+<Argument>
+<Name>Date Customer Report Complete</Name>
+<Type>Date</Type>
+<Description>Date Customer Report Complete</Description>
+</Argument>
+
+<Argument>
+<Name>DATE Environmental Triage Complete</Name>
+<Type>Date</Type>
+<Description>DATE Environmental Triage Complete</Description>
+</Argument>
+
+
+<Argument>
+<Name>Proposed Construction Start Date</Name>
+<Type>Date</Type>
+<Description>Proposed Construction Start Date</Description>
+</Argument>
+
+
+
+
+
+
+<Argument>
+<Name>Environmental Final costs validated</Name>
+<Type>Date</Type>
+<Description>Environmental Final costs validated</Description>
+</Argument>
+
+<Argument>
+<Name>BD Decision Date</Name>
+<Type>Date</Type>
+<Description>BD Decision Date</Description>
+</Argument>
+<Argument>
+<Name>DATE Closed With Environmental</Name>
+<Type>Date</Type>
+<Description>DATE Closed With Environmental</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Date Validated</Name>
+<Type>Date</Type>
+<Description>Date Validated</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>NPN Start Date (ASR Part 1)</Name>
+<Type>Date</Type>
+<Description>NPN Start Date (ASR Part 1)</Description>
+</Argument>
+<Argument>
+<Name>NPN Complete Date (ASR Part 2)</Name>
+<Type>Date</Type>
+<Description>NPN Complete Date (ASR Part 2)</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>FAA Expiration Date</Name>
+<Type>Date</Type>
+<Description>FAA Expiration Date</Description>
+</Argument>
+
+
+<Argument>
+<Name>Power Order Date</Name>
+<Type>Date</Type>
+<Description>Power Order Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Standard Services Received DATE</Name>
+<Type>Date</Type>
+<Description>Standard Services Received DATE</Description>
+</Argument>
+
+<Argument>
+<Name>Standard Services Finalized DATE</Name>
+<Type>Date</Type>
+<Description>Standard Services Finalized DATE</Description>
+</Argument>
+<Argument>
+<Name>Standard Services Expires DATE</Name>
+<Type>Date</Type>
+<Description>Standard Services Expires DATE</Description>
+</Argument>
+
+
+<Argument>
+<Name>Advanced Services Ordered DATE</Name>
+<Type>Date</Type>
+<Description>Advanced Services Ordered DATE</Description>
+</Argument>
+<Argument>
+<Name>Advanced Services Received DATE</Name>
+<Type>Date</Type>
+<Description>Advanced Services Received DATE</Description>
+</Argument>
+
+<Argument>
+<Name>Advanced Services Finalized DATE</Name>
+<Type>Date</Type>
+<Description>Advanced Services Finalized DATE</Description>
+</Argument>
+<Argument>
+<Name>Advanced Services Expires DATE</Name>
+<Type>Date</Type>
+<Description>Advanced Services Expires DATE</Description>
+</Argument>
+
+<Argument>
+<Name>Std Services Ordered DATE</Name>
+<Type>Date</Type>
+<Description>Std Services Ordered DATE</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Cycle 1 Hearing 1 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 1 Hearing 1 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 1 Hearing 2 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 1 Hearing 2 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 1 Hearing 3 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 1 Hearing 3 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 2 Hearing 1 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 2 Hearing 1 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 2 Hearing 2 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 2 Hearing 2 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 2 Hearing 3 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 2 Hearing 3 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 3 Hearing 1 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 3 Hearing 1 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 3 Hearing 2 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 3 Hearing 2 Date</Description>
+</Argument>
+<Argument>
+<Name>Cycle 3 Hearing 3 Date</Name>
+<Type>Date</Type>
+<Description>Cycle 3 Hearing 3 Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Application Date</Name>
+<Type>Date</Type>
+<Description>Application Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Customer Shelter Pad Foundation Complete</Name>
+<Type>Date</Type>
+<Description>Customer Shelter Pad Foundation Complete</Description>
+</Argument>
+<Argument>
+<Name>Definitive power connection</Name>
+<Type>Date</Type>
+<Description>Definitive power connection</Description>
+</Argument>
+<Argument>
+<Name>Electrical Inspection</Name>
+<Type>Date</Type>
+<Description>Electrical Inspection</Description>
+</Argument>
+<Argument>
+<Name>Grounding Complete</Name>
+<Type>Date</Type>
+<Description>Grounding Complete</Description>
+</Argument>
+<Argument>
+<Name>L&amp;A Complete</Name>
+<Type>Date</Type>
+<Description>L&amp;A Complete</Description>
+</Argument>
+<Argument>
+<Name>Power meter install</Name>
+<Type>Date</Type>
+<Description>Power meter install</Description>
+</Argument>
+<Argument>
+<Name>Sweep Test</Name>
+<Type>Date</Type>
+<Description>Sweep Test</Description>
+</Argument>
+<Argument>
+<Name>Telco Installed</Name>
+<Type>Date</Type>
+<Description>Telco Installed</Description>
+</Argument>
+<Argument>
+<Name>Building Permit Filed Date</Name>
+<Type>Date</Type>
+<Description>Building Permit Filed Date</Description>
+</Argument>
+<Argument>
+<Name>Hearing Date 1</Name>
+<Type>Date</Type>
+<Description>Hearing Date 1</Description>
+</Argument>
+<Argument>
+<Name>Hearing Date 2</Name>
+<Type>Date</Type>
+<Description>Hearing Date 2</Description>
+</Argument>
+<Argument>
+<Name>Hearing Date 3</Name>
+<Type>Date</Type>
+<Description>Hearing Date 3</Description>
+</Argument>
+<Argument>
+<Name>Hearing Date 4</Name>
+<Type>Date</Type>
+<Description>Hearing Date 4</Description>
+</Argument>
+<Argument>
+<Name>Hearing Date 5</Name>
+<Type>Date</Type>
+<Description>Hearing Date 5</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Deadline Cycle 1 Date</Name>
+<Type>Date</Type>
+<Description>Deadline Cycle 1 Date</Description>
+</Argument>
+<Argument>
+<Name>Deadline Cycle 2 Date</Name>
+<Type>Date</Type>
+<Description>Deadline Cycle 2 Date</Description>
+</Argument>
+<Argument>
+<Name>Deadline Cycle 3 Date</Name>
+<Type>Date</Type>
+<Description>Deadline Cycle 3 Date</Description>
+</Argument>
+
+
+<Argument>
+<Name>Date of Ordinance</Name>
+<Type>Date</Type>
+<Description>Date of Ordinance</Description>
+</Argument>
+
+<Argument>
+<Name>Date</Name>
+<Type>Date</Type>
+<Description>Date</Description>
+</Argument>
+
+
+
+
+
+
+
+<Argument>
+<Name>Ground Lease Review Date</Name>
+<Type>Date</Type>
+<Description>Ground Lease Review Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Land Survey Review Date</Name>
+<Type>Date</Type>
+<Description>Land Survey Review Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Environmental Service Due Date</Name>
+<Type>Date</Type>
+<Description>Environmental Service Due Date</Description>
+</Argument>
+
+<Argument>
+<Name>Environmental Service Ordered Date</Name>
+<Type>Date</Type>
+<Description>Environmental Service Ordered Date</Description>
+</Argument>
+<Argument>
+<Name>Environmental Service Received Date</Name>
+<Type>Date</Type>
+<Description>Environmental Service Received Date</Description>
+</Argument>
+<Argument>
+<Name>Due Date</Name>
+<Type>Date</Type>
+<Description>Due Date</Description>
+</Argument>
+<Argument>
+<Name>Acceptance Date</Name>
+<Type>Date</Type>
+<Description>Acceptance Date</Description>
+</Argument>
+
+
+<Argument>
+<Name>Site Acq Vendor PO Date</Name>
+<Type>Date</Type>
+<Description>Site Acq Vendor PO Date</Description>
+</Argument>
+
+
+
+
+
+<Argument>
+<Name>SHIP DATE REQUESTED</Name>
+<Type>Date</Type>
+<Description>SHIP DATE REQUESTED</Description>
+</Argument>
+<Argument>
+<Name>ATS Order Date</Name>
+<Type>Date</Type>
+<Description>ATS Order Date</Description>
+</Argument>
+
+<Argument>
+<Name>ATS Release Date</Name>
+<Type>Date</Type>
+<Description>ATS Release Date</Description>
+</Argument>
+
+
+<Argument>
+<Name>Generator Release Date</Name>
+<Type>Date</Type>
+<Description>Generator Release Date</Description>
+</Argument>
+
+<Argument>
+<Name>Order Date</Name>
+<Type>Date</Type>
+<Description>Order Date</Description>
+</Argument>
+
+<Argument>
+<Name>BOM Received Date</Name>
+<Type>Date</Type>
+<Description>BOM Received Date</Description>
+</Argument>
+
+
+<Argument>
+<Name>Start Up Date</Name>
+<Type>Date</Type>
+<Description>Start Up Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Air or Emissions Submitted</Name>
+<Type>Date</Type>
+<Description>Air or Emissions Submitted</Description>
+</Argument>
+<Argument>
+<Name>Air or Emissions Received</Name>
+<Type>Date</Type>
+<Description>Air or Emissions Received</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Air or Emissions Expiration</Name>
+<Type>Date</Type>
+<Description>Air or Emissions Expiration</Description>
+</Argument>
+
+
+
+
+
+
+<Argument>
+<Name>Fire Marshall Submitted</Name>
+<Type>Date</Type>
+<Description>Fire Marshall Submitted</Description>
+</Argument>
+
+<Argument>
+<Name>Fire Marshall Received</Name>
+<Type>Date</Type>
+<Description>Fire Marshall Received</Description>
+</Argument>
+
+
+<Argument>
+<Name>Fire Marshall Expiration</Name>
+<Type>Date</Type>
+<Description>Fire Marshall Expiration</Description>
+</Argument>
+
+
+
+
+
+
+<Argument>
+<Name>Tank Submitted</Name>
+<Type>Date</Type>
+<Description>Tank Submitted</Description>
+</Argument>
+<Argument>
+<Name>Tank Received</Name>
+<Type>Date</Type>
+<Description>Tank Received</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Tank Expiration</Name>
+<Type>Date</Type>
+<Description>Tank Expiration</Description>
+</Argument>
+
+
+
+
+
+
+<Argument>
+<Name>Tank 2 Submitted</Name>
+<Type>Date</Type>
+<Description>Tank 2 Submitted</Description>
+</Argument>
+<Argument>
+<Name>Tank 2 Received</Name>
+<Type>Date</Type>
+<Description>Tank 2 Received</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Tank 2 Expiration</Name>
+<Type>Date</Type>
+<Description>Tank 2 Expiration</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>GC PO Date</Name>
+<Type>Date</Type>
+<Description>GC PO Date</Description>
+</Argument>
+
+
+<Argument>
+<Name>Opportunity Received Date</Name>
+<Type>Date</Type>
+<Description>Opportunity Received Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Site Sketch Requested Date</Name>
+<Type>Date</Type>
+<Description>Site Sketch Requested Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Construction Started Date</Name>
+<Type>Date</Type>
+<Description>Construction Started Date</Description>
+</Argument>
+<Argument>
+<Name>Fuel Ordered Date</Name>
+<Type>Date</Type>
+<Description>Fuel Ordered Date</Description>
+</Argument>
+<Argument>
+<Name>Fuel Received Date</Name>
+<Type>Date</Type>
+<Description>Fuel Received Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Preliminary Estimate to APM Date</Name>
+<Type>Date</Type>
+<Description>Preliminary Estimate to APM Date</Description>
+</Argument>
+<Argument>
+<Name>Capital Contribution Letter to APM Date</Name>
+<Type>Date</Type>
+<Description>Capital Contribution Letter to APM Date</Description>
+</Argument>
+
+<Argument>
+<Name>Budget Approved</Name>
+<Type>Date</Type>
+<Description>Budget Approved</Description>
+</Argument>
+
+<Argument>
+<Name>Capital Contribution Received Date 1</Name>
+<Type>Date</Type>
+<Description>Capital Contribution Received Date 1</Description>
+</Argument>
+
+<Argument>
+<Name>Materials Ordered Date</Name>
+<Type>Date</Type>
+<Description>Materials Ordered Date</Description>
+</Argument>
+
+<Argument>
+<Name>Shelter Ordered Date</Name>
+<Type>Date</Type>
+<Description>Shelter Ordered Date</Description>
+</Argument>
+<Argument>
+<Name>Preliminary Carrier Approval Received</Name>
+<Type>Date</Type>
+<Description>Preliminary Carrier Approval Received</Description>
+</Argument>
+
+<Argument>
+<Name>Ground Lease Termination Date</Name>
+<Type>Date</Type>
+<Description>Ground Lease Termination Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Hazmat Service Received Date_1</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_1</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_2</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_2</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_3</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_3</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_4</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_4</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_5</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_5</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_6</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_6</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_7</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_7</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_8</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_8</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_9</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_9</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Received Date_10</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Received Date_10</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_1</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_1</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_2</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_2</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_3</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_3</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_4</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_4</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_5</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_5</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_6</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_6</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_7</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_7</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_8</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_8</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_9</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_9</Description>
+</Argument>
+<Argument>
+<Name>Hazmat Service Order Date_10</Name>
+<Type>Date</Type>
+<Description>Hazmat Service Order Date_10</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>RCC Received Actual Date</Name>
+<Type>Date</Type>
+<Description>RCC Received Actual Date</Description>
+</Argument>
+<Argument>
+<Name>Date Tower Stacked according to RCC</Name>
+<Type>Date</Type>
+<Description>Date Tower Stacked according to RCC</Description>
+</Argument>
+<Argument>
+<Name>FAA Form 7460-2 - Part 2 Filing Date</Name>
+<Type>Date</Type>
+<Description>FAA Form 7460-2 - Part 2 Filing Date</Description>
+</Argument>
+<Argument>
+<Name>FCC NT Filing Date</Name>
+<Type>Date</Type>
+<Description>FCC NT Filing Date</Description>
+</Argument>
+<Argument>
+<Name>NOC Response Email Received</Name>
+<Type>Date</Type>
+<Description>NOC Response Email Received</Description>
+</Argument>
+
+
+<Argument>
+<Name>RCC Corrections Requested</Name>
+<Type>Date</Type>
+<Description>RCC Corrections Requested</Description>
+</Argument>
+<Argument>
+<Name>RCC Corrections Received</Name>
+<Type>Date</Type>
+<Description>RCC Corrections Received</Description>
+</Argument>
+
+
+<Argument>
+<Name>FAA Corrective 7460 Submitted</Name>
+<Type>Date</Type>
+<Description>FAA Corrective 7460 Submitted</Description>
+</Argument>
+<Argument>
+<Name>FAA Corrective Filing Issued</Name>
+<Type>Date</Type>
+<Description>FAA Corrective Filing Issued</Description>
+</Argument>
+<Argument>
+<Name>FCC MD-NT Completed for Corrective Filings</Name>
+<Type>Date</Type>
+<Description>FCC MD-NT Completed for Corrective Filings</Description>
+</Argument>
+<Argument>
+<Name>Airspace Reviewed Completed</Name>
+<Type>Date</Type>
+<Description>Airspace Reviewed Completed</Description>
+</Argument>
+
+<Argument>
+<Name>PM and RF Notified if AM Required</Name>
+<Type>Date</Type>
+<Description>PM and RF Notified if AM Required</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Crane Filing Date</Name>
+<Type>Date</Type>
+<Description>Crane Filing Date</Description>
+</Argument>
+<Argument>
+<Name>Crane Filing Issued Date</Name>
+<Type>Date</Type>
+<Description>Crane Filing Issued Date</Description>
+</Argument>
+
+<Argument>
+<Name>State Filing Submitted Date</Name>
+<Type>Date</Type>
+<Description>State Filing Submitted Date</Description>
+</Argument>
+<Argument>
+<Name>State Filing Determined Date</Name>
+<Type>Date</Type>
+<Description>State Filing Determined Date</Description>
+</Argument>
+
+<Argument>
+<Name>FAA Form 7460-1 Filing Date</Name>
+<Type>Date</Type>
+<Description>FAA Form 7460-1 Filing Date</Description>
+</Argument>
+<Argument>
+<Name>Forecasted FAA Issued Date</Name>
+<Type>Date</Type>
+<Description>Forecasted FAA Issued Date</Description>
+</Argument>
+<Argument>
+<Name>FAA Determination Issued Date</Name>
+<Type>Date</Type>
+<Description>FAA Determination Issued Date</Description>
+</Argument>
+
+<Argument>
+<Name>Forecasted Extended Study Finalization Date</Name>
+<Type>Date</Type>
+<Description>Forecasted Extended Study Finalization Date</Description>
+</Argument>
+
+<Argument>
+<Name>FAA Form 7460-2 Part 1 Filing Date</Name>
+<Type>Date</Type>
+<Description>FAA Form 7460-2 Part 1 Filing Date</Description>
+</Argument>
+
+<Argument>
+<Name>FCC Filed Date</Name>
+<Type>Date</Type>
+<Description>FCC Filed Date</Description>
+</Argument>
+
+<Argument>
+<Name>FCC ASR Granted Date</Name>
+<Type>Date</Type>
+<Description>FCC ASR Granted Date</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Capital Contribution Received Date 2</Name>
+<Type>Date</Type>
+<Description>Capital Contribution Received Date 2</Description>
+</Argument>
+<Argument>
+<Name>Capital Contribution Received Date 3</Name>
+<Type>Date</Type>
+<Description>Capital Contribution Received Date 3</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Date Tower Must Be Taken Down</Name>
+<Type>Date</Type>
+<Description>Date Tower Must Be Taken Down</Description>
+</Argument>
+
+
+
+
+
+<Argument>
+<Name>Date Inquiry Received</Name>
+<Type>Date</Type>
+<Description>Date Inquiry Received</Description>
+</Argument>
+
+<Argument>
+<Name>Date SVP Approved</Name>
+<Type>Date</Type>
+<Description>Date SVP Approved</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>PLACEHOLDER_DATE_1</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_1</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_2</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_2</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_3</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_3</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_4</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_4</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_5</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_5</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_6</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_6</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_7</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_7</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_8</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_8</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_9</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_9</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_DATE_10</Name>
+<Type>Date</Type>
+<Description>PLACEHOLDER_DATE_10</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Date Takedown Needs to Occur</Name>
+<Type>Date</Type>
+<Description>Date Takedown Needs to Occur</Description>
+</Argument>
+
+
+
+
+
+</Arguments>

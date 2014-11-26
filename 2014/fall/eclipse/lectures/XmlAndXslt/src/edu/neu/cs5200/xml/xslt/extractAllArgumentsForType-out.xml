@@ -1,0 +1,1446 @@
+<?xml version="1.0" encoding="UTF-8"?><Arguments>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Sent Back for Comments</Name>
+<Type>Yes/No</Type>
+<Description>Sent Back for Comments</Description>
+</Argument>
+<Argument>
+<Name>Add Additional Std Services?</Name>
+<Type>Yes/No</Type>
+<Description>Add Additional Std Services?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Agent - Owner Authorization (Y-N)</Name>
+<Type>Yes/No</Type>
+<Description>Agent - Owner Authorization (Y-N)</Description>
+</Argument>
+<Argument>
+<Name>Notarized (Y-N)?</Name>
+<Type>Yes/No</Type>
+<Description>Notarized (Y-N)?</Description>
+</Argument>
+<Argument>
+<Name>Does Jurisdiction Have a Specific Form (Y-N)?</Name>
+<Type>Yes/No</Type>
+<Description>Does Jurisdiction Have a Specific Form (Y-N)?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>ZZZTower Separation Requirement?</Name>
+<Type>Yes/No</Type>
+<Description>ZZZTower Separation Requirement?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>ZZZAM Service Requirement</Name>
+<Type>Yes/No</Type>
+<Description>ZZZAM Service Requirement</Description>
+</Argument>
+<Argument>
+<Name>ZZZState - Local Filing Required</Name>
+<Type>Yes/No</Type>
+<Description>ZZZState - Local Filing Required</Description>
+</Argument>
+<Argument>
+<Name>Civil Clearance Only</Name>
+<Type>Yes/No</Type>
+<Description>Civil Clearance Only</Description>
+</Argument>
+
+<Argument>
+<Name>ZZZIs the lighting functioning properly?</Name>
+<Type>Yes/No</Type>
+<Description>ZZZIs the lighting functioning properly?</Description>
+</Argument>
+<Argument>
+<Name>ZZZNOTAM opened?</Name>
+<Type>Yes/No</Type>
+<Description>ZZZNOTAM opened?</Description>
+</Argument>
+<Argument>
+<Name>ZZZSite Monitoring Status ALI - QLI</Name>
+<Type>Yes/No</Type>
+<Description>ZZZSite Monitoring Status ALI - QLI</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Tower Waiver Approved (Y-N)</Name>
+<Type>Yes/No</Type>
+<Description>Tower Waiver Approved (Y-N)</Description>
+</Argument>
+
+
+
+
+
+
+
+<Argument>
+<Name>Is the candidate in the search ring?</Name>
+<Type>Yes/No</Type>
+<Description>Is the candidate in the search ring?</Description>
+</Argument>
+
+
+
+
+
+<Argument>
+<Name>Zoning required?</Name>
+<Type>Yes/No</Type>
+<Description>Zoning required?</Description>
+</Argument>
+
+<Argument>
+<Name>Is road snow - ice scrapping required?</Name>
+<Type>Yes/No</Type>
+<Description>Is road snow - ice scrapping required?</Description>
+</Argument>
+<Argument>
+<Name>Location accessible for crane?</Name>
+<Type>Yes/No</Type>
+<Description>Location accessible for crane?</Description>
+</Argument>
+
+
+
+
+
+<Argument>
+<Name>W9 (Yes-No)</Name>
+<Type>Yes/No</Type>
+<Description>W9 (Yes-No)</Description>
+</Argument>
+<Argument>
+<Name>Payment Authorized (Yes-No)</Name>
+<Type>Yes/No</Type>
+<Description>Payment Authorized (Yes-No)</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Additional easements free of charge?</Name>
+<Type>Yes/No</Type>
+<Description>Additional easements free of charge?</Description>
+</Argument>
+
+<Argument>
+<Name>Bond Required</Name>
+<Type>Yes/No</Type>
+<Description>Bond Required</Description>
+</Argument>
+<Argument>
+<Name>Escalated Business - Legal Approval Required?</Name>
+<Type>Yes/No</Type>
+<Description>Escalated Business - Legal Approval Required?</Description>
+</Argument>
+
+<Argument>
+<Name>Standard - Quick Check - Emergency Check</Name>
+<Type>Yes/No</Type>
+<Description>Standard - Quick Check - Emergency Check</Description>
+</Argument>
+
+<Argument>
+<Name>Income - Property - Sales-Use - Customs-Duties - Other - Filing Fees - Pass Thru Expense</Name>
+<Type>Yes/No</Type>
+<Description>Income - Property - Sales-Use - Customs-Duties - Other - Filing Fees - Pass Thru Expense</Description>
+</Argument>
+<Argument>
+<Name>Call for Pickup - Regular Mail Directly to Payee - 2 Day Fedex - Standard Overnight</Name>
+<Type>Yes/No</Type>
+<Description>Call for Pickup - Regular Mail Directly to Payee - 2 Day Fedex - Standard Overnight</Description>
+</Argument>
+
+
+
+
+
+
+<Argument>
+<Name>Is site staked?</Name>
+<Type>Yes/No</Type>
+<Description>Is site staked?</Description>
+</Argument>
+<Argument>
+<Name>Any access restrictions - issues to alert envt cnslt to?</Name>
+<Type>Yes/No</Type>
+<Description>Any access restrictions - issues to alert envt cnslt to?</Description>
+</Argument>
+<Argument>
+<Name>All required envt trigger docs uploaded?</Name>
+<Type>Yes/No</Type>
+<Description>All required envt trigger docs uploaded?</Description>
+</Argument>
+
+
+
+
+<Argument>
+<Name>Customer Consultant Follow-up Complete</Name>
+<Type>Yes/No</Type>
+<Description>Customer Consultant Follow-up Complete</Description>
+</Argument>
+
+
+
+
+
+<Argument>
+<Name>NPN Is Another Federal Agency Involved?</Name>
+<Type>Yes/No</Type>
+<Description>NPN Is Another Federal Agency Involved?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>ZZZJurisdiction</Name>
+<Type>Yes/No</Type>
+<Description>ZZZJurisdiction</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Cycle 1 Hearing 2</Name>
+<Type>Yes/No</Type>
+<Description>Cycle 1 Hearing 2</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Tower Lighting Required</Name>
+<Type>Yes/No</Type>
+<Description>Tower Lighting Required</Description>
+</Argument>
+<Argument>
+<Name>ZZZDoes Carrier need to modify RAD to avoid beacon obstruction</Name>
+<Type>Yes/No</Type>
+<Description>ZZZDoes Carrier need to modify RAD to avoid beacon obstruction</Description>
+</Argument>
+<Argument>
+<Name>AM Measurements Required</Name>
+<Type>Yes/No</Type>
+<Description>AM Measurements Required</Description>
+</Argument>
+<Argument>
+<Name>Does the local jurisdiction require an FAA Filing</Name>
+<Type>Yes/No</Type>
+<Description>Does the local jurisdiction require an FAA Filing</Description>
+</Argument>
+<Argument>
+<Name>Does ATC need to complete a crane filing</Name>
+<Type>Yes/No</Type>
+<Description>Does ATC need to complete a crane filing</Description>
+</Argument>
+<Argument>
+<Name>Will FAA Extended Study be required</Name>
+<Type>Yes/No</Type>
+<Description>Will FAA Extended Study be required</Description>
+</Argument>
+<Argument>
+<Name>ZZZFAA Advanced Processing Notes</Name>
+<Type>Yes/No</Type>
+<Description>ZZZFAA Advanced Processing Notes</Description>
+</Argument>
+<Argument>
+<Name>ZZZDoes ATC need to complete an ASR Filing</Name>
+<Type>Yes/No</Type>
+<Description>ZZZDoes ATC need to complete an ASR Filing</Description>
+</Argument>
+<Argument>
+<Name>Will an EA be required</Name>
+<Type>Yes/No</Type>
+<Description>Will an EA be required</Description>
+</Argument>
+<Argument>
+<Name>ZZZNPN Required</Name>
+<Type>Yes/No</Type>
+<Description>ZZZNPN Required</Description>
+</Argument>
+
+
+<Argument>
+<Name>Are there NPN Pleadings</Name>
+<Type>Yes/No</Type>
+<Description>Are there NPN Pleadings</Description>
+</Argument>
+<Argument>
+<Name>Site Name A</Name>
+<Type>Yes/No</Type>
+<Description>Site Name A</Description>
+</Argument>
+
+
+<Argument>
+<Name>ZZZDoes the Site Have Permanent Power?</Name>
+<Type>Yes/No</Type>
+<Description>ZZZDoes the Site Have Permanent Power?</Description>
+</Argument>
+<Argument>
+<Name>ZZZIs the system operating in a mode other than what you have installed?</Name>
+<Type>Yes/No</Type>
+<Description>ZZZIs the system operating in a mode other than what you have installed?</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>ATC meter required?</Name>
+<Type>Yes/No</Type>
+<Description>ATC meter required?</Description>
+</Argument>
+<Argument>
+<Name>Water service required?</Name>
+<Type>Yes/No</Type>
+<Description>Water service required?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Internal</Name>
+<Type>Yes/No</Type>
+<Description>Internal</Description>
+</Argument>
+<Argument>
+<Name>External</Name>
+<Type>Yes/No</Type>
+<Description>External</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Add Additional Advanced Services?</Name>
+<Type>Yes/No</Type>
+<Description>Add Additional Advanced Services?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>SCIP</Name>
+<Type>Yes/No</Type>
+<Description>SCIP</Description>
+</Argument>
+<Argument>
+<Name>PRIMARY CANDIDATE APPROVAL</Name>
+<Type>Yes/No</Type>
+<Description>PRIMARY CANDIDATE APPROVAL</Description>
+</Argument>
+<Argument>
+<Name>RFDS</Name>
+<Type>Yes/No</Type>
+<Description>RFDS</Description>
+</Argument>
+<Argument>
+<Name>ATC APPLICATION</Name>
+<Type>Yes/No</Type>
+<Description>ATC APPLICATION</Description>
+</Argument>
+<Argument>
+<Name>STRUCTURAL</Name>
+<Type>Yes/No</Type>
+<Description>STRUCTURAL</Description>
+</Argument>
+<Argument>
+<Name>SLA</Name>
+<Type>Yes/No</Type>
+<Description>SLA</Description>
+</Argument>
+<Argument>
+<Name>A&amp;E</Name>
+<Type>Yes/No</Type>
+<Description>A&amp;E</Description>
+</Argument>
+<Argument>
+<Name>Z AND P</Name>
+<Type>Yes/No</Type>
+<Description>Z AND P</Description>
+</Argument>
+<Argument>
+<Name>NTP</Name>
+<Type>Yes/No</Type>
+<Description>NTP</Description>
+</Argument>
+<Argument>
+<Name>Utilties</Name>
+<Type>Yes/No</Type>
+<Description>Utilties</Description>
+</Argument>
+<Argument>
+<Name>MATERIALS</Name>
+<Type>Yes/No</Type>
+<Description>MATERIALS</Description>
+</Argument>
+<Argument>
+<Name>CONSTRUCTION</Name>
+<Type>Yes/No</Type>
+<Description>CONSTRUCTION</Description>
+</Argument>
+
+
+<Argument>
+<Name>Zoning Required - Yes or No?</Name>
+<Type>Yes/No</Type>
+<Description>Zoning Required - Yes or No?</Description>
+</Argument>
+
+<Argument>
+<Name>Building Permit</Name>
+<Type>Yes/No</Type>
+<Description>Building Permit</Description>
+</Argument>
+<Argument>
+<Name>Electrical Permit</Name>
+<Type>Yes/No</Type>
+<Description>Electrical Permit</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>ZZZNon-Standard Use Restrictions</Name>
+<Type>Yes/No</Type>
+<Description>ZZZNon-Standard Use Restrictions</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>ZZZUTILITIES</Name>
+<Type>Yes/No</Type>
+<Description>ZZZUTILITIES</Description>
+</Argument>
+
+
+
+
+
+
+
+<Argument>
+<Name>Air or Emissions Required?</Name>
+<Type>Yes/No</Type>
+<Description>Air or Emissions Required?</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Air or Emissions Recurring?</Name>
+<Type>Yes/No</Type>
+<Description>Air or Emissions Recurring?</Description>
+</Argument>
+
+
+
+
+
+
+
+<Argument>
+<Name>Fire Marshall Required?</Name>
+<Type>Yes/No</Type>
+<Description>Fire Marshall Required?</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Fire Marshall Recurring?</Name>
+<Type>Yes/No</Type>
+<Description>Fire Marshall Recurring?</Description>
+</Argument>
+
+
+
+
+
+
+
+<Argument>
+<Name>Tank Required?</Name>
+<Type>Yes/No</Type>
+<Description>Tank Required?</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Tank Recurring?</Name>
+<Type>Yes/No</Type>
+<Description>Tank Recurring?</Description>
+</Argument>
+
+
+
+
+
+
+
+<Argument>
+<Name>Tank 2 Required?</Name>
+<Type>Yes/No</Type>
+<Description>Tank 2 Required?</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Tank 2 Recurring?</Name>
+<Type>Yes/No</Type>
+<Description>Tank 2 Recurring?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Standard</Name>
+<Type>Yes/No</Type>
+<Description>Standard</Description>
+</Argument>
+<Argument>
+<Name>Quick Check</Name>
+<Type>Yes/No</Type>
+<Description>Quick Check</Description>
+</Argument>
+<Argument>
+<Name>Emergency Check</Name>
+<Type>Yes/No</Type>
+<Description>Emergency Check</Description>
+</Argument>
+<Argument>
+<Name>Income</Name>
+<Type>Yes/No</Type>
+<Description>Income</Description>
+</Argument>
+<Argument>
+<Name>Property</Name>
+<Type>Yes/No</Type>
+<Description>Property</Description>
+</Argument>
+<Argument>
+<Name>Sales-Use</Name>
+<Type>Yes/No</Type>
+<Description>Sales-Use</Description>
+</Argument>
+<Argument>
+<Name>Customs-Duties</Name>
+<Type>Yes/No</Type>
+<Description>Customs-Duties</Description>
+</Argument>
+<Argument>
+<Name>Other</Name>
+<Type>Yes/No</Type>
+<Description>Other</Description>
+</Argument>
+<Argument>
+<Name>Filing Fees</Name>
+<Type>Yes/No</Type>
+<Description>Filing Fees</Description>
+</Argument>
+<Argument>
+<Name>Pass Thru Expense</Name>
+<Type>Yes/No</Type>
+<Description>Pass Thru Expense</Description>
+</Argument>
+<Argument>
+<Name>Call for Pickup</Name>
+<Type>Yes/No</Type>
+<Description>Call for Pickup</Description>
+</Argument>
+<Argument>
+<Name>Regular Mail Directly to Payee</Name>
+<Type>Yes/No</Type>
+<Description>Regular Mail Directly to Payee</Description>
+</Argument>
+<Argument>
+<Name>2 Day Fedex</Name>
+<Type>Yes/No</Type>
+<Description>2 Day Fedex</Description>
+</Argument>
+<Argument>
+<Name>Standard Overnight</Name>
+<Type>Yes/No</Type>
+<Description>Standard Overnight</Description>
+</Argument>
+<Argument>
+<Name>ZZZProject</Name>
+<Type>Yes/No</Type>
+<Description>ZZZProject</Description>
+</Argument>
+<Argument>
+<Name>ZZZTask</Name>
+<Type>Yes/No</Type>
+<Description>ZZZTask</Description>
+</Argument>
+<Argument>
+<Name>ZZZExp Type</Name>
+<Type>Yes/No</Type>
+<Description>ZZZExp Type</Description>
+</Argument>
+<Argument>
+<Name>ZZZOrg or Acct #s</Name>
+<Type>Yes/No</Type>
+<Description>ZZZOrg or Acct #s</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Hazmat Permit</Name>
+<Type>Yes/No</Type>
+<Description>Hazmat Permit</Description>
+</Argument>
+
+
+
+
+<Argument>
+<Name>Fastbreak Requested</Name>
+<Type>Yes/No</Type>
+<Description>Fastbreak Requested</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Passed Lease Up Threshold</Name>
+<Type>Yes/No</Type>
+<Description>Passed Lease Up Threshold</Description>
+</Argument>
+
+
+
+
+
+
+<Argument>
+<Name>Assume Collo data</Name>
+<Type>Yes/No</Type>
+<Description>Assume Collo data</Description>
+</Argument>
+<Argument>
+<Name>ATC to define anything else applicable</Name>
+<Type>Yes/No</Type>
+<Description>ATC to define anything else applicable</Description>
+</Argument>
+<Argument>
+<Name>Link to File Manager</Name>
+<Type>Yes/No</Type>
+<Description>Link to File Manager</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Is notice to the FAA and FCC Required</Name>
+<Type>Yes/No</Type>
+<Description>Is notice to the FAA and FCC Required</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Are Corrective FAA-FCC Filings Required Post Construction</Name>
+<Type>Yes/No</Type>
+<Description>Are Corrective FAA-FCC Filings Required Post Construction</Description>
+</Argument>
+
+
+
+
+
+
+<Argument>
+<Name>Will the tower require painting</Name>
+<Type>Yes/No</Type>
+<Description>Will the tower require painting</Description>
+</Argument>
+<Argument>
+<Name>Is the lighting style a deviation</Name>
+<Type>Yes/No</Type>
+<Description>Is the lighting style a deviation</Description>
+</Argument>
+
+
+
+<Argument>
+<Name>Is State Filing Required?</Name>
+<Type>Yes/No</Type>
+<Description>Is State Filing Required?</Description>
+</Argument>
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Is a 7460-2 Part 1 Required</Name>
+<Type>Yes/No</Type>
+<Description>Is a 7460-2 Part 1 Required</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Does the local jurisdiction require that we light the tower</Name>
+<Type>Yes/No</Type>
+<Description>Does the local jurisdiction require that we light the tower</Description>
+</Argument>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<Argument>
+<Name>Any Additonal Checks Required?</Name>
+<Type>Yes/No</Type>
+<Description>Any Additonal Checks Required?</Description>
+</Argument>
+<Argument>
+<Name>Does Jurisdiction Have a Specific Form?</Name>
+<Type>Yes/No</Type>
+<Description>Does Jurisdiction Have a Specific Form?</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_3</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_3</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_4</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_4</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_5</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_5</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_6</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_6</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_7</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_7</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_8</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_8</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_9</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_9</Description>
+</Argument>
+<Argument>
+<Name>PLACEHOLDER_BOOLEAN_10</Name>
+<Type>Yes/No</Type>
+<Description>PLACEHOLDER_BOOLEAN_10</Description>
+</Argument>
+
+
+
+
+
+
+
+</Arguments>

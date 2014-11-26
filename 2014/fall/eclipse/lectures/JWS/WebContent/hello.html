@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+
+</head>
+<body>
+<h1>Hello</h1>
+
+<script>
+
+	$(function(){
+		var message = {"message":"Hello","receiver":"Alice"};
+		var url = "http://localhost:8080/JWS/rest/hello123/createMe";
+		
+		$.ajax({
+			url: "http://localhost:8080/JWS/rest/hello123/createMe",
+			type: "post",
+			data: JSON.stringify(message),
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			}
+		});
+		
+		$.ajax({
+			url: "http://localhost:8080/JWS/rest/hello123/updateMe/123",
+			type: "put",
+			data: JSON.stringify(message),
+			dataType: "json",
+			contentType: "application/json",
+			success: function(response) {
+				console.log(response);
+			}
+		});
+		
+	});
+
+</script>
+
+</body>
+</html>
